@@ -1,0 +1,19 @@
+{
+  "resourceType": "SearchParameter",
+  "id": "observation-validation-stage",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/SearchParameter/observation-validation-stage",
+  "version": "0.1.0",
+  "name": "ObservationValidationStage",
+  "status": "draft",
+  "experimental": true,
+  "date": "2026-07-21",
+  "publisher": "Xinyang Li",
+  "description": "Search inline quality observations by validation stage.",
+  "code": "validation-stage",
+  "base": [
+    "Observation"
+  ],
+  "type": "token",
+  "expression": "Observation.extension('https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-validation-stage').value",
+  "xpathUsage": "normal"
+}

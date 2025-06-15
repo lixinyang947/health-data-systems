@@ -1,0 +1,214 @@
+{
+  "resourceType": "StructureMap",
+  "id": "v2-sch-to-encounter",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-sch-to-encounter",
+  "version": "0.1.0",
+  "name": "V2SCHToEncounter",
+  "title": "HL7 v2 SCH to Planned Encounter",
+  "status": "draft",
+  "experimental": true,
+  "date": "2026-07-21",
+  "publisher": "Xinyang Li",
+  "description": "Representative SIU scheduling map using a planned Encounter target.",
+  "copyright": "© 2026 Xinyang Li. Draft technical specification.",
+  "purpose": "Demonstrates reusable SIU structural mapping; an adopting implementation may choose Appointment instead.",
+  "structure": [
+    {
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2SCH",
+      "mode": "source",
+      "alias": "V2SCH",
+      "documentation": "Normalized logical input model for the source segment or C-CDA entry."
+    },
+    {
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-encounter",
+      "mode": "target",
+      "alias": "Encounter",
+      "documentation": "Strict-at-core canonical FHIR R4 target profile."
+    }
+  ],
+  "group": [
+    {
+      "name": "V2SCHToEncounter",
+      "typeMode": "types",
+      "documentation": "Phase 1 structural mapping. Terminology translation, UCUM normalization, ISO 8601 normalization, and value-set validation occur in Phase 2 unless explicitly invoked by a translate rule.",
+      "input": [
+        {
+          "name": "src",
+          "type": "HITCV2SCH",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "Encounter",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "appointmentIdentifier",
+          "source": [
+            {
+              "context": "src",
+              "element": "placerAppointmentId",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "identifier.value",
+              "transform": "copy"
+            }
+          ]
+        },
+        {
+          "name": "identifierSystem",
+          "source": [
+            {
+              "context": "src",
+              "element": "placerAppointmentId",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "identifier.system",
+              "transform": "evaluate",
+              "parameter": [
+                {
+                  "valueString": "'https://example.org/fhir/sid/appointment'"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "plannedStatus",
+          "source": [
+            {
+              "context": "src",
+              "element": "placerAppointmentId",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "status",
+              "transform": "evaluate",
+              "parameter": [
+                {
+                  "valueString": "'planned'"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "ambulatoryClassCode",
+          "source": [
+            {
+              "context": "src",
+              "element": "placerAppointmentId",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "class.code",
+              "transform": "evaluate",
+              "parameter": [
+                {
+                  "valueString": "'AMB'"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "ambulatoryClassSystem",
+          "source": [
+            {
+              "context": "src",
+              "element": "placerAppointmentId",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "class.system",
+              "transform": "evaluate",
+              "parameter": [
+                {
+                  "valueString": "'http://terminology.hl7.org/CodeSystem/v3-ActCode'"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "startTime",
+          "source": [
+            {
+              "context": "src",
+              "element": "startDateTime",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "period.start",
+              "transform": "copy"
+            }
+          ]
+        },
+        {
+          "name": "appointmentReason",
+          "source": [
+            {
+              "context": "src",
+              "element": "appointmentReason",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "type.coding",
+              "transform": "copy"
+            }
+          ]
+        },
+        {
+          "name": "locationDisplay",
+          "source": [
+            {
+              "context": "src",
+              "element": "location",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "location.location.display",
+              "transform": "copy"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

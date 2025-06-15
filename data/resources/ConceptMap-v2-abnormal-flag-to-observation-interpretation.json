@@ -1,0 +1,105 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "v2-abnormal-flag-to-observation-interpretation",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-abnormal-flag-to-observation-interpretation",
+  "version": "0.1.0",
+  "name": "V2AbnormalFlagToObservationInterpretation",
+  "title": "HL7 v2 Abnormal Flags to FHIR Observation Interpretation",
+  "status": "draft",
+  "experimental": true,
+  "date": "2026-07-21",
+  "publisher": "Xinyang Li",
+  "description": "Representative OBX-8 mapping used by the structural and semantic mapping stages.",
+  "copyright": "© 2026 Xinyang Li. Draft technical specification.",
+  "purpose": "Provides reusable, machine-readable interpretation-code translation for laboratory and clinical observations.",
+  "sourceUri": "http://terminology.hl7.org/CodeSystem/v2-0078",
+  "targetUri": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+  "group": [
+    {
+      "source": "http://terminology.hl7.org/CodeSystem/v2-0078",
+      "target": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+      "element": [
+        {
+          "code": "H",
+          "target": [
+            {
+              "equivalence": "equivalent",
+              "code": "H",
+              "display": "High"
+            }
+          ]
+        },
+        {
+          "code": "HH",
+          "target": [
+            {
+              "equivalence": "equivalent",
+              "code": "HH",
+              "display": "Critical high"
+            }
+          ]
+        },
+        {
+          "code": "L",
+          "target": [
+            {
+              "equivalence": "equivalent",
+              "code": "L",
+              "display": "Low"
+            }
+          ]
+        },
+        {
+          "code": "LL",
+          "target": [
+            {
+              "equivalence": "equivalent",
+              "code": "LL",
+              "display": "Critical low"
+            }
+          ]
+        },
+        {
+          "code": "A",
+          "target": [
+            {
+              "equivalence": "equivalent",
+              "code": "A",
+              "display": "Abnormal"
+            }
+          ]
+        },
+        {
+          "code": "N",
+          "target": [
+            {
+              "equivalence": "equivalent",
+              "code": "N",
+              "display": "Normal"
+            }
+          ]
+        },
+        {
+          "code": "U",
+          "target": [
+            {
+              "equivalence": "equivalent",
+              "code": "U",
+              "display": "Significant change up"
+            }
+          ]
+        },
+        {
+          "code": "D",
+          "target": [
+            {
+              "equivalence": "equivalent",
+              "code": "D",
+              "display": "Significant change down"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

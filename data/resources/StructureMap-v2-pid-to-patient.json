@@ -1,0 +1,175 @@
+{
+  "resourceType": "StructureMap",
+  "id": "v2-pid-to-patient",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-pid-to-patient",
+  "version": "0.1.0",
+  "name": "V2PIDToPatient",
+  "title": "HL7 v2 PID to HITC Canonical Patient",
+  "status": "draft",
+  "experimental": true,
+  "date": "2026-07-21",
+  "publisher": "Xinyang Li",
+  "description": "Declarative structural mapping from representative PID fields to the canonical Patient profile.",
+  "copyright": "© 2026 Xinyang Li. Draft technical specification.",
+  "purpose": "Implements Phase 1 PID-to-Patient transformation; organization resolution and source-system extension population are performed by the orchestration layer.",
+  "structure": [
+    {
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2PID",
+      "mode": "source",
+      "alias": "V2PID",
+      "documentation": "Normalized logical input model for the source segment or C-CDA entry."
+    },
+    {
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-patient",
+      "mode": "target",
+      "alias": "Patient",
+      "documentation": "Strict-at-core canonical FHIR R4 target profile."
+    }
+  ],
+  "group": [
+    {
+      "name": "V2PIDToPatient",
+      "typeMode": "types",
+      "documentation": "Phase 1 structural mapping. Terminology translation, UCUM normalization, ISO 8601 normalization, and value-set validation occur in Phase 2 unless explicitly invoked by a translate rule.",
+      "input": [
+        {
+          "name": "src",
+          "type": "HITCV2PID",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "Patient",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "identifierValue",
+          "source": [
+            {
+              "context": "src",
+              "element": "patientIdentifier",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "identifier.value",
+              "transform": "copy"
+            }
+          ]
+        },
+        {
+          "name": "identifierSystem",
+          "source": [
+            {
+              "context": "src",
+              "element": "patientIdentifier",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "identifier.system",
+              "transform": "evaluate",
+              "parameter": [
+                {
+                  "valueString": "'https://example.org/fhir/sid/source-patient-id'"
+                }
+              ]
+            }
+          ],
+          "documentation": "Replace with the governed assigning-authority URI."
+        },
+        {
+          "name": "familyName",
+          "source": [
+            {
+              "context": "src",
+              "element": "familyName",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "name.family",
+              "transform": "copy"
+            }
+          ]
+        },
+        {
+          "name": "givenName",
+          "source": [
+            {
+              "context": "src",
+              "element": "givenName",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "name.given",
+              "transform": "copy"
+            }
+          ]
+        },
+        {
+          "name": "birthDate",
+          "source": [
+            {
+              "context": "src",
+              "element": "birthDate",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "birthDate",
+              "transform": "copy"
+            }
+          ]
+        },
+        {
+          "name": "administrativeGender",
+          "source": [
+            {
+              "context": "src",
+              "element": "administrativeSex",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "gender",
+              "transform": "translate",
+              "parameter": [
+                {
+                  "valueId": "v"
+                },
+                {
+                  "valueString": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-administrative-gender-to-fhir"
+                },
+                {
+                  "valueString": "code"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

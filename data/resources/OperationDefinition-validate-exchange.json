@@ -1,0 +1,54 @@
+{
+  "resourceType": "OperationDefinition",
+  "id": "validate-exchange",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/OperationDefinition/validate-exchange",
+  "version": "0.1.0",
+  "name": "HITCValidateExchange",
+  "title": "HITC Validate Exchange Operation",
+  "status": "draft",
+  "experimental": true,
+  "date": "2026-07-21",
+  "publisher": "Xinyang Li",
+  "description": "Validates an incoming Bundle through R-SCH, R-REF, R-TERM, and the quality-metrics collector.",
+  "purpose": "Defines the API contract for the composable validation pipeline; no completed production service is claimed.",
+  "kind": "operation",
+  "code": "validate-exchange",
+  "comment": "The operation is a requirements-level contract for future implementation.",
+  "system": true,
+  "type": false,
+  "instance": false,
+  "parameter": [
+    {
+      "name": "bundle",
+      "use": "in",
+      "min": 1,
+      "max": "1",
+      "documentation": "Incoming source or canonical Bundle to validate.",
+      "type": "Bundle"
+    },
+    {
+      "name": "strict",
+      "use": "in",
+      "min": 0,
+      "max": "1",
+      "documentation": "When true, profile, reference, and terminology errors fail the transaction.",
+      "type": "boolean"
+    },
+    {
+      "name": "result",
+      "use": "out",
+      "min": 1,
+      "max": "1",
+      "documentation": "Validated canonical exchange Bundle including quality metric Observations and Provenance. The returned Bundle SHALL conform to https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-exchange-bundle.",
+      "type": "Bundle"
+    },
+    {
+      "name": "outcome",
+      "use": "out",
+      "min": 1,
+      "max": "1",
+      "documentation": "Detailed validation findings.",
+      "type": "OperationOutcome"
+    }
+  ]
+}

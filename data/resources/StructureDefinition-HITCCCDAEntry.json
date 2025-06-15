@@ -1,0 +1,493 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "HITCCCDAEntry",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCCCDAEntry",
+  "name": "HITCCCDAEntry",
+  "title": "C-CDA Section Entry Logical Model",
+  "status": "draft",
+  "description": "Normalized intermediate representation for C-CDA medication, problem, allergy, procedure, and discharge-medication entries.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCCCDAEntry",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "snapshot": {
+    "element": [
+      {
+        "id": "HITCCCDAEntry",
+        "path": "HITCCCDAEntry",
+        "short": "C-CDA Section Entry Logical Model",
+        "definition": "Normalized intermediate representation for C-CDA medication, problem, allergy, procedure, and discharge-medication entries.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "HITCCCDAEntry",
+          "min": 0,
+          "max": "*"
+        },
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ],
+        "isModifier": false,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
+        "id": "HITCCCDAEntry.templateId",
+        "path": "HITCCCDAEntry.templateId",
+        "short": "C-CDA template identifier",
+        "definition": "C-CDA template identifier",
+        "min": 1,
+        "max": "*",
+        "base": {
+          "path": "HITCCCDAEntry.templateId",
+          "min": 1,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "oid"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCCCDAEntry.entryId",
+        "path": "HITCCCDAEntry.entryId",
+        "short": "Entry identifier",
+        "definition": "Entry identifier",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCCCDAEntry.entryId",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCCCDAEntry.sectionCode",
+        "path": "HITCCCDAEntry.sectionCode",
+        "short": "C-CDA section code",
+        "definition": "C-CDA section code",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCCCDAEntry.sectionCode",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCCCDAEntry.code",
+        "path": "HITCCCDAEntry.code",
+        "short": "Clinical concept code",
+        "definition": "Clinical concept code",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCCCDAEntry.code",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCCCDAEntry.statusCode",
+        "path": "HITCCCDAEntry.statusCode",
+        "short": "Entry status code",
+        "definition": "Entry status code",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCCCDAEntry.statusCode",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCCCDAEntry.effectiveTime",
+        "path": "HITCCCDAEntry.effectiveTime",
+        "short": "Normalized effective time",
+        "definition": "Normalized effective time",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCCCDAEntry.effectiveTime",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCCCDAEntry.value[x]",
+        "path": "HITCCCDAEntry.value[x]",
+        "short": "Entry value",
+        "definition": "Entry value",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCCCDAEntry.value[x]",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "Quantity"
+          },
+          {
+            "code": "string"
+          },
+          {
+            "code": "dateTime"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCCCDAEntry.subjectIdentifier",
+        "path": "HITCCCDAEntry.subjectIdentifier",
+        "short": "Patient identifier carried by the document context",
+        "definition": "Patient identifier carried by the document context",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCCCDAEntry.subjectIdentifier",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCCCDAEntry.authorIdentifier",
+        "path": "HITCCCDAEntry.authorIdentifier",
+        "short": "Author or performer identifier",
+        "definition": "Author or performer identifier",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCCCDAEntry.authorIdentifier",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCCCDAEntry.negationIndicator",
+        "path": "HITCCCDAEntry.negationIndicator",
+        "short": "C-CDA negation indicator",
+        "definition": "C-CDA negation indicator",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCCCDAEntry.negationIndicator",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "HITCCCDAEntry",
+        "path": "HITCCCDAEntry",
+        "short": "C-CDA Section Entry Logical Model",
+        "definition": "Normalized intermediate representation for C-CDA medication, problem, allergy, procedure, and discharge-medication entries."
+      },
+      {
+        "id": "HITCCCDAEntry.templateId",
+        "path": "HITCCCDAEntry.templateId",
+        "short": "C-CDA template identifier",
+        "definition": "C-CDA template identifier",
+        "min": 1,
+        "max": "*",
+        "type": [
+          {
+            "code": "oid"
+          }
+        ]
+      },
+      {
+        "id": "HITCCCDAEntry.entryId",
+        "path": "HITCCCDAEntry.entryId",
+        "short": "Entry identifier",
+        "definition": "Entry identifier",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCCCDAEntry.sectionCode",
+        "path": "HITCCCDAEntry.sectionCode",
+        "short": "C-CDA section code",
+        "definition": "C-CDA section code",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ]
+      },
+      {
+        "id": "HITCCCDAEntry.code",
+        "path": "HITCCCDAEntry.code",
+        "short": "Clinical concept code",
+        "definition": "Clinical concept code",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ]
+      },
+      {
+        "id": "HITCCCDAEntry.statusCode",
+        "path": "HITCCCDAEntry.statusCode",
+        "short": "Entry status code",
+        "definition": "Entry status code",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "HITCCCDAEntry.effectiveTime",
+        "path": "HITCCCDAEntry.effectiveTime",
+        "short": "Normalized effective time",
+        "definition": "Normalized effective time",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "HITCCCDAEntry.value[x]",
+        "path": "HITCCCDAEntry.value[x]",
+        "short": "Entry value",
+        "definition": "Entry value",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "Quantity"
+          },
+          {
+            "code": "string"
+          },
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "HITCCCDAEntry.subjectIdentifier",
+        "path": "HITCCCDAEntry.subjectIdentifier",
+        "short": "Patient identifier carried by the document context",
+        "definition": "Patient identifier carried by the document context",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCCCDAEntry.authorIdentifier",
+        "path": "HITCCCDAEntry.authorIdentifier",
+        "short": "Author or performer identifier",
+        "definition": "Author or performer identifier",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCCCDAEntry.negationIndicator",
+        "path": "HITCCCDAEntry.negationIndicator",
+        "short": "C-CDA negation indicator",
+        "definition": "C-CDA negation indicator",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      }
+    ]
+  }
+}

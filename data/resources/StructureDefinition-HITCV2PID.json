@@ -1,0 +1,639 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "HITCV2PID",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2PID",
+  "name": "HITCV2PID",
+  "title": "HL7 v2 PID Logical Model",
+  "status": "draft",
+  "description": "Representative PID fields used by the Patient structure map.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2PID",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "snapshot": {
+    "element": [
+      {
+        "id": "HITCV2PID",
+        "path": "HITCV2PID",
+        "short": "HL7 v2 PID Logical Model",
+        "definition": "Representative PID fields used by the Patient structure map.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "HITCV2PID",
+          "min": 0,
+          "max": "*"
+        },
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ],
+        "isModifier": false,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.setId",
+        "path": "HITCV2PID.setId",
+        "short": "PID-1 Set ID",
+        "definition": "PID-1 Set ID",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2PID.setId",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "positiveInt"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.patientIdentifier",
+        "path": "HITCV2PID.patientIdentifier",
+        "short": "PID-3 Patient Identifier List",
+        "definition": "PID-3 Patient Identifier List",
+        "min": 1,
+        "max": "*",
+        "base": {
+          "path": "HITCV2PID.patientIdentifier",
+          "min": 1,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.assigningAuthority",
+        "path": "HITCV2PID.assigningAuthority",
+        "short": "PID-3.4 Assigning Authority",
+        "definition": "PID-3.4 Assigning Authority",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2PID.assigningAuthority",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.identifierTypeCode",
+        "path": "HITCV2PID.identifierTypeCode",
+        "short": "PID-3.5 Identifier Type Code",
+        "definition": "PID-3.5 Identifier Type Code",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2PID.identifierTypeCode",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.familyName",
+        "path": "HITCV2PID.familyName",
+        "short": "PID-5.1 Family Name",
+        "definition": "PID-5.1 Family Name",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2PID.familyName",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.givenName",
+        "path": "HITCV2PID.givenName",
+        "short": "PID-5.2 Given Name",
+        "definition": "PID-5.2 Given Name",
+        "min": 1,
+        "max": "*",
+        "base": {
+          "path": "HITCV2PID.givenName",
+          "min": 1,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.birthDate",
+        "path": "HITCV2PID.birthDate",
+        "short": "PID-7 Date/Time of Birth",
+        "definition": "PID-7 Date/Time of Birth",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2PID.birthDate",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "date"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.administrativeSex",
+        "path": "HITCV2PID.administrativeSex",
+        "short": "PID-8 Administrative Sex",
+        "definition": "PID-8 Administrative Sex",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2PID.administrativeSex",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.addressLine",
+        "path": "HITCV2PID.addressLine",
+        "short": "PID-11 Street Address",
+        "definition": "PID-11 Street Address",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "HITCV2PID.addressLine",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.city",
+        "path": "HITCV2PID.city",
+        "short": "PID-11 City",
+        "definition": "PID-11 City",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2PID.city",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.state",
+        "path": "HITCV2PID.state",
+        "short": "PID-11 State",
+        "definition": "PID-11 State",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2PID.state",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.postalCode",
+        "path": "HITCV2PID.postalCode",
+        "short": "PID-11 ZIP/Postal Code",
+        "definition": "PID-11 ZIP/Postal Code",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2PID.postalCode",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.country",
+        "path": "HITCV2PID.country",
+        "short": "PID-11 Country",
+        "definition": "PID-11 Country",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2PID.country",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.phone",
+        "path": "HITCV2PID.phone",
+        "short": "PID-13 Phone Number",
+        "definition": "PID-13 Phone Number",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "HITCV2PID.phone",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "HITCV2PID",
+        "path": "HITCV2PID",
+        "short": "HL7 v2 PID Logical Model",
+        "definition": "Representative PID fields used by the Patient structure map."
+      },
+      {
+        "id": "HITCV2PID.setId",
+        "path": "HITCV2PID.setId",
+        "short": "PID-1 Set ID",
+        "definition": "PID-1 Set ID",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "positiveInt"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.patientIdentifier",
+        "path": "HITCV2PID.patientIdentifier",
+        "short": "PID-3 Patient Identifier List",
+        "definition": "PID-3 Patient Identifier List",
+        "min": 1,
+        "max": "*",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.assigningAuthority",
+        "path": "HITCV2PID.assigningAuthority",
+        "short": "PID-3.4 Assigning Authority",
+        "definition": "PID-3.4 Assigning Authority",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.identifierTypeCode",
+        "path": "HITCV2PID.identifierTypeCode",
+        "short": "PID-3.5 Identifier Type Code",
+        "definition": "PID-3.5 Identifier Type Code",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.familyName",
+        "path": "HITCV2PID.familyName",
+        "short": "PID-5.1 Family Name",
+        "definition": "PID-5.1 Family Name",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.givenName",
+        "path": "HITCV2PID.givenName",
+        "short": "PID-5.2 Given Name",
+        "definition": "PID-5.2 Given Name",
+        "min": 1,
+        "max": "*",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.birthDate",
+        "path": "HITCV2PID.birthDate",
+        "short": "PID-7 Date/Time of Birth",
+        "definition": "PID-7 Date/Time of Birth",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "date"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.administrativeSex",
+        "path": "HITCV2PID.administrativeSex",
+        "short": "PID-8 Administrative Sex",
+        "definition": "PID-8 Administrative Sex",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.addressLine",
+        "path": "HITCV2PID.addressLine",
+        "short": "PID-11 Street Address",
+        "definition": "PID-11 Street Address",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.city",
+        "path": "HITCV2PID.city",
+        "short": "PID-11 City",
+        "definition": "PID-11 City",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.state",
+        "path": "HITCV2PID.state",
+        "short": "PID-11 State",
+        "definition": "PID-11 State",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.postalCode",
+        "path": "HITCV2PID.postalCode",
+        "short": "PID-11 ZIP/Postal Code",
+        "definition": "PID-11 ZIP/Postal Code",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.country",
+        "path": "HITCV2PID.country",
+        "short": "PID-11 Country",
+        "definition": "PID-11 Country",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PID.phone",
+        "path": "HITCV2PID.phone",
+        "short": "PID-13 Phone Number",
+        "definition": "PID-13 Phone Number",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      }
+    ]
+  }
+}

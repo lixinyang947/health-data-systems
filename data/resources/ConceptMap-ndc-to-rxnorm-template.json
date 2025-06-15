@@ -1,0 +1,17 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "ndc-to-rxnorm-template",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/ndc-to-rxnorm-template",
+  "version": "0.1.0",
+  "name": "NDCToRxNormTemplate",
+  "title": "NDC to RxNorm Crosswalk Template",
+  "status": "draft",
+  "experimental": true,
+  "date": "2026-07-21",
+  "publisher": "Xinyang Li",
+  "description": "Template shell for a governed NDC-to-RxNorm crosswalk. The mapping content must be supplied from an authorized terminology source.",
+  "copyright": "© 2026 Xinyang Li. Draft technical specification.",
+  "purpose": "Defines the machine-readable container and governance boundary without fabricating or redistributing licensed crosswalk content.",
+  "sourceUri": "http://hl7.org/fhir/sid/ndc?fhir_vs",
+  "targetUri": "http://www.nlm.nih.gov/research/umls/rxnorm?fhir_vs"
+}

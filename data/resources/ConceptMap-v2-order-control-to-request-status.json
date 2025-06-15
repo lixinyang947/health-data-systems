@@ -1,0 +1,84 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "v2-order-control-to-request-status",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-order-control-to-request-status",
+  "version": "0.1.0",
+  "name": "V2OrderControlToRequestStatus",
+  "title": "HL7 v2 Order Control to FHIR Request Status",
+  "status": "draft",
+  "experimental": true,
+  "date": "2026-07-21",
+  "publisher": "Xinyang Li",
+  "description": "Representative ORC-1 mapping for ServiceRequest.status.",
+  "copyright": "© 2026 Xinyang Li. Draft technical specification.",
+  "purpose": "Provides auditable request-state normalization for ORM messages.",
+  "sourceUri": "http://terminology.hl7.org/CodeSystem/v2-0119",
+  "targetUri": "http://hl7.org/fhir/request-status",
+  "group": [
+    {
+      "source": "http://terminology.hl7.org/CodeSystem/v2-0119",
+      "target": "http://hl7.org/fhir/request-status",
+      "element": [
+        {
+          "code": "NW",
+          "display": "New order",
+          "target": [
+            {
+              "equivalence": "inexact",
+              "code": "active",
+              "display": "Active",
+              "comment": "New order is represented as active after acceptance by the target workflow."
+            }
+          ]
+        },
+        {
+          "code": "HD",
+          "display": "Hold order request",
+          "target": [
+            {
+              "equivalence": "equivalent",
+              "code": "on-hold",
+              "display": "On Hold"
+            }
+          ]
+        },
+        {
+          "code": "CA",
+          "display": "Cancel order request",
+          "target": [
+            {
+              "equivalence": "inexact",
+              "code": "revoked",
+              "display": "Revoked",
+              "comment": "Cancellation request is represented as revoked after target-side acceptance."
+            }
+          ]
+        },
+        {
+          "code": "DC",
+          "display": "Discontinue order request",
+          "target": [
+            {
+              "equivalence": "inexact",
+              "code": "revoked",
+              "display": "Revoked",
+              "comment": "Discontinuation is represented as revoked."
+            }
+          ]
+        },
+        {
+          "code": "XO",
+          "display": "Change order request",
+          "target": [
+            {
+              "equivalence": "inexact",
+              "code": "active",
+              "display": "Active",
+              "comment": "Changed orders remain active after version replacement."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

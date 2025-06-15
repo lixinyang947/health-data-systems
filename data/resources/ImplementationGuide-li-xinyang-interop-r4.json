@@ -1,0 +1,1138 @@
+{
+  "resourceType": "ImplementationGuide",
+  "id": "li-xinyang-interop-r4",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/ImplementationGuide/li-xinyang-interop-r4",
+  "version": "0.1.0",
+  "name": "LiXinyangFHIRInteropR4",
+  "title": "Li Xinyang FHIR-Native Interoperability and Data-Quality Framework (R4)",
+  "status": "draft",
+  "experimental": true,
+  "date": "2026-07-21",
+  "publisher": "Xinyang Li",
+  "contact": [
+    {
+      "name": "Xinyang Li",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://example.org"
+        }
+      ]
+    },
+    {
+      "name": "Xinyang Li",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://example.org",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Draft, machine-consumable FHIR R4 implementation guide translating the independently developed interoperability and data-quality methodology into profiles, terminology artifacts, structural maps, provenance, validation, and example exchange bundles.",
+  "packageId": "li-xinyang-interop-r4",
+  "license": "Apache-2.0",
+  "fhirVersion": [
+    "4.0.1"
+  ],
+  "definition": {
+    "resource": [
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-allergy-intolerance"
+        },
+        "name": "HITC Canonical Allergy Intolerance",
+        "groupingId": "profiles",
+        "description": "Allergy profile designed to reduce silent loss of allergy and intolerance data.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-audit-event"
+        },
+        "name": "HITC Canonical Audit Event",
+        "groupingId": "profiles",
+        "description": "Security and access audit event for the exchange gateway.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-care-plan"
+        },
+        "name": "HITC Canonical Care Plan",
+        "groupingId": "profiles",
+        "description": "Care plan profile for longitudinal exchange and patient summary construction.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-care-team"
+        },
+        "name": "HITC Canonical Care Team",
+        "groupingId": "profiles",
+        "description": "Care team profile with mandatory participation and period.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-composition"
+        },
+        "name": "HITC Canonical Composition",
+        "groupingId": "profiles",
+        "description": "Composition profile for structured clinical documents and patient summaries.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-condition"
+        },
+        "name": "HITC Canonical Condition",
+        "groupingId": "profiles",
+        "description": "Condition profile with mandatory clinical status, verification, category, code, onset, and recording date.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-consent"
+        },
+        "name": "HITC Canonical Consent",
+        "groupingId": "profiles",
+        "description": "Consent profile supporting consent-aware exchange governance.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-coverage"
+        },
+        "name": "HITC Canonical Coverage",
+        "groupingId": "profiles",
+        "description": "Coverage profile for payer and beneficiary context.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-device"
+        },
+        "name": "HITC Canonical Device",
+        "groupingId": "profiles",
+        "description": "Device profile used for source systems and clinical devices.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-device-use-statement"
+        },
+        "name": "HITC Canonical Device Use Statement",
+        "groupingId": "profiles",
+        "description": "Device-use profile linked to a canonical patient and device.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-diagnostic-report"
+        },
+        "name": "HITC Canonical Diagnostic Report",
+        "groupingId": "profiles",
+        "description": "Diagnostic report profile linking coded reports to canonical observations.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-document-reference"
+        },
+        "name": "HITC Canonical Document Reference",
+        "groupingId": "profiles",
+        "description": "Document profile used by MDM and C-CDA document exchange.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-encounter"
+        },
+        "name": "HITC Canonical Encounter",
+        "groupingId": "profiles",
+        "description": "Encounter profile with mandatory identity, patient, period, and service organization.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-episode-of-care"
+        },
+        "name": "HITC Canonical Episode of Care",
+        "groupingId": "profiles",
+        "description": "Episode-of-care profile for longitudinal cross-institutional grouping.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-exchange-bundle"
+        },
+        "name": "HITC Canonical Exchange Bundle",
+        "groupingId": "profiles",
+        "description": "Validated output bundle carrying canonical resources, inline quality observations, and provenance.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-goal"
+        },
+        "name": "HITC Canonical Goal",
+        "groupingId": "profiles",
+        "description": "Goal profile for longitudinal care-plan exchange.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-immunization"
+        },
+        "name": "HITC Canonical Immunization",
+        "groupingId": "profiles",
+        "description": "Immunization profile with normalized vaccine coding and occurrence.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-location"
+        },
+        "name": "HITC Canonical Location",
+        "groupingId": "profiles",
+        "description": "Location profile for encounter and source-system context.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-medication"
+        },
+        "name": "HITC Canonical Medication",
+        "groupingId": "profiles",
+        "description": "Medication dictionary entry for RxNorm, NDC, or locally governed coded medication concepts.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-medication-administration"
+        },
+        "name": "HITC Canonical Medication Administration",
+        "groupingId": "profiles",
+        "description": "Medication administration profile for actual administration events.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-medication-request"
+        },
+        "name": "HITC Canonical Medication Request",
+        "groupingId": "profiles",
+        "description": "Medication order profile with mandatory requester, date, and dosage instruction.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-medication-statement"
+        },
+        "name": "HITC Canonical Medication Statement",
+        "groupingId": "profiles",
+        "description": "Medication history statement profile used for C-CDA medication extraction.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-observation"
+        },
+        "name": "HITC Canonical Observation",
+        "groupingId": "profiles",
+        "description": "Canonical observation profile supporting coded, attributable, temporally normalized results.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-organization"
+        },
+        "name": "HITC Canonical Organization",
+        "groupingId": "profiles",
+        "description": "Organization profile for institutions participating in exchange.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-patient"
+        },
+        "name": "HITC Canonical Patient",
+        "groupingId": "profiles",
+        "description": "Strict-at-core patient identity profile for cross-institutional exchange.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-practitioner"
+        },
+        "name": "HITC Canonical Practitioner",
+        "groupingId": "profiles",
+        "description": "Practitioner profile used for attribution, review, and provenance.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-practitioner-role"
+        },
+        "name": "HITC Canonical Practitioner Role",
+        "groupingId": "profiles",
+        "description": "Role profile binding a practitioner to an organization and function.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-procedure"
+        },
+        "name": "HITC Canonical Procedure",
+        "groupingId": "profiles",
+        "description": "Procedure profile for normalized procedural history.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-provenance"
+        },
+        "name": "HITC Canonical Provenance",
+        "groupingId": "profiles",
+        "description": "Append-only resource-level lineage record for mapping, validation, and terminology operations.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-questionnaire-response"
+        },
+        "name": "HITC Canonical Questionnaire Response",
+        "groupingId": "profiles",
+        "description": "Questionnaire response profile for structured patient-reported and clinical data.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-related-person"
+        },
+        "name": "HITC Canonical Related Person",
+        "groupingId": "profiles",
+        "description": "Related-person profile linked to a canonical patient.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-service-request"
+        },
+        "name": "HITC Canonical Service Request",
+        "groupingId": "profiles",
+        "description": "Order and referral profile used by ORM structural mapping.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-canonical-specimen"
+        },
+        "name": "HITC Canonical Specimen",
+        "groupingId": "profiles",
+        "description": "Specimen profile supporting laboratory result traceability.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-quality-metric-observation"
+        },
+        "name": "HITC Data Quality Metric Observation",
+        "groupingId": "profiles",
+        "description": "Inline quality metric emitted by the exchange validation pipeline.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-laboratory-observation"
+        },
+        "name": "HITC Laboratory Observation",
+        "groupingId": "profiles",
+        "description": "Laboratory observation constrained to laboratory category and UCUM quantity units.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-mapping-confidence"
+        },
+        "name": "HITC Mapping Confidence",
+        "groupingId": "extensions",
+        "description": "Decimal confidence score from zero through one for a terminology mapping.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-mapping-reviewer"
+        },
+        "name": "HITC Mapping Reviewer",
+        "groupingId": "extensions",
+        "description": "Identifies the person or role that reviewed a terminology mapping.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-mapping-strategy"
+        },
+        "name": "HITC Mapping Strategy",
+        "groupingId": "extensions",
+        "description": "Records the strategy used to resolve a source concept.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-merkle-root"
+        },
+        "name": "HITC Merkle Root",
+        "groupingId": "extensions",
+        "description": "Hex-encoded Merkle root or transaction hash used for tamper-evident lineage.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-original-code"
+        },
+        "name": "HITC Original Source Code",
+        "groupingId": "extensions",
+        "description": "Preserves the source code before terminology translation.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-quality-denominator"
+        },
+        "name": "HITC Quality Metric Denominator",
+        "groupingId": "extensions",
+        "description": "Denominator used to calculate a quality metric.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-quality-numerator"
+        },
+        "name": "HITC Quality Metric Numerator",
+        "groupingId": "extensions",
+        "description": "Numerator used to calculate a quality metric.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-source-format"
+        },
+        "name": "HITC Source Format",
+        "groupingId": "extensions",
+        "description": "Identifies the source payload format before structural mapping.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-source-system"
+        },
+        "name": "HITC Source System",
+        "groupingId": "extensions",
+        "description": "Identifies the originating institution or source application for an exchanged resource.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-transformation-step"
+        },
+        "name": "HITC Transformation Step",
+        "groupingId": "extensions",
+        "description": "Records a transformation or normalization step applied to the target resource.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/hitc-validation-stage"
+        },
+        "name": "HITC Validation Stage",
+        "groupingId": "extensions",
+        "description": "Identifies a validation stage executed against the resource.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/HITCCCDAEntry"
+        },
+        "name": "C-CDA Section Entry Logical Model",
+        "groupingId": "logical-models",
+        "description": "Normalized intermediate representation for C-CDA medication, problem, allergy, procedure, and discharge-medication entries.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/HITCV2MSH"
+        },
+        "name": "HL7 v2 MSH Logical Model",
+        "groupingId": "logical-models",
+        "description": "Representative message-header fields used by the canonical envelope and provenance pipeline.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/HITCV2OBR"
+        },
+        "name": "HL7 v2 OBR Logical Model",
+        "groupingId": "logical-models",
+        "description": "Representative OBR fields used by the DiagnosticReport structure map.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/HITCV2OBX"
+        },
+        "name": "HL7 v2 OBX Logical Model",
+        "groupingId": "logical-models",
+        "description": "Representative OBX fields used by the Observation structure map.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/HITCV2ORC"
+        },
+        "name": "HL7 v2 ORC Logical Model",
+        "groupingId": "logical-models",
+        "description": "Representative ORC fields used by the ServiceRequest structure map.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/HITCV2PID"
+        },
+        "name": "HL7 v2 PID Logical Model",
+        "groupingId": "logical-models",
+        "description": "Representative PID fields used by the Patient structure map.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/HITCV2PV1"
+        },
+        "name": "HL7 v2 PV1 Logical Model",
+        "groupingId": "logical-models",
+        "description": "Representative PV1 fields used by the Encounter structure map.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/HITCV2SCH"
+        },
+        "name": "HL7 v2 SCH Logical Model",
+        "groupingId": "logical-models",
+        "description": "Representative scheduling fields used by the SIU-to-Encounter structure map.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/HITCV2TXA"
+        },
+        "name": "HL7 v2 TXA Logical Model",
+        "groupingId": "logical-models",
+        "description": "Representative TXA fields used by the MDM-to-DocumentReference structure map.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/hitc-quality-metric"
+        },
+        "name": "HITC Data Quality Metric Codes",
+        "groupingId": "terminology",
+        "description": "Codes for inline data-quality metrics emitted as FHIR Observation resources.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/hitc-quality-metric"
+        },
+        "name": "HITC Data Quality Metric Value Set",
+        "groupingId": "terminology",
+        "description": "The six quality metrics defined by the interoperability methodology.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/hitc-mapping-strategy"
+        },
+        "name": "HITC Mapping Strategy Codes",
+        "groupingId": "terminology",
+        "description": "Resolution strategies used by the terminology bridge.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/hitc-mapping-strategy"
+        },
+        "name": "HITC Mapping Strategy Value Set",
+        "groupingId": "terminology",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/hitc-observation-category"
+        },
+        "name": "HITC Observation Category Codes",
+        "groupingId": "terminology",
+        "description": "Additional observation categories required by the inline data-quality pipeline.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/hitc-observation-category"
+        },
+        "name": "HITC Observation Category Value Set",
+        "groupingId": "terminology",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/hitc-source-format"
+        },
+        "name": "HITC Source Format Codes",
+        "groupingId": "terminology",
+        "description": "Input formats supported by the mapping methodology.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/hitc-source-format"
+        },
+        "name": "HITC Source Format Value Set",
+        "groupingId": "terminology",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/hitc-supported-terminology"
+        },
+        "name": "HITC Supported Terminology System Codes",
+        "groupingId": "terminology",
+        "description": "The twelve terminology systems identified by the methodology.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/hitc-supported-terminology"
+        },
+        "name": "HITC Supported Terminology Value Set",
+        "groupingId": "terminology",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/hitc-transformation-activity"
+        },
+        "name": "HITC Transformation Activity Codes",
+        "groupingId": "terminology",
+        "description": "Activities recorded in resource-level provenance.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/hitc-transformation-activity"
+        },
+        "name": "HITC Transformation Activity Value Set",
+        "groupingId": "terminology",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/hitc-validation-stage"
+        },
+        "name": "HITC Validation Stage Codes",
+        "groupingId": "terminology",
+        "description": "Composable validation stages specified by the methodology.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/hitc-validation-stage"
+        },
+        "name": "HITC Validation Stage Value Set",
+        "groupingId": "terminology",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/v2-abnormal-flag-to-observation-interpretation"
+        },
+        "name": "HL7 v2 Abnormal Flags to FHIR Observation Interpretation",
+        "groupingId": "terminology",
+        "description": "Representative OBX-8 mapping used by the structural and semantic mapping stages.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/v2-administrative-gender-to-fhir"
+        },
+        "name": "HL7 v2 Administrative Sex to FHIR Administrative Gender",
+        "groupingId": "terminology",
+        "description": "Representative exact and governed inexact mappings for PID-8 normalization.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/v2-order-control-to-request-status"
+        },
+        "name": "HL7 v2 Order Control to FHIR Request Status",
+        "groupingId": "terminology",
+        "description": "Representative ORC-1 mapping for ServiceRequest.status.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/v2-patient-class-to-encounter-class"
+        },
+        "name": "HL7 v2 Patient Class to FHIR Encounter Class",
+        "groupingId": "terminology",
+        "description": "Representative PV1-2 mapping for Encounter.class.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/v2-result-status-to-diagnostic-report-status"
+        },
+        "name": "HL7 v2 Result Status to FHIR DiagnosticReport Status",
+        "groupingId": "terminology",
+        "description": "Representative OBR-25 status normalization.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/v2-result-status-to-observation-status"
+        },
+        "name": "HL7 v2 Result Status to FHIR Observation Status",
+        "groupingId": "terminology",
+        "description": "Representative OBX-11 status normalization.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/icd9cm-to-icd10cm-template"
+        },
+        "name": "ICD-9-CM to ICD-10-CM Crosswalk Template",
+        "groupingId": "terminology",
+        "description": "Template shell for a governed ICD-9-CM-to-ICD-10-CM crosswalk.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/local-clinical-to-snomed-template"
+        },
+        "name": "Local Clinical Code to SNOMED CT Template",
+        "groupingId": "terminology",
+        "description": "Template shell for institution-specific clinical-code mapping to SNOMED CT.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/local-lab-to-loinc-template"
+        },
+        "name": "Local Laboratory Code to LOINC Template",
+        "groupingId": "terminology",
+        "description": "Template shell for institution-specific laboratory-code mapping to LOINC.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/local-medication-to-rxnorm-template"
+        },
+        "name": "Local Medication Code to RxNorm Template",
+        "groupingId": "terminology",
+        "description": "Template shell for institution-specific medication-code mapping to RxNorm.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/ndc-to-rxnorm-template"
+        },
+        "name": "NDC to RxNorm Crosswalk Template",
+        "groupingId": "terminology",
+        "description": "Template shell for a governed NDC-to-RxNorm crosswalk. The mapping content must be supplied from an authorized terminology source.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureMap/ccda-allergy-to-allergyintolerance"
+        },
+        "name": "C-CDA Allergy Entry to HITC Canonical AllergyIntolerance",
+        "groupingId": "structure-maps",
+        "description": "XPath-extracted C-CDA allergy entry to AllergyIntolerance structure map.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureMap/ccda-discharge-medication-to-medicationrequest"
+        },
+        "name": "C-CDA Discharge Medication Entry to HITC Canonical MedicationRequest",
+        "groupingId": "structure-maps",
+        "description": "XPath-extracted C-CDA discharge medication entry to MedicationRequest.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureMap/ccda-medication-to-medicationstatement"
+        },
+        "name": "C-CDA Medication Entry to HITC Canonical MedicationStatement",
+        "groupingId": "structure-maps",
+        "description": "XPath-extracted C-CDA medication entry to MedicationStatement.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureMap/ccda-problem-to-condition"
+        },
+        "name": "C-CDA Problem Entry to HITC Canonical Condition",
+        "groupingId": "structure-maps",
+        "description": "XPath-extracted C-CDA problem entry to Condition structure map.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureMap/ccda-procedure-to-procedure"
+        },
+        "name": "C-CDA Procedure Entry to HITC Canonical Procedure",
+        "groupingId": "structure-maps",
+        "description": "XPath-extracted C-CDA procedure entry to Procedure structure map.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureMap/v2-obr-to-diagnosticreport"
+        },
+        "name": "HL7 v2 OBR to HITC Canonical DiagnosticReport",
+        "groupingId": "structure-maps",
+        "description": "Declarative structural mapping from OBR to DiagnosticReport.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureMap/v2-obx-to-observation"
+        },
+        "name": "HL7 v2 OBX to HITC Canonical Observation",
+        "groupingId": "structure-maps",
+        "description": "Declarative structural mapping from OBX to the canonical Observation profile.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureMap/v2-orc-to-servicerequest"
+        },
+        "name": "HL7 v2 ORC to HITC Canonical ServiceRequest",
+        "groupingId": "structure-maps",
+        "description": "Declarative structural mapping from ORC to ServiceRequest.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureMap/v2-pid-to-patient"
+        },
+        "name": "HL7 v2 PID to HITC Canonical Patient",
+        "groupingId": "structure-maps",
+        "description": "Declarative structural mapping from representative PID fields to the canonical Patient profile.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureMap/v2-pv1-to-encounter"
+        },
+        "name": "HL7 v2 PV1 to HITC Canonical Encounter",
+        "groupingId": "structure-maps",
+        "description": "Declarative structural mapping from PV1 to the canonical Encounter profile.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureMap/v2-sch-to-encounter"
+        },
+        "name": "HL7 v2 SCH to Planned Encounter",
+        "groupingId": "structure-maps",
+        "description": "Representative SIU scheduling map using a planned Encounter target.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureMap/v2-txa-to-documentreference"
+        },
+        "name": "HL7 v2 TXA to HITC Canonical DocumentReference",
+        "groupingId": "structure-maps",
+        "description": "Declarative MDM/TXA structural mapping to DocumentReference.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "OperationDefinition/federated-summary"
+        },
+        "name": "HITC Federated Patient Summary Operation",
+        "groupingId": "operations",
+        "description": "Decomposes a patient-summary request into institution-specific subqueries, merges results, and returns a canonical Bundle.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CapabilityStatement/hitc-interop-server"
+        },
+        "name": "HITC Interoperability Server Requirements",
+        "groupingId": "operations",
+        "description": "Requirements-level capability statement for a server implementing the draft interoperability framework.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "OperationDefinition/validate-exchange"
+        },
+        "name": "HITC Validate Exchange Operation",
+        "groupingId": "operations",
+        "description": "Validates an incoming Bundle through R-SCH, R-REF, R-TERM, and the quality-metrics collector.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "SearchParameter/observation-validation-stage"
+        },
+        "name": "ObservationValidationStage",
+        "groupingId": "operations",
+        "description": "Search inline quality observations by validation stage.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "SearchParameter/provenance-mapping-strategy"
+        },
+        "name": "ProvenanceMappingStrategy",
+        "groupingId": "operations",
+        "description": "Search Provenance by the recorded terminology mapping strategy.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "Location/ExampleLocation"
+        },
+        "name": "Cardiology Clinic 1",
+        "groupingId": "examples",
+        "exampleCanonical": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-location"
+      },
+      {
+        "reference": {
+          "reference": "Organization/ExampleHospital"
+        },
+        "name": "Example Regional Medical Center",
+        "groupingId": "examples",
+        "exampleCanonical": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-organization"
+      },
+      {
+        "reference": {
+          "reference": "Bundle/ExampleCanonicalExchange"
+        },
+        "name": "ExampleCanonicalExchange",
+        "groupingId": "examples",
+        "exampleCanonical": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-exchange-bundle"
+      },
+      {
+        "reference": {
+          "reference": "Condition/ExampleCondition"
+        },
+        "name": "ExampleCondition",
+        "groupingId": "examples",
+        "exampleCanonical": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-condition"
+      },
+      {
+        "reference": {
+          "reference": "Encounter/ExampleEncounter"
+        },
+        "name": "ExampleEncounter",
+        "groupingId": "examples",
+        "exampleCanonical": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-encounter"
+      },
+      {
+        "reference": {
+          "reference": "Observation/ExampleHbA1cObservation"
+        },
+        "name": "ExampleHbA1cObservation",
+        "groupingId": "examples",
+        "exampleCanonical": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-laboratory-observation"
+      },
+      {
+        "reference": {
+          "reference": "Provenance/ExampleMappingProvenance"
+        },
+        "name": "ExampleMappingProvenance",
+        "groupingId": "examples",
+        "exampleCanonical": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-provenance"
+      },
+      {
+        "reference": {
+          "reference": "Patient/ExamplePatient"
+        },
+        "name": "ExamplePatient",
+        "groupingId": "examples",
+        "exampleCanonical": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-patient"
+      },
+      {
+        "reference": {
+          "reference": "Observation/ExampleQualityCSC"
+        },
+        "name": "ExampleQualityCSC",
+        "groupingId": "examples",
+        "exampleCanonical": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-quality-metric-observation"
+      },
+      {
+        "reference": {
+          "reference": "Observation/ExampleQualityFFR"
+        },
+        "name": "ExampleQualityFFR",
+        "groupingId": "examples",
+        "exampleCanonical": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-quality-metric-observation"
+      },
+      {
+        "reference": {
+          "reference": "Observation/ExampleQualityMSR"
+        },
+        "name": "ExampleQualityMSR",
+        "groupingId": "examples",
+        "exampleCanonical": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-quality-metric-observation"
+      },
+      {
+        "reference": {
+          "reference": "Observation/ExampleQualityRIR"
+        },
+        "name": "ExampleQualityRIR",
+        "groupingId": "examples",
+        "exampleCanonical": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-quality-metric-observation"
+      },
+      {
+        "reference": {
+          "reference": "Observation/ExampleQualityTC"
+        },
+        "name": "ExampleQualityTC",
+        "groupingId": "examples",
+        "exampleCanonical": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-quality-metric-observation"
+      },
+      {
+        "reference": {
+          "reference": "Observation/ExampleQualityTCR"
+        },
+        "name": "ExampleQualityTCR",
+        "groupingId": "examples",
+        "exampleCanonical": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-quality-metric-observation"
+      },
+      {
+        "reference": {
+          "reference": "Practitioner/ExampleReviewer"
+        },
+        "name": "ExampleReviewer",
+        "groupingId": "examples",
+        "exampleCanonical": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-practitioner"
+      },
+      {
+        "reference": {
+          "reference": "DocumentReference/ExampleSourceDocument"
+        },
+        "name": "ExampleSourceDocument",
+        "groupingId": "examples",
+        "exampleCanonical": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-document-reference"
+      },
+      {
+        "reference": {
+          "reference": "Device/ExampleSourceEHR"
+        },
+        "name": "ExampleSourceEHR",
+        "groupingId": "examples",
+        "exampleCanonical": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-device"
+      },
+      {
+        "reference": {
+          "reference": "Specimen/ExampleSpecimen"
+        },
+        "name": "ExampleSpecimen",
+        "groupingId": "examples",
+        "exampleCanonical": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-specimen"
+      }
+    ],
+    "page": {
+      "nameUrl": "toc.html",
+      "title": "Table of Contents",
+      "generation": "html",
+      "page": [
+        {
+          "nameUrl": "index.html",
+          "title": "Home",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "methodology.html",
+          "title": "Methodology Traceability",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "profiles.html",
+          "title": "Canonical Profiles",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "mapping.html",
+          "title": "Mapping Pipeline",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "validation.html",
+          "title": "Validation and Data Quality",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "provenance.html",
+          "title": "Provenance and Lineage",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "limitations.html",
+          "title": "Limitations and Publication Readiness",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "artifacts.html",
+          "title": "Artifact Summary",
+          "generation": "markdown"
+        }
+      ]
+    },
+    "grouping": [
+      {
+        "id": "profiles",
+        "name": "Canonical Profiles",
+        "description": "Strict-at-core constrained FHIR R4 clinical and administrative resource profiles."
+      },
+      {
+        "id": "extensions",
+        "name": "Registered Extensions",
+        "description": "Extensions for source identity, mapping provenance, validation stages, quality metrics, and tamper-evident lineage."
+      },
+      {
+        "id": "logical-models",
+        "name": "Source Logical Models",
+        "description": "Normalized logical input models for representative HL7 v2 segments and C-CDA entries."
+      },
+      {
+        "id": "terminology",
+        "name": "Terminology and Concept Mapping",
+        "description": "CodeSystems, ValueSets, and ConceptMaps used by the terminology bridge."
+      },
+      {
+        "id": "structure-maps",
+        "name": "Structural Mapping",
+        "description": "FHIR StructureMap resources for Phase 1 structural transformation."
+      },
+      {
+        "id": "operations",
+        "name": "API and Conformance Contracts",
+        "description": "CapabilityStatement, SearchParameter, and OperationDefinition artifacts."
+      },
+      {
+        "id": "examples",
+        "name": "Synthetic Examples",
+        "description": "Synthetic examples demonstrating profiles, inline quality observations, exchange bundles, and provenance."
+      }
+    ]
+  }
+}

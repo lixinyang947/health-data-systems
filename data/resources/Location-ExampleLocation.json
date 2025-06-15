@@ -1,0 +1,29 @@
+{
+  "resourceType": "Location",
+  "id": "ExampleLocation",
+  "meta": {
+    "profile": [
+      "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-location"
+    ]
+  },
+  "extension": [
+    {
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-source-system",
+      "valueIdentifier": {
+        "system": "urn:ietf:rfc:3986",
+        "value": "urn:oid:1.2.840.114350.1.13.99999.1.7.2.688879"
+      }
+    }
+  ],
+  "identifier": [
+    {
+      "system": "https://example.org/fhir/sid/location",
+      "value": "CARD-CLINIC-1"
+    }
+  ],
+  "status": "active",
+  "name": "Cardiology Clinic 1",
+  "managingOrganization": {
+    "reference": "Organization/ExampleHospital"
+  }
+}

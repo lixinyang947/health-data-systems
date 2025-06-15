@@ -1,0 +1,75 @@
+{
+  "resourceType": "Observation",
+  "id": "ExampleQualityTCR",
+  "meta": {
+    "profile": [
+      "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-quality-metric-observation"
+    ]
+  },
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "code": "data-quality",
+          "system": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-observation-category"
+        }
+      ]
+    }
+  ],
+  "extension": [
+    {
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-source-system",
+      "valueIdentifier": {
+        "system": "urn:ietf:rfc:3986",
+        "value": "urn:oid:1.2.840.114350.1.13.99999.1.7.2.688879"
+      }
+    },
+    {
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-validation-stage",
+      "valueCode": "r-term"
+    },
+    {
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-quality-numerator",
+      "valueUnsignedInt": 978
+    },
+    {
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-quality-denominator",
+      "valueUnsignedInt": 1000
+    }
+  ],
+  "valueQuantity": {
+    "unit": "%",
+    "system": "http://unitsofmeasure.org",
+    "code": "%",
+    "value": 97.8
+  },
+  "identifier": [
+    {
+      "system": "https://example.org/fhir/sid/quality-metric",
+      "value": "QM-TCR-20260715"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "code": "tcr",
+        "system": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-quality-metric"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Device/ExampleSourceEHR"
+  },
+  "focus": [
+    {
+      "reference": "Organization/ExampleHospital"
+    }
+  ],
+  "effectiveDateTime": "2026-07-15T10:00:00-04:00",
+  "note": [
+    {
+      "text": "Synthetic example only; not a production performance claim."
+    }
+  ]
+}

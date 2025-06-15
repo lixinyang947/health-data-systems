@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xinyang Li — Digital Health Data Systems Methodology</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    .hero-research {
+      background: linear-gradient(135deg, var(--navy) 0%, #0f1d36 50%, #0a1628 100%);
+      padding: 5rem 0 4rem;
+      border-bottom: 1px solid var(--navy-border);
+    }
+    .hero-research h1 {
+      color: var(--white);
+      font-size: 2.75rem;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .hero-research .subtitle {
+      color: var(--gray-400);
+      font-size: 1.125rem;
+      max-width: 800px;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .methodology-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .line-card {
+      border-left: 4px solid var(--teal);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .line-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+    .line-card.line2 { border-left-color: var(--amber); }
+    .line-card.line3 { border-left-color: #a855f7; }
+    .line-tag {
+      display: inline-block;
+      font-size: 0.6rem;
+      font-weight: 700;
+      padding: 0.1rem 0.5rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .line-tag.l1 { background: rgba(20,184,166,0.12); color: var(--teal-dark); }
+    .line-tag.l2 { background: rgba(245,158,11,0.12); color: var(--amber-dark); }
+    .line-tag.l3 { background: rgba(168,85,247,0.12); color: #7c3aed; }
+    .research-summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .hero-research { padding: 3rem 0 2.5rem; }
+      .hero-research h1 { font-size: 1.75rem; }
+      .research-summary { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-logo">
+        <span class="logo-badge">XYL</span>
+        Xinyang Li
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav">
+        <a href="/" class="active">Home</a>
+
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle">Research</button>
+          <div class="dropdown-menu">
+            <a href="/line1/">
+              <span class="line-badge" style="background:rgba(20,184,166,0.12);color:var(--teal-dark);">L1</span>
+              FHIR-Native Clinical Data Interoperability
+              <span class="dropdown-desc">Executable FHIR R4 profiles, mappings, quality metrics, provenance &amp; validation</span>
+            </a>
+            <a href="/line2/">
+              <span class="line-badge" style="background:rgba(245,158,11,0.12);color:var(--amber-dark);">L2</span>
+              Explainable RPM &amp; Clinical Decision Support
+              <span class="dropdown-desc">RPM data normalization, SHAP explainability, risk stratification framework</span>
+            </a>
+            <a href="/line3/">
+              <span class="line-badge" style="background:rgba(168,85,247,0.12);color:#7c3aed;">L3</span>
+              Secure Health Information Exchange Governance
+              <span class="dropdown-desc">HIE security architecture, consent management, audit &amp; provenance governance</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="/publications/">Publications</a>
+        <a href="/technical/">Technical Resources</a>
+        <a href="/about/">About</a>
+
+        <span class="badge badge-amber" style="margin-left:0.5rem;">v0.1.0</span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-research">
+    <div class="container">
+      <h1>Integrated Methods for Interoperable, Predictive,<br>and Secure Digital Health Data Systems</h1>
+      <p class="subtitle">
+        A three-line research program spanning FHIR-native clinical data interoperability,
+        explainable remote-patient-monitoring and clinical decision support,
+        and secure health information exchange governance frameworks.
+      </p>
+      <div class="flex flex-wrap gap-2">
+        <span class="methodology-badge" style="background:rgba(20,184,166,0.12);color:var(--teal-light);border:1px solid rgba(20,184,166,0.3);">Public Research — Draft &amp; Experimental</span>
+        <span class="methodology-badge" style="background:rgba(255,255,255,0.06);color:var(--gray-400);border:1px solid rgba(255,255,255,0.1);">Apache-2.0</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREE RESEARCH LINES -->
+  <section class="section" style="padding:3rem 0;">
+    <div class="container">
+      <h2 class="section-title">Research Programs</h2>
+      <div class="research-summary">
+
+        <!-- LINE 1 -->
+        <div class="card line-card" style="padding:2rem;">
+          <div class="flex flex-wrap gap-2" style="margin-bottom:0.75rem;">
+            <span class="line-tag l1">Line 1 — Core</span>
+            <span class="badge badge-teal" style="font-size:0.6rem;">PUBLIC RELEASE v0.1.0</span>
+          </div>
+          <h3 style="font-size:1.15rem;margin-bottom:0.5rem;">FHIR-Native Clinical Data Interoperability Framework</h3>
+          <p style="font-size:0.875rem;color:var(--gray-600);margin-bottom:1rem;">
+            Executable FHIR R4 profiles, StructureMaps, ConceptMaps, quality metrics, provenance records,
+            and validation artifacts for heterogeneous clinical data exchange across HL7 v2, C-CDA, and FHIR.
+          </p>
+          <div class="flex flex-wrap gap-2" style="margin-top:auto;">
+            <a href="/line1/" class="btn btn-primary btn-sm">Explore Framework</a>
+            <a href="/technical/" class="btn btn-secondary btn-sm">Technical Resources</a>
+          </div>
+        </div>
+
+        <!-- LINE 2 -->
+        <div class="card line-card line2" style="padding:2rem;">
+          <div class="flex flex-wrap gap-2" style="margin-bottom:0.75rem;">
+            <span class="line-tag l2">Line 2 — Clinical Intelligence</span>
+            <span class="badge" style="font-size:0.6rem;color:var(--amber-dark);background:rgba(245,158,11,0.10);border:1px solid rgba(245,158,11,0.2);">Methodology</span>
+          </div>
+          <h3 style="font-size:1.15rem;margin-bottom:0.5rem;">Explainable RPM-CDS Framework</h3>
+          <p style="font-size:0.875rem;color:var(--gray-600);margin-bottom:1rem;">
+            FHIR R4 RPM data normalization, 80-feature clinical dictionary, SHAP-based risk stratification,
+            and a framework for translating explainability outputs into FHIR DiagnosticReport resources.
+          </p>
+          <div class="flex flex-wrap gap-2" style="margin-top:auto;">
+            <a href="/line2/" class="btn btn-primary btn-sm">View Project</a>
+          </div>
+        </div>
+
+        <!-- LINE 3 -->
+        <div class="card line-card line3" style="padding:2rem;">
+          <div class="flex flex-wrap gap-2" style="margin-bottom:0.75rem;">
+            <span class="line-tag l3">Line 3 — Governance &amp; Security</span>
+            <span class="badge" style="font-size:0.6rem;color:#7c3aed;background:rgba(168,85,247,0.10);border:1px solid rgba(168,85,247,0.2);">Framework</span>
+          </div>
+          <h3 style="font-size:1.15rem;margin-bottom:0.5rem;">Secure Health Information Exchange Governance</h3>
+          <p style="font-size:0.875rem;color:var(--gray-600);margin-bottom:1rem;">
+            HIE security architecture integrating consent management, audit provenance,
+            and interoperable governance policies across organizational boundaries.
+          </p>
+          <div class="flex flex-wrap gap-2" style="margin-top:auto;">
+            <a href="/line3/" class="btn btn-primary btn-sm">View Project</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <p class="mb-1">&copy; 2025–2026 Xinyang Li. Integrated Methods for Digital Health Data Systems.</p>
+        <p class="mb-0 text-xs">Licensed under Apache License, Version 2.0. Draft &amp; experimental — not for production use.</p>
+      </div>
+      <div>
+        <span class="badge" style="color:#a855f7;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);">DRAFT &amp; EXPERIMENTAL</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

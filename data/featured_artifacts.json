@@ -1,0 +1,222 @@
+[
+  {
+    "resourceType": "Observation",
+    "id": "ExampleQualityCSC",
+    "title": "ExampleQualityCSC",
+    "url": "",
+    "version": "",
+    "status": "final",
+    "group": "examples",
+    "file": "Observation-ExampleQualityCSC.json",
+    "reference": "Observation/ExampleQualityCSC"
+  },
+  {
+    "resourceType": "Observation",
+    "id": "ExampleQualityFFR",
+    "title": "ExampleQualityFFR",
+    "url": "",
+    "version": "",
+    "status": "final",
+    "group": "examples",
+    "file": "Observation-ExampleQualityFFR.json",
+    "reference": "Observation/ExampleQualityFFR"
+  },
+  {
+    "resourceType": "Observation",
+    "id": "ExampleQualityMSR",
+    "title": "ExampleQualityMSR",
+    "url": "",
+    "version": "",
+    "status": "final",
+    "group": "examples",
+    "file": "Observation-ExampleQualityMSR.json",
+    "reference": "Observation/ExampleQualityMSR"
+  },
+  {
+    "resourceType": "Observation",
+    "id": "ExampleQualityRIR",
+    "title": "ExampleQualityRIR",
+    "url": "",
+    "version": "",
+    "status": "final",
+    "group": "examples",
+    "file": "Observation-ExampleQualityRIR.json",
+    "reference": "Observation/ExampleQualityRIR"
+  },
+  {
+    "resourceType": "Observation",
+    "id": "ExampleQualityTC",
+    "title": "ExampleQualityTC",
+    "url": "",
+    "version": "",
+    "status": "final",
+    "group": "examples",
+    "file": "Observation-ExampleQualityTC.json",
+    "reference": "Observation/ExampleQualityTC"
+  },
+  {
+    "resourceType": "Observation",
+    "id": "ExampleQualityTCR",
+    "title": "ExampleQualityTCR",
+    "url": "",
+    "version": "",
+    "status": "final",
+    "group": "examples",
+    "file": "Observation-ExampleQualityTCR.json",
+    "reference": "Observation/ExampleQualityTCR"
+  },
+  {
+    "resourceType": "Provenance",
+    "id": "ExampleMappingProvenance",
+    "title": "ExampleMappingProvenance",
+    "url": "",
+    "version": "",
+    "status": "",
+    "group": "examples",
+    "file": "Provenance-ExampleMappingProvenance.json",
+    "reference": "Provenance/ExampleMappingProvenance"
+  },
+  {
+    "resourceType": "CapabilityStatement",
+    "id": "hitc-interop-server",
+    "title": "HITC Interoperability Server Requirements",
+    "url": "https://example.org/fhir/li-xinyang-interop-r4/CapabilityStatement/hitc-interop-server",
+    "version": "0.1.0",
+    "status": "draft",
+    "group": "operations",
+    "file": "CapabilityStatement-hitc-interop-server.json",
+    "reference": "CapabilityStatement/hitc-interop-server"
+  },
+  {
+    "resourceType": "OperationDefinition",
+    "id": "federated-summary",
+    "title": "HITC Federated Patient Summary Operation",
+    "url": "https://example.org/fhir/li-xinyang-interop-r4/OperationDefinition/federated-summary",
+    "version": "0.1.0",
+    "status": "draft",
+    "group": "operations",
+    "file": "OperationDefinition-federated-summary.json",
+    "reference": "OperationDefinition/federated-summary"
+  },
+  {
+    "resourceType": "OperationDefinition",
+    "id": "validate-exchange",
+    "title": "HITC Validate Exchange Operation",
+    "url": "https://example.org/fhir/li-xinyang-interop-r4/OperationDefinition/validate-exchange",
+    "version": "0.1.0",
+    "status": "draft",
+    "group": "operations",
+    "file": "OperationDefinition-validate-exchange.json",
+    "reference": "OperationDefinition/validate-exchange"
+  },
+  {
+    "resourceType": "StructureDefinition",
+    "id": "hitc-canonical-observation",
+    "title": "HITC Canonical Observation",
+    "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-observation",
+    "version": "",
+    "status": "draft",
+    "group": "profiles",
+    "file": "StructureDefinition-hitc-canonical-observation.json",
+    "reference": "StructureDefinition/hitc-canonical-observation"
+  },
+  {
+    "resourceType": "StructureDefinition",
+    "id": "hitc-canonical-patient",
+    "title": "HITC Canonical Patient",
+    "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-patient",
+    "version": "",
+    "status": "draft",
+    "group": "profiles",
+    "file": "StructureDefinition-hitc-canonical-patient.json",
+    "reference": "StructureDefinition/hitc-canonical-patient"
+  },
+  {
+    "resourceType": "StructureDefinition",
+    "id": "hitc-canonical-provenance",
+    "title": "HITC Canonical Provenance",
+    "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-provenance",
+    "version": "",
+    "status": "draft",
+    "group": "profiles",
+    "file": "StructureDefinition-hitc-canonical-provenance.json",
+    "reference": "StructureDefinition/hitc-canonical-provenance"
+  },
+  {
+    "resourceType": "StructureDefinition",
+    "id": "hitc-exchange-bundle",
+    "title": "HITC Canonical Exchange Bundle",
+    "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-exchange-bundle",
+    "version": "",
+    "status": "draft",
+    "group": "profiles",
+    "file": "StructureDefinition-hitc-exchange-bundle.json",
+    "reference": "StructureDefinition/hitc-exchange-bundle"
+  },
+  {
+    "resourceType": "StructureDefinition",
+    "id": "hitc-quality-metric-observation",
+    "title": "HITC Data Quality Metric Observation",
+    "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-quality-metric-observation",
+    "version": "",
+    "status": "draft",
+    "group": "profiles",
+    "file": "StructureDefinition-hitc-quality-metric-observation.json",
+    "reference": "StructureDefinition/hitc-quality-metric-observation"
+  },
+  {
+    "resourceType": "StructureMap",
+    "id": "ccda-problem-to-condition",
+    "title": "C-CDA Problem Entry to HITC Canonical Condition",
+    "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/ccda-problem-to-condition",
+    "version": "0.1.0",
+    "status": "draft",
+    "group": "structure-maps",
+    "file": "StructureMap-ccda-problem-to-condition.json",
+    "reference": "StructureMap/ccda-problem-to-condition"
+  },
+  {
+    "resourceType": "StructureMap",
+    "id": "v2-obx-to-observation",
+    "title": "HL7 v2 OBX to HITC Canonical Observation",
+    "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-obx-to-observation",
+    "version": "0.1.0",
+    "status": "draft",
+    "group": "structure-maps",
+    "file": "StructureMap-v2-obx-to-observation.json",
+    "reference": "StructureMap/v2-obx-to-observation"
+  },
+  {
+    "resourceType": "StructureMap",
+    "id": "v2-pid-to-patient",
+    "title": "HL7 v2 PID to HITC Canonical Patient",
+    "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-pid-to-patient",
+    "version": "0.1.0",
+    "status": "draft",
+    "group": "structure-maps",
+    "file": "StructureMap-v2-pid-to-patient.json",
+    "reference": "StructureMap/v2-pid-to-patient"
+  },
+  {
+    "resourceType": "CodeSystem",
+    "id": "hitc-quality-metric",
+    "title": "HITC Data Quality Metric Codes",
+    "url": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-quality-metric",
+    "version": "",
+    "status": "draft",
+    "group": "terminology",
+    "file": "CodeSystem-hitc-quality-metric.json",
+    "reference": "CodeSystem/hitc-quality-metric"
+  },
+  {
+    "resourceType": "ValueSet",
+    "id": "hitc-quality-metric",
+    "title": "HITC Data Quality Metric Value Set",
+    "url": "https://example.org/fhir/li-xinyang-interop-r4/ValueSet/hitc-quality-metric",
+    "version": "",
+    "status": "draft",
+    "group": "terminology",
+    "file": "ValueSet-hitc-quality-metric.json",
+    "reference": "ValueSet/hitc-quality-metric"
+  }
+]

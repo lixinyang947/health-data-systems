@@ -1,0 +1,49 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "draft",
+  "content": "complete",
+  "name": "HITCTransformationActivityCS",
+  "id": "hitc-transformation-activity",
+  "title": "HITC Transformation Activity Codes",
+  "description": "Activities recorded in resource-level provenance.",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-transformation-activity",
+  "concept": [
+    {
+      "code": "structural-mapping",
+      "display": "Structural mapping",
+      "definition": "Phase 1 structure-to-resource transformation."
+    },
+    {
+      "code": "terminology-translation",
+      "display": "Terminology translation",
+      "definition": "Code-system reconciliation through the terminology bridge."
+    },
+    {
+      "code": "unit-normalization",
+      "display": "Unit normalization",
+      "definition": "Normalization to UCUM."
+    },
+    {
+      "code": "temporal-normalization",
+      "display": "Temporal normalization",
+      "definition": "Normalization to ISO 8601-compatible FHIR date/time values."
+    },
+    {
+      "code": "validation",
+      "display": "Validation",
+      "definition": "Execution of one or more validation stages."
+    },
+    {
+      "code": "quality-measurement",
+      "display": "Quality measurement",
+      "definition": "Collection of inline data-quality metrics."
+    },
+    {
+      "code": "lineage-recording",
+      "display": "Lineage recording",
+      "definition": "Creation or update of append-only provenance lineage."
+    }
+  ],
+  "caseSensitive": true,
+  "count": 7
+}

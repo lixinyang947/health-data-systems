@@ -1,0 +1,81 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "v2-patient-class-to-encounter-class",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-patient-class-to-encounter-class",
+  "version": "0.1.0",
+  "name": "V2PatientClassToEncounterClass",
+  "title": "HL7 v2 Patient Class to FHIR Encounter Class",
+  "status": "draft",
+  "experimental": true,
+  "date": "2026-07-21",
+  "publisher": "Xinyang Li",
+  "description": "Representative PV1-2 mapping for Encounter.class.",
+  "copyright": "© 2026 Xinyang Li. Draft technical specification.",
+  "purpose": "Separates structural extraction from governed semantic reconciliation.",
+  "sourceUri": "http://terminology.hl7.org/CodeSystem/v2-0004",
+  "targetUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+  "group": [
+    {
+      "source": "http://terminology.hl7.org/CodeSystem/v2-0004",
+      "target": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+      "element": [
+        {
+          "code": "I",
+          "display": "Inpatient",
+          "target": [
+            {
+              "equivalence": "equivalent",
+              "code": "IMP",
+              "display": "inpatient encounter"
+            }
+          ]
+        },
+        {
+          "code": "O",
+          "display": "Outpatient",
+          "target": [
+            {
+              "equivalence": "equivalent",
+              "code": "AMB",
+              "display": "ambulatory"
+            }
+          ]
+        },
+        {
+          "code": "E",
+          "display": "Emergency",
+          "target": [
+            {
+              "equivalence": "equivalent",
+              "code": "EMER",
+              "display": "emergency"
+            }
+          ]
+        },
+        {
+          "code": "P",
+          "display": "Preadmit",
+          "target": [
+            {
+              "equivalence": "equivalent",
+              "code": "PRENC",
+              "display": "pre-admission"
+            }
+          ]
+        },
+        {
+          "code": "R",
+          "display": "Recurring patient",
+          "target": [
+            {
+              "equivalence": "inexact",
+              "code": "AMB",
+              "display": "ambulatory",
+              "comment": "Recurring outpatient activity is represented as ambulatory pending local policy."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

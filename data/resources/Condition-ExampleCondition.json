@@ -1,0 +1,67 @@
+{
+  "resourceType": "Condition",
+  "id": "ExampleCondition",
+  "meta": {
+    "profile": [
+      "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-condition"
+    ]
+  },
+  "extension": [
+    {
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-source-system",
+      "valueIdentifier": {
+        "system": "urn:ietf:rfc:3986",
+        "value": "urn:oid:1.2.840.114350.1.13.99999.1.7.2.688879"
+      }
+    }
+  ],
+  "identifier": [
+    {
+      "system": "https://example.org/fhir/sid/condition",
+      "value": "COND-1001"
+    }
+  ],
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active"
+      }
+    ]
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed"
+      }
+    ]
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "problem-list-item"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "44054006",
+        "display": "Type 2 diabetes mellitus"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/ExamplePatient"
+  },
+  "onsetDateTime": "2020-05-01",
+  "recordedDate": "2026-07-15T09:30:00-04:00",
+  "recorder": {
+    "reference": "Practitioner/ExampleReviewer"
+  }
+}

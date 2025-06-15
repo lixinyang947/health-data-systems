@@ -1,0 +1,19 @@
+{
+  "resourceType": "SearchParameter",
+  "id": "provenance-mapping-strategy",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/SearchParameter/provenance-mapping-strategy",
+  "version": "0.1.0",
+  "name": "ProvenanceMappingStrategy",
+  "status": "draft",
+  "experimental": true,
+  "date": "2026-07-21",
+  "publisher": "Xinyang Li",
+  "description": "Search Provenance by the recorded terminology mapping strategy.",
+  "code": "mapping-strategy",
+  "base": [
+    "Provenance"
+  ],
+  "type": "token",
+  "expression": "Provenance.extension('https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-mapping-strategy').value",
+  "xpathUsage": "normal"
+}

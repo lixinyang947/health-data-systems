@@ -1,0 +1,393 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "HITCV2PV1",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2PV1",
+  "name": "HITCV2PV1",
+  "title": "HL7 v2 PV1 Logical Model",
+  "status": "draft",
+  "description": "Representative PV1 fields used by the Encounter structure map.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2PV1",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "snapshot": {
+    "element": [
+      {
+        "id": "HITCV2PV1",
+        "path": "HITCV2PV1",
+        "short": "HL7 v2 PV1 Logical Model",
+        "definition": "Representative PV1 fields used by the Encounter structure map.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "HITCV2PV1",
+          "min": 0,
+          "max": "*"
+        },
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ],
+        "isModifier": false,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PV1.setId",
+        "path": "HITCV2PV1.setId",
+        "short": "PV1-1 Set ID",
+        "definition": "PV1-1 Set ID",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2PV1.setId",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "positiveInt"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PV1.patientClass",
+        "path": "HITCV2PV1.patientClass",
+        "short": "PV1-2 Patient Class",
+        "definition": "PV1-2 Patient Class",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2PV1.patientClass",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PV1.assignedPatientLocation",
+        "path": "HITCV2PV1.assignedPatientLocation",
+        "short": "PV1-3 Assigned Patient Location",
+        "definition": "PV1-3 Assigned Patient Location",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2PV1.assignedPatientLocation",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PV1.attendingDoctor",
+        "path": "HITCV2PV1.attendingDoctor",
+        "short": "PV1-7 Attending Doctor",
+        "definition": "PV1-7 Attending Doctor",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "HITCV2PV1.attendingDoctor",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PV1.hospitalService",
+        "path": "HITCV2PV1.hospitalService",
+        "short": "PV1-10 Hospital Service",
+        "definition": "PV1-10 Hospital Service",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2PV1.hospitalService",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PV1.visitNumber",
+        "path": "HITCV2PV1.visitNumber",
+        "short": "PV1-19 Visit Number",
+        "definition": "PV1-19 Visit Number",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2PV1.visitNumber",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PV1.admitDateTime",
+        "path": "HITCV2PV1.admitDateTime",
+        "short": "PV1-44 Admit Date/Time",
+        "definition": "PV1-44 Admit Date/Time",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2PV1.admitDateTime",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PV1.dischargeDateTime",
+        "path": "HITCV2PV1.dischargeDateTime",
+        "short": "PV1-45 Discharge Date/Time",
+        "definition": "PV1-45 Discharge Date/Time",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2PV1.dischargeDateTime",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "HITCV2PV1",
+        "path": "HITCV2PV1",
+        "short": "HL7 v2 PV1 Logical Model",
+        "definition": "Representative PV1 fields used by the Encounter structure map."
+      },
+      {
+        "id": "HITCV2PV1.setId",
+        "path": "HITCV2PV1.setId",
+        "short": "PV1-1 Set ID",
+        "definition": "PV1-1 Set ID",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "positiveInt"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PV1.patientClass",
+        "path": "HITCV2PV1.patientClass",
+        "short": "PV1-2 Patient Class",
+        "definition": "PV1-2 Patient Class",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PV1.assignedPatientLocation",
+        "path": "HITCV2PV1.assignedPatientLocation",
+        "short": "PV1-3 Assigned Patient Location",
+        "definition": "PV1-3 Assigned Patient Location",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PV1.attendingDoctor",
+        "path": "HITCV2PV1.attendingDoctor",
+        "short": "PV1-7 Attending Doctor",
+        "definition": "PV1-7 Attending Doctor",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PV1.hospitalService",
+        "path": "HITCV2PV1.hospitalService",
+        "short": "PV1-10 Hospital Service",
+        "definition": "PV1-10 Hospital Service",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PV1.visitNumber",
+        "path": "HITCV2PV1.visitNumber",
+        "short": "PV1-19 Visit Number",
+        "definition": "PV1-19 Visit Number",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PV1.admitDateTime",
+        "path": "HITCV2PV1.admitDateTime",
+        "short": "PV1-44 Admit Date/Time",
+        "definition": "PV1-44 Admit Date/Time",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2PV1.dischargeDateTime",
+        "path": "HITCV2PV1.dischargeDateTime",
+        "short": "PV1-45 Discharge Date/Time",
+        "definition": "PV1-45 Discharge Date/Time",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      }
+    ]
+  }
+}

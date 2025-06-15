@@ -1,0 +1,15 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "HITCObservationCategoryVS",
+  "id": "hitc-observation-category",
+  "title": "HITC Observation Category Value Set",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/ValueSet/hitc-observation-category",
+  "compose": {
+    "include": [
+      {
+        "system": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-observation-category"
+      }
+    ]
+  }
+}

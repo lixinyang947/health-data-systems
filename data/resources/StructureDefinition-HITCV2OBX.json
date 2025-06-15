@@ -1,0 +1,557 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "HITCV2OBX",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2OBX",
+  "name": "HITCV2OBX",
+  "title": "HL7 v2 OBX Logical Model",
+  "status": "draft",
+  "description": "Representative OBX fields used by the Observation structure map.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2OBX",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "snapshot": {
+    "element": [
+      {
+        "id": "HITCV2OBX",
+        "path": "HITCV2OBX",
+        "short": "HL7 v2 OBX Logical Model",
+        "definition": "Representative OBX fields used by the Observation structure map.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "HITCV2OBX",
+          "min": 0,
+          "max": "*"
+        },
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ],
+        "isModifier": false,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2OBX.setId",
+        "path": "HITCV2OBX.setId",
+        "short": "OBX-1 Set ID",
+        "definition": "OBX-1 Set ID",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2OBX.setId",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "positiveInt"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2OBX.valueType",
+        "path": "HITCV2OBX.valueType",
+        "short": "OBX-2 Value Type",
+        "definition": "OBX-2 Value Type",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2OBX.valueType",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2OBX.observationIdentifier",
+        "path": "HITCV2OBX.observationIdentifier",
+        "short": "OBX-3 Observation Identifier",
+        "definition": "OBX-3 Observation Identifier",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2OBX.observationIdentifier",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2OBX.observationSubId",
+        "path": "HITCV2OBX.observationSubId",
+        "short": "OBX-4 Observation Sub-ID",
+        "definition": "OBX-4 Observation Sub-ID",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2OBX.observationSubId",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2OBX.value",
+        "path": "HITCV2OBX.value",
+        "short": "OBX-5 Observation Value",
+        "definition": "OBX-5 Observation Value",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "HITCV2OBX.value",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2OBX.units",
+        "path": "HITCV2OBX.units",
+        "short": "OBX-6 Units",
+        "definition": "OBX-6 Units",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2OBX.units",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2OBX.referenceRange",
+        "path": "HITCV2OBX.referenceRange",
+        "short": "OBX-7 Reference Range",
+        "definition": "OBX-7 Reference Range",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2OBX.referenceRange",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2OBX.abnormalFlags",
+        "path": "HITCV2OBX.abnormalFlags",
+        "short": "OBX-8 Abnormal Flags",
+        "definition": "OBX-8 Abnormal Flags",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "HITCV2OBX.abnormalFlags",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2OBX.resultStatus",
+        "path": "HITCV2OBX.resultStatus",
+        "short": "OBX-11 Observation Result Status",
+        "definition": "OBX-11 Observation Result Status",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2OBX.resultStatus",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2OBX.observationDateTime",
+        "path": "HITCV2OBX.observationDateTime",
+        "short": "OBX-14 Date/Time of Observation",
+        "definition": "OBX-14 Date/Time of Observation",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2OBX.observationDateTime",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2OBX.responsibleObserver",
+        "path": "HITCV2OBX.responsibleObserver",
+        "short": "OBX-16 Responsible Observer",
+        "definition": "OBX-16 Responsible Observer",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "HITCV2OBX.responsibleObserver",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2OBX.method",
+        "path": "HITCV2OBX.method",
+        "short": "OBX-17 Observation Method",
+        "definition": "OBX-17 Observation Method",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2OBX.method",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "HITCV2OBX",
+        "path": "HITCV2OBX",
+        "short": "HL7 v2 OBX Logical Model",
+        "definition": "Representative OBX fields used by the Observation structure map."
+      },
+      {
+        "id": "HITCV2OBX.setId",
+        "path": "HITCV2OBX.setId",
+        "short": "OBX-1 Set ID",
+        "definition": "OBX-1 Set ID",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "positiveInt"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2OBX.valueType",
+        "path": "HITCV2OBX.valueType",
+        "short": "OBX-2 Value Type",
+        "definition": "OBX-2 Value Type",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2OBX.observationIdentifier",
+        "path": "HITCV2OBX.observationIdentifier",
+        "short": "OBX-3 Observation Identifier",
+        "definition": "OBX-3 Observation Identifier",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2OBX.observationSubId",
+        "path": "HITCV2OBX.observationSubId",
+        "short": "OBX-4 Observation Sub-ID",
+        "definition": "OBX-4 Observation Sub-ID",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2OBX.value",
+        "path": "HITCV2OBX.value",
+        "short": "OBX-5 Observation Value",
+        "definition": "OBX-5 Observation Value",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2OBX.units",
+        "path": "HITCV2OBX.units",
+        "short": "OBX-6 Units",
+        "definition": "OBX-6 Units",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2OBX.referenceRange",
+        "path": "HITCV2OBX.referenceRange",
+        "short": "OBX-7 Reference Range",
+        "definition": "OBX-7 Reference Range",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2OBX.abnormalFlags",
+        "path": "HITCV2OBX.abnormalFlags",
+        "short": "OBX-8 Abnormal Flags",
+        "definition": "OBX-8 Abnormal Flags",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2OBX.resultStatus",
+        "path": "HITCV2OBX.resultStatus",
+        "short": "OBX-11 Observation Result Status",
+        "definition": "OBX-11 Observation Result Status",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2OBX.observationDateTime",
+        "path": "HITCV2OBX.observationDateTime",
+        "short": "OBX-14 Date/Time of Observation",
+        "definition": "OBX-14 Date/Time of Observation",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2OBX.responsibleObserver",
+        "path": "HITCV2OBX.responsibleObserver",
+        "short": "OBX-16 Responsible Observer",
+        "definition": "OBX-16 Responsible Observer",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2OBX.method",
+        "path": "HITCV2OBX.method",
+        "short": "OBX-17 Observation Method",
+        "definition": "OBX-17 Observation Method",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reviewer Desk — FHIR-Native Interoperability Framework</title>
+  <link rel="stylesheet" href="../../css/main.css" />
+  <style>
+    /* ==========================================================
+       Reviewer Desk — Page-Specific Styles
+       ========================================================== */
+
+    /* --- Hero --- */
+    .review-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      padding: 3.5rem 0 2.5rem;
+      border-bottom: 1px solid var(--navy-border);
+    }
+    .review-hero h1 {
+      color: var(--white);
+      font-size: 2.25rem;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    .review-hero .subtitle {
+      color: var(--gray-400);
+      font-size: 1.05rem;
+      max-width: 720px;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+
+    /* --- Section --- */
+    .section {
+      padding: 2.5rem 0;
+    }
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--gray-900);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gray-200);
+    }
+
+    /* --- Review Path Cards --- */
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .review-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+    }
+    .review-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--gray-900);
+      margin-bottom: 0.35rem;
+    }
+    .review-card .badge-timer {
+      display: inline-block;
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      margin-bottom: 0.75rem;
+      align-self: flex-start;
+    }
+    .badge-quick {
+      background: rgba(22,163,74,0.12);
+      color: #16a34a;
+      border: 1px solid rgba(22,163,74,0.25);
+    }
+    .badge-technical {
+      background: rgba(20,184,166,0.12);
+      color: #0d9488;
+      border: 1px solid rgba(20,184,166,0.25);
+    }
+    .badge-reproducible {
+      background: rgba(124,58,237,0.12);
+      color: #7c3aed;
+      border: 1px solid rgba(124,58,237,0.25);
+    }
+    .review-card ol,
+    .review-card ul {
+      margin: 0.5rem 0 1rem;
+      padding-left: 1.25rem;
+      font-size: 0.875rem;
+      line-height: 1.8;
+      color: var(--gray-700);
+      flex: 1;
+    }
+    .review-card ol li,
+    .review-card ul li {
+      margin-bottom: 0.1rem;
+    }
+    .review-card ol li a,
+    .review-card ul li a {
+      color: var(--teal-dark);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .review-card ol li a:hover,
+    .review-card ul li a:hover {
+      text-decoration: underline;
+    }
+    .review-card .card-note {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+      margin-top: 0.25rem;
+      line-height: 1.5;
+    }
+
+    /* --- Download Cards --- */
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .download-card {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 0.9rem 1rem;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.15s, box-shadow 0.15s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .download-card:hover {
+      border-color: var(--teal);
+      box-shadow: var(--shadow-md);
+    }
+    .download-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-md);
+      background-color: rgba(20,184,166,0.08);
+      color: var(--teal);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+      font-weight: 700;
+    }
+    .download-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .download-info .name {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--gray-800);
+      margin-bottom: 0.1rem;
+    }
+    .download-info .meta {
+      font-size: 0.7rem;
+      color: var(--gray-400);
+    }
+    .download-card .dl-btn {
+      flex-shrink: 0;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius-sm);
+      background: var(--gray-100);
+      color: var(--gray-600);
+      border: 1px solid var(--gray-200);
+      text-decoration: none;
+      transition: background 0.12s, color 0.12s;
+    }
+    .download-card .dl-btn:hover {
+      background: var(--teal);
+      color: white;
+      border-color: var(--teal);
+    }
+
+    /* --- ZIP callout --- */
+    .zip-callout {
+      margin-top: 1.25rem;
+      padding: 1rem 1.25rem;
+      background: rgba(20,184,166,0.04);
+      border: 1px solid rgba(20,184,166,0.15);
+      border-left: 4px solid var(--teal);
+      border-radius: var(--radius-md);
+      font-size: 0.875rem;
+      color: var(--gray-700);
+    }
+    .zip-callout a {
+      color: var(--teal-dark);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .zip-callout a:hover {
+      text-decoration: underline;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 900px) {
+      .review-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .download-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================
+       STICKY HEADER
+       ========================================================== -->
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-logo">
+        <span class="logo-badge">XYL</span>
+        Xinyang Li
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="main-nav">
+        <a href="/">Home</a>
+
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle">Research</button>
+          <div class="dropdown-menu">
+            <a href="/line1/">
+              <span class="line-badge" style="background:rgba(20,184,166,0.12);color:var(--teal-dark);">L1</span>
+              FHIR-Native Clinical Data Interoperability
+              <span class="dropdown-desc">Executable FHIR R4 profiles, mappings, quality metrics, provenance &amp; validation</span>
+            </a>
+            <a href="/line2/">
+              <span class="line-badge" style="background:rgba(245,158,11,0.12);color:var(--amber-dark);">L2</span>
+              Explainable RPM &amp; Clinical Decision Support
+              <span class="dropdown-desc">RPM data normalization, SHAP explainability, risk stratification framework</span>
+            </a>
+            <a href="/line3/">
+              <span class="line-badge" style="background:rgba(168,85,247,0.12);color:#7c3aed;">L3</span>
+              Secure Health Information Exchange Governance
+              <span class="dropdown-desc">HIE security architecture, consent management, audit &amp; provenance governance</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="/publications/">Publications</a>
+        <a href="/technical/">Technical Resources</a>
+        <a href="/about/">About</a>
+
+        <span class="badge badge-amber" style="margin-left:0.5rem;">v0.1.0</span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==========================================================
+       MAIN CONTENT
+       ========================================================== -->
+  <main class="main-content">
+
+    <!-- ==========================================================
+         HERO
+         ========================================================== -->
+    <section class="review-hero">
+      <div class="container">
+        <h1>Reviewer Desk</h1>
+        <p class="subtitle">
+          Independent expert review resources for the HITC FHIR-Native Interoperability Framework
+        </p>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         REVIEW PATHS
+         ========================================================== -->
+    <section class="section">
+      <div class="container">
+
+        <h2 class="section-title">Review Paths</h2>
+        <div class="review-grid">
+
+          <!-- 15-Minute Quick Review -->
+          <div class="review-card">
+            <span class="badge-timer badge-quick">QUICK</span>
+            <h3>15-Minute Quick Review</h3>
+            <ol>
+              <li><a href="/">Read the Overview</a></li>
+              <li><a href="/#methodology">View the Methodology Pipeline</a></li>
+              <li><a href="/line1/artifacts/">Open 5 Representative Artifacts</a></li>
+              <li><a href="/line1/validation/">Read Validation Summary</a></li>
+              <li><a href="/line1/validation/#limitations">View Limitations</a></li>
+            </ol>
+            <p class="card-note">High-level orientation. No code execution required.</p>
+          </div>
+
+          <!-- 45-Minute Technical Review -->
+          <div class="review-card">
+            <span class="badge-timer badge-technical">TECHNICAL</span>
+            <h3>45-Minute Technical Review</h3>
+            <ol>
+              <li><a href="/line1/mappings/">Review Two-Phase Mapping Pipeline</a></li>
+              <li><a href="/line1/mappings/">Examine 3 StructureMaps</a></li>
+              <li><a href="/line1/quality-provenance/">Review Quality Metric Profile</a></li>
+              <li><a href="/line1/quality-provenance/#provenance">Review Provenance Chain</a></li>
+              <li><a href="/line1/validation/">View Validation Report</a></li>
+              <li><a href="/line1/originality/">Review Prior-Art Comparison</a></li>
+            </ol>
+            <p class="card-note">In-depth methodology and artifact inspection.</p>
+          </div>
+
+          <!-- 90-Minute Reproduction Review -->
+          <div class="review-card">
+            <span class="badge-timer badge-reproducible">REPRODUCIBLE</span>
+            <h3>90-Minute Reproduction Review</h3>
+            <ol>
+              <li><a href="/">Download Source Code</a></li>
+              <li>Install Dependencies (Node.js 20+, npm, Python 3.10+)</li>
+              <li>Run SUSHI Compilation</li>
+              <li>Execute Package Check</li>
+              <li>Run Offline Validation</li>
+              <li><a href="/line1/validation/">Compare Generated Resources and SHA-256</a></li>
+            </ol>
+            <p class="card-note">Full reproduction of the build pipeline.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         REVIEWER MATERIALS
+         ========================================================== -->
+    <section class="section" style="border-top: 1px solid var(--gray-200);">
+      <div class="container">
+
+        <h2 class="section-title">Reviewer Materials Download</h2>
+        <div class="download-grid">
+
+          <div class="download-card">
+            <span class="download-icon">📄</span>
+            <div class="download-info">
+              <div class="name">Research Contribution Statement</div>
+              <div class="meta">PDF</div>
+            </div>
+            <a href="../../pdf/research-contribution-statement.pdf" class="dl-btn" download>Download</a>
+          </div>
+
+          <div class="download-card">
+            <span class="download-icon">📄</span>
+            <div class="download-info">
+              <div class="name">Technical Framework Explanation</div>
+              <div class="meta">PDF</div>
+            </div>
+            <a href="../../pdf/technical-framework-explanation.pdf" class="dl-btn" download>Download</a>
+          </div>
+
+          <div class="download-card">
+            <span class="download-icon">📄</span>
+            <div class="download-info">
+              <div class="name">Artifact Inventory and Traceability</div>
+              <div class="meta">PDF</div>
+            </div>
+            <a href="../../pdf/artifact-inventory-traceability.pdf" class="dl-btn" download>Download</a>
+          </div>
+
+          <div class="download-card">
+            <span class="download-icon">📄</span>
+            <div class="download-info">
+              <div class="name">Selected Machine-Readable Artifacts</div>
+              <div class="meta">PDF</div>
+            </div>
+            <a href="../../pdf/selected-machine-readable-artifacts.pdf" class="dl-btn" download>Download</a>
+          </div>
+
+          <div class="download-card">
+            <span class="download-icon">📄</span>
+            <div class="download-info">
+              <div class="name">Compilation and Validation Evidence</div>
+              <div class="meta">PDF</div>
+            </div>
+            <a href="../../pdf/compilation-validation-evidence.pdf" class="dl-btn" download>Download</a>
+          </div>
+
+          <div class="download-card">
+            <span class="download-icon">📄</span>
+            <div class="download-info">
+              <div class="name">Digital Archive and Release Record</div>
+              <div class="meta">PDF</div>
+            </div>
+            <a href="../../pdf/digital-archive-release-record.pdf" class="dl-btn" download>Download</a>
+          </div>
+
+          <div class="download-card">
+            <span class="download-icon">📄</span>
+            <div class="download-info">
+              <div class="name">Prior-Art and Originality Analysis</div>
+              <div class="meta">PDF</div>
+            </div>
+            <a href="../../pdf/prior-art-originality-analysis.pdf" class="dl-btn" download>Download</a>
+          </div>
+
+        </div>
+
+        <!-- ZIP callout -->
+        <div class="zip-callout">
+          <strong>Complete FHIR IG Package:</strong>&nbsp;
+          <a href="../../pdf/li-xinyang-interop-r4-0.1.0.zip" download>
+            li-xinyang-interop-r4-0.1.0.zip (complete FHIR IG package)
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================
+       FOOTER
+       ========================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <p class="mb-1">&copy; 2025 Li Xinyang FHIR-Native Interoperability Framework</p>
+        <p class="mb-0 text-xs">Licensed under the Apache License, Version 2.0</p>
+      </div>
+      <div>
+        <span class="badge" style="color:#a855f7;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);">DRAFT &amp; EXPERIMENTAL — NOT FOR PRODUCTION USE</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

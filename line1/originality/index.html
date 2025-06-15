@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Originality &amp; Prior-Art Comparison — FHIR-Native Interoperability Framework</title>
+  <link rel="stylesheet" href="../../css/main.css" />
+  <style>
+    /* --- Originality page-specific styles --- */
+
+    /* Hero section (matching other pages) */
+    .originality-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      padding: 3.5rem 0 2.5rem;
+      border-bottom: 1px solid var(--navy-border);
+    }
+    .originality-hero h1 {
+      color: var(--white);
+      font-size: 2.25rem;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    .originality-hero .subtitle {
+      color: var(--gray-400);
+      font-size: 1.05rem;
+      max-width: 800px;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+
+    /* Section styles */
+    .section {
+      padding: 2.5rem 0;
+    }
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--gray-900);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gray-200);
+    }
+    .section-lead {
+      font-size: 1rem;
+      color: var(--gray-600);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+      max-width: 720px;
+    }
+
+    /* --- Comparison table (responsive, horizontal scroll on mobile) --- */
+    .comparison-table-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-bottom: 2rem;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+    }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      min-width: 640px;
+    }
+    .comparison-table thead {
+      background-color: var(--navy);
+      color: var(--white);
+    }
+    .comparison-table th {
+      text-align: left;
+      padding: 0.85rem 1rem;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .comparison-table th:first-child {
+      border-radius: 0;
+    }
+    .comparison-table td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--gray-200);
+      vertical-align: top;
+      line-height: 1.6;
+      color: var(--gray-700);
+    }
+    .comparison-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .comparison-table tbody tr:nth-child(even) {
+      background-color: var(--gray-50);
+    }
+    .comparison-table tbody tr:hover {
+      background-color: rgba(20, 184, 166, 0.04);
+    }
+    .comparison-table .mechanism-cell {
+      font-weight: 600;
+      color: var(--gray-900);
+      white-space: nowrap;
+    }
+    .comparison-table .contribution-cell {
+      color: var(--teal-dark);
+    }
+
+    /* --- Conclusion block --- */
+    .conclusion-block {
+      background-color: rgba(20, 184, 166, 0.04);
+      border: 1px solid rgba(20, 184, 166, 0.18);
+      border-left: 4px solid var(--teal);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 2rem;
+    }
+    .conclusion-block blockquote {
+      margin: 0;
+      padding: 0;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--gray-800);
+      font-style: italic;
+    }
+    .conclusion-block blockquote p {
+      margin: 0;
+    }
+    .conclusion-block .conclusion-attribution {
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      font-style: normal;
+    }
+
+    /* --- Action links --- */
+    .action-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+    .action-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.25rem;
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid var(--gray-200);
+      background-color: var(--white);
+      color: var(--gray-700);
+      box-shadow: var(--shadow-sm);
+    }
+    .action-link:hover {
+      border-color: var(--teal);
+      box-shadow: var(--shadow-md);
+      text-decoration: none;
+    }
+    .action-link.primary {
+      background-color: var(--teal);
+      color: var(--white);
+      border-color: var(--teal);
+    }
+    .action-link.primary:hover {
+      background-color: var(--teal-dark);
+      border-color: var(--teal-dark);
+    }
+    .action-link .link-icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    /* --- Responsive tweaks --- */
+    @media (max-width: 768px) {
+      .originality-hero h1 { font-size: 1.75rem; }
+      .comparison-table { font-size: 0.825rem; }
+      .comparison-table th,
+      .comparison-table td { padding: 0.65rem 0.75rem; }
+      .conclusion-block { padding: 1.15rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================
+       STICKY HEADER (mirroring other pages)
+       ========================================================== -->
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-logo">
+        <span class="logo-badge">XYL</span>
+        Xinyang Li
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="main-nav">
+        <a href="/">Home</a>
+
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle">Research</button>
+          <div class="dropdown-menu">
+            <a href="/line1/">
+              <span class="line-badge" style="background:rgba(20,184,166,0.12);color:var(--teal-dark);">L1</span>
+              FHIR-Native Clinical Data Interoperability
+              <span class="dropdown-desc">Executable FHIR R4 profiles, mappings, quality metrics, provenance &amp; validation</span>
+            </a>
+            <a href="/line2/">
+              <span class="line-badge" style="background:rgba(245,158,11,0.12);color:var(--amber-dark);">L2</span>
+              Explainable RPM &amp; Clinical Decision Support
+              <span class="dropdown-desc">RPM data normalization, SHAP explainability, risk stratification framework</span>
+            </a>
+            <a href="/line3/">
+              <span class="line-badge" style="background:rgba(168,85,247,0.12);color:#7c3aed;">L3</span>
+              Secure Health Information Exchange Governance
+              <span class="dropdown-desc">HIE security architecture, consent management, audit &amp; provenance governance</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="/publications/">Publications</a>
+        <a href="/technical/">Technical Resources</a>
+        <a href="/about/">About</a>
+
+        <span class="badge badge-amber" style="margin-left:0.5rem;">v0.1.0</span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==========================================================
+       MAIN CONTENT
+       ========================================================== -->
+  <main class="main-content">
+
+    <!-- ==========================================================
+         HERO SECTION
+         ========================================================== -->
+    <section class="originality-hero">
+      <div class="container">
+        <h1>Originality &amp; Prior-Art Comparison</h1>
+        <p class="subtitle">
+          Computable differentiation of the HITC FHIR methodology from established FHIR base capabilities
+        </p>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         COMPARISON TABLE
+         ========================================================== -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Mechanism Comparison</h2>
+        <p class="section-lead">
+          The table below maps each established FHIR mechanism to its usage within this project and
+          documents the specific contribution or extension that distinguishes this work from standard
+          FHIR base capabilities.
+        </p>
+
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Established FHIR Mechanism</th>
+                <th>Usage in This Project</th>
+                <th>Contribution</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="mechanism-cell">StructureDefinition</td>
+                <td>Constrains FHIR resources for clinical data exchange</td>
+                <td class="contribution-cell">Forms cross-format canonical model set (35 profiles)</td>
+              </tr>
+              <tr>
+                <td class="mechanism-cell">StructureMap</td>
+                <td>Instance-level transformation between source and target</td>
+                <td class="contribution-cell">Composes into a documented two-phase mapping pipeline with ConceptMap-driven semantic reconciliation</td>
+              </tr>
+              <tr>
+                <td class="mechanism-cell">ConceptMap</td>
+                <td>Declares terminology relationships</td>
+                <td class="contribution-cell">Bridges structural mapping and semantic reconciliation with confidence/reviewer metadata</td>
+              </tr>
+              <tr>
+                <td class="mechanism-cell">Observation</td>
+                <td>Represents clinical measurements</td>
+                <td class="contribution-cell">Repurposed to express computable exchange-quality metrics (6 dimensions)</td>
+              </tr>
+              <tr>
+                <td class="mechanism-cell">Provenance</td>
+                <td>Records resource origin and transformation history</td>
+                <td class="contribution-cell">Extends to record resource-level transformation lineage with Merkle-root tamper evidence</td>
+              </tr>
+              <tr>
+                <td class="mechanism-cell">Merkle Tree</td>
+                <td>Integrity verification of resource bundles</td>
+                <td class="contribution-cell">Linked to Provenance transformation records for auditable data quality assertions</td>
+              </tr>
+              <tr>
+                <td class="mechanism-cell">OperationDefinition</td>
+                <td>Declares custom FHIR operations</td>
+                <td class="contribution-cell">Establishes bundle validation and federated summary contracts for exchange governance</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         CONCLUSION SECTION
+         ========================================================== -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <h2 class="section-title">Conclusion</h2>
+
+        <div class="conclusion-block">
+          <blockquote>
+            <p>
+              "The contribution lies in the particular computable combination, constraint architecture,
+              workflow, and application of established FHIR mechanisms—not in claiming invention of the
+              underlying standards."
+            </p>
+          </blockquote>
+          <div class="conclusion-attribution">
+            &mdash; HITC FHIR-Native Interoperability Framework &middot; Prior-Art &amp; Originality Analysis
+          </div>
+        </div>
+
+        <!-- Action links -->
+        <div class="action-links">
+          <a href="#" class="action-link primary">
+            <span class="link-icon">&#128196;</span>
+            Read Full Analysis
+          </a>
+          <a href="#" class="action-link">
+            <span class="link-icon">&#128229;</span>
+            Download Prior-Art PDF
+          </a>
+          <a href="/line1/artifacts/" class="action-link">
+            <span class="link-icon">&#128481;</span>
+            View Referenced Artifacts
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================
+       FOOTER
+       ========================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <p class="mb-1">&copy; 2025 Li Xinyang FHIR-Native Interoperability Framework</p>
+        <p class="mb-0 text-xs">Licensed under the Apache License, Version 2.0</p>
+      </div>
+      <div>
+        <span class="badge" style="color:#a855f7;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);">DRAFT &amp; EXPERIMENTAL — NOT FOR PRODUCTION USE</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

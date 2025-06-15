@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mappings — FHIR-Native Interoperability Framework</title>
+  <link rel="stylesheet" href="../../css/main.css" />
+  <style>
+    /* Mappings-specific styling */
+    .mapping-group-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .mapping-group-title .group-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-md);
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .mapping-group-title .group-icon.v2-icon {
+      background: rgba(168,85,247,0.12);
+      color: #a855f7;
+      border: 1px solid rgba(168,85,247,0.25);
+    }
+    .mapping-group-title .group-icon.ccda-icon {
+      background: rgba(20,184,166,0.12);
+      color: var(--teal-dark);
+      border: 1px solid rgba(20,184,166,0.25);
+    }
+    .mapping-card {
+      background-color: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      padding: 1.25rem;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .mapping-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+    .mapping-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+    .mapping-card-header h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0;
+    }
+    .mapping-card-body {
+      flex: 1;
+      margin-bottom: 0.75rem;
+    }
+    .mapping-source-target {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8125rem;
+      color: var(--gray-500);
+      margin-bottom: 0.75rem;
+    }
+    .mapping-source-target .source-label,
+    .mapping-source-target .target-label {
+      font-weight: 600;
+      font-size: 0.75rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .mapping-source-target .source-label {
+      background-color: rgba(168,85,247,0.08);
+      color: #7c3aed;
+      border: 1px solid rgba(168,85,247,0.15);
+    }
+    .mapping-source-target .target-label {
+      background-color: rgba(20,184,166,0.08);
+      color: var(--teal-dark);
+      border: 1px solid rgba(20,184,166,0.15);
+    }
+    .mapping-source-target .arrow {
+      color: var(--gray-300);
+      font-weight: 600;
+    }
+    .mapping-type-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .mapping-type-badges .badge {
+      font-size: 0.6875rem;
+    }
+    .mapping-card-footer {
+      margin-top: auto;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--gray-100);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .mapping-card-footer .btn {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.7rem;
+    }
+    .mapping-card-id {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--gray-400);
+      margin-top: 0.25rem;
+    }
+    .section-divider {
+      margin: 2.5rem 0;
+      border: none;
+      border-top: 1px solid var(--gray-200);
+    }
+    .concept-map-table th:nth-child(3),
+    .concept-map-table td:nth-child(3) {
+      text-align: center;
+    }
+    .badge-yes {
+      background-color: rgba(22,163,74,0.12);
+      color: #16a34a;
+      border: 1px solid rgba(22,163,74,0.25);
+    }
+    .badge-no {
+      background-color: rgba(100,116,139,0.1);
+      color: var(--gray-500);
+      border: 1px solid rgba(100,116,139,0.2);
+    }
+    .concept-map-id {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--gray-600);
+    }
+    .mapping-count {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.8125rem;
+      color: var(--gray-500);
+    }
+    .loading-placeholder {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--gray-400);
+    }
+    .loading-placeholder .spinner {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border: 3px solid var(--gray-200);
+      border-top-color: var(--teal);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 0.75rem;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    @media (max-width: 768px) {
+      .main-nav a { font-size: 0.75rem; padding: 0.35rem 0.5rem; }
+      .mapping-source-target { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================
+       STICKY HEADER
+       ========================================================== -->
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-logo">
+        <span class="logo-badge">XYL</span>
+        Xinyang Li
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="main-nav">
+        <a href="/">Home</a>
+
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle">Research</button>
+          <div class="dropdown-menu">
+            <a href="/line1/">
+              <span class="line-badge" style="background:rgba(20,184,166,0.12);color:var(--teal-dark);">L1</span>
+              FHIR-Native Clinical Data Interoperability
+              <span class="dropdown-desc">Executable FHIR R4 profiles, mappings, quality metrics, provenance &amp; validation</span>
+            </a>
+            <a href="/line2/">
+              <span class="line-badge" style="background:rgba(245,158,11,0.12);color:var(--amber-dark);">L2</span>
+              Explainable RPM &amp; Clinical Decision Support
+              <span class="dropdown-desc">RPM data normalization, SHAP explainability, risk stratification framework</span>
+            </a>
+            <a href="/line3/">
+              <span class="line-badge" style="background:rgba(168,85,247,0.12);color:#7c3aed;">L3</span>
+              Secure Health Information Exchange Governance
+              <span class="dropdown-desc">HIE security architecture, consent management, audit &amp; provenance governance</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="/publications/">Publications</a>
+        <a href="/technical/">Technical Resources</a>
+        <a href="/about/">About</a>
+
+        <span class="badge badge-amber" style="margin-left:0.5rem;">v0.1.0</span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==========================================================
+       MAIN CONTENT
+       ========================================================== -->
+  <main class="main-content">
+
+    <!-- Page Header -->
+    <section style="background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); padding: 3rem 0 2.5rem; border-bottom: 1px solid var(--navy-border);">
+      <div class="container">
+        <h1 style="color: var(--white); font-size: 2.25rem; line-height: 1.2; margin-bottom: 0.75rem;">
+          Mappings
+        </h1>
+        <p style="color: var(--gray-400); font-size: 1.05rem; max-width: 800px; margin-bottom: 0; line-height: 1.7;">
+          Executable StructureMaps and ConceptMaps for HL7 v2 and C-CDA to FHIR R4 Transformation
+        </p>
+        <div class="flex flex-wrap gap-2" style="margin-top: 1.25rem;">
+          <span class="badge badge-teal">12 StructureMaps</span>
+          <span class="badge" style="color:#a855f7;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);">11 ConceptMaps</span>
+          <span class="badge badge-amber">DRAFT</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mapping loading / content container -->
+    <section class="section" style="padding: 2.5rem 0;">
+      <div class="container">
+
+        <div id="mappings-content">
+          <!-- Loading indicator -->
+          <div class="loading-placeholder" id="loading-indicator">
+            <div class="spinner"></div>
+            <p>Loading mapping manifest…</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================
+       FOOTER
+       ========================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <p class="mb-1">&copy; 2025 Li Xinyang FHIR-Native Interoperability Framework</p>
+        <p class="mb-0 text-xs">Licensed under the Apache License, Version 2.0</p>
+      </div>
+      <div>
+        <span class="badge" style="color:#a855f7;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);">DRAFT &amp; EXPERIMENTAL — NOT FOR PRODUCTION USE</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================
+       JAVASCRIPT
+       ========================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      /**
+       * Helper: HTML escape.
+       */
+      function esc(str) {
+        if (!str) return '';
+        var d = document.createElement('div');
+        d.appendChild(document.createTextNode(str));
+        return d.innerHTML;
+      }
+
+      /**
+       * Build a mapping card for a StructureMap entry.
+       */
+      function buildMappingCard(sm) {
+        var id = sm.id;
+        // Determine display name and section
+        var isV2 = id.indexOf('v2-') === 0;
+        var isCCDA = id.indexOf('ccda-') === 0;
+
+        // Friendly display name (e.g. "PID → Patient")
+        var displayName = '';
+        if (id === 'v2-pid-to-patient') displayName = 'PID → Patient';
+        else if (id === 'v2-pv1-to-encounter') displayName = 'PV1 → Encounter';
+        else if (id === 'v2-obx-to-observation') displayName = 'OBX → Observation';
+        else if (id === 'v2-obr-to-diagnosticreport') displayName = 'OBR → DiagnosticReport';
+        else if (id === 'v2-orc-to-servicerequest') displayName = 'ORC → ServiceRequest';
+        else if (id === 'v2-sch-to-encounter') displayName = 'SCH → Encounter';
+        else if (id === 'v2-txa-to-documentreference') displayName = 'TXA → DocumentReference';
+        else if (id === 'ccda-problem-to-condition') displayName = 'Problem → Condition';
+        else if (id === 'ccda-allergy-to-allergyintolerance') displayName = 'Allergy → AllergyIntolerance';
+        else if (id === 'ccda-medication-to-medicationstatement') displayName = 'Medication → MedicationStatement';
+        else if (id === 'ccda-discharge-medication-to-medicationrequest') displayName = 'Discharge Medication → MedicationRequest';
+        else if (id === 'ccda-procedure-to-procedure') displayName = 'Procedure → Procedure';
+        else displayName = sm.title || id;
+
+        // Source / target short labels
+        var sourceLabel = isV2 ? 'HL7 v2' : 'C-CDA';
+        var targetLabel = 'FHIR R4';
+
+        return {
+          html:
+            '<div class="mapping-card">' +
+              '<div class="mapping-card-header">' +
+                '<div>' +
+                  '<h3>' + esc(displayName) + '</h3>' +
+                  '<div class="mapping-card-id">' + esc(id) + '</div>' +
+                '</div>' +
+              '</div>' +
+              '<div class="mapping-card-body">' +
+                '<div class="mapping-source-target">' +
+                  '<span class="source-label">' + esc(sourceLabel) + '</span>' +
+                  '<span class="arrow">→</span>' +
+                  '<span class="target-label">' + esc(targetLabel) + '</span>' +
+                '</div>' +
+                '<div class="mapping-type-badges">' +
+                  '<span class="badge" style="color:#a855f7;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);">StructureMap</span>' +
+                  '<span class="badge" style="color:#0d9488;background:rgba(13,148,136,0.10);border:1px solid rgba(13,148,136,0.20);">Structural Mapping</span>' +
+                '</div>' +
+                '<div style="margin-top:0.5rem;">' +
+                  '<span class="status-indicator status-draft">Draft</span>' +
+                '</div>' +
+              '</div>' +
+              '<div class="mapping-card-footer">' +
+                '<a href="../../data/resources/StructureMap-' + esc(id) + '.json" class="btn btn-secondary btn-sm">View StructureMap JSON</a>' +
+                '<a href="../../data/' + esc(id) + '.map" class="btn btn-ghost btn-sm">View FML Source</a>' +
+                '<a href="../mappings/' + esc(id) + '/" class="btn btn-primary btn-sm">View Details</a>' +
+              '</div>' +
+            '</div>',
+          section: isV2 ? 'v2' : (isCCDA ? 'ccda' : 'other')
+        };
+      }
+
+      /**
+       * Build the ConceptMap table rows.
+       */
+      function buildConceptMapRows(conceptMaps) {
+        var rows = '';
+        conceptMaps.forEach(function (cm) {
+          var bundledLabel = cm.hasBundledMappings ? 'Yes' : 'No';
+          var bundledCls = cm.hasBundledMappings ? 'badge badge-yes' : 'badge badge-no';
+          rows +=
+            '<tr>' +
+              '<td>' + esc(cm.title) + '</td>' +
+              '<td><code class="concept-map-id">' + esc(cm.id) + '</code></td>' +
+              '<td><span class="' + bundledCls + '">' + bundledLabel + '</span></td>' +
+              '<td><a href="../../data/resources/ConceptMap-' + esc(cm.id) + '.json" class="btn btn-ghost btn-sm">View JSON</a></td>' +
+            '</tr>';
+        });
+        return rows;
+      }
+
+      /**
+       * Render all content after loading manifest.
+       */
+      function renderContent(data) {
+        var container = document.getElementById('mappings-content');
+        if (!container) return;
+
+        var structureMaps = data.structureMaps || [];
+        var conceptMaps = data.conceptMaps || [];
+
+        // Separate into sections
+        var v2Maps = [];
+        var ccdaMaps = [];
+        structureMaps.forEach(function (sm) {
+          var card = buildMappingCard(sm);
+          if (card.section === 'v2') v2Maps.push(card.html);
+          else if (card.section === 'ccda') ccdaMaps.push(card.html);
+        });
+
+        var html = '';
+
+        // ---- HL7 v2 Mappings Section ----
+        html +=
+          '<div class="mapping-group-title">' +
+            '<span class="group-icon v2-icon">v2</span>' +
+            'HL7 v2 Mappings' +
+            ' <span class="mapping-count">(' + v2Maps.length + ' StructureMaps)</span>' +
+          '</div>' +
+          '<div class="card-grid" style="grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));">' +
+            v2Maps.join('') +
+          '</div>';
+
+        // ---- C-CDA Mappings Section ----
+        html +=
+          '<hr class="section-divider" />' +
+          '<div class="mapping-group-title">' +
+            '<span class="group-icon ccda-icon">CDA</span>' +
+            'C-CDA Mappings' +
+            ' <span class="mapping-count">(' + ccdaMaps.length + ' StructureMaps)</span>' +
+          '</div>' +
+          '<div class="card-grid" style="grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));">' +
+            ccdaMaps.join('') +
+          '</div>';
+
+        // ---- ConceptMap Section ----
+        html +=
+          '<hr class="section-divider" />' +
+          '<div class="mapping-group-title">' +
+            '<span class="group-icon" style="background:rgba(22,163,74,0.12);color:#16a34a;border:1px solid rgba(22,163,74,0.25);">CM</span>' +
+            'ConceptMaps' +
+            ' <span class="mapping-count">(' + conceptMaps.length + ')</span>' +
+          '</div>' +
+          '<p style="color:var(--gray-500);font-size:0.875rem;margin-bottom:1.25rem;">' +
+            'Semantic concept mappings between code systems for terminology reconciliation across HL7 v2 and C-CDA sources.' +
+          '</p>' +
+          '<div class="table-wrapper">' +
+            '<table class="concept-map-table">' +
+              '<thead>' +
+                '<tr>' +
+                  '<th style="width:40%;">Title</th>' +
+                  '<th style="width:30%;">ID</th>' +
+                  '<th style="width:15%;">Bundled Mappings</th>' +
+                  '<th style="width:15%;">View</th>' +
+                '</tr>' +
+              '</thead>' +
+              '<tbody>' +
+                buildConceptMapRows(conceptMaps) +
+              '</tbody>' +
+            '</table>' +
+          '</div>';
+
+        // Add metadata footer
+        if (data.packageVersion) {
+          html +=
+            '<p style="font-size:0.75rem;color:var(--gray-400);margin-top:1.5rem;text-align:right;">' +
+              'Package v' + esc(data.packageVersion) + ' &middot; Generated ' + (data.generatedDate || '—') +
+            '</p>';
+        }
+
+        container.innerHTML = html;
+      }
+
+      /**
+       * Load manifest and render.
+       */
+      document.addEventListener('DOMContentLoaded', function () {
+        var container = document.getElementById('mappings-content');
+        if (!container) return;
+
+        fetch('../../data/mapping-manifest.json')
+          .then(function (resp) {
+            if (!resp.ok) throw new Error('Failed to load mapping manifest (HTTP ' + resp.status + ')');
+            return resp.json();
+          })
+          .then(function (data) {
+            renderContent(data);
+          })
+          .catch(function (err) {
+            console.error('Error loading mapping manifest:', err);
+            container.innerHTML =
+              '<div class="alert alert-red" style="margin-top:1rem;">' +
+                '<span class="alert-title">Error Loading Mappings</span>' +
+                'Could not load mapping manifest. Please ensure the data file exists at <code>/data/mapping-manifest.json</code> and try refreshing.' +
+                '<br /><span style="font-size:0.75rem;color:var(--gray-400);margin-top:0.25rem;display:block;">' + esc(err.message) + '</span>' +
+              '</div>';
+          });
+      });
+
+    })();
+  </script>
+  <script src="../../js/main.js"></script>
+</body>
+</html>

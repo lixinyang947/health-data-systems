@@ -1,0 +1,17 @@
+map "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-sch-to-encounter" = "V2SCHToEncounter"
+
+uses "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2SCH" alias V2SCH as source
+uses "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-encounter" alias Encounter as target
+
+group V2SCHToEncounter(source src : HITCV2SCH, target tgt : Encounter) {
+  src.placerAppointmentId as v -> tgt.identifier.value = copy(v) "appointmentIdentifier";
+  src.placerAppointmentId as v -> tgt.identifier.system = evaluate('https://example.org/fhir/sid/appointment') "identifierSystem";
+  src.placerAppointmentId as v -> tgt.status = evaluate('planned') "plannedStatus";
+  src.placerAppointmentId as v -> tgt.class.code = evaluate('AMB') "ambulatoryClassCode";
+  src.placerAppointmentId as v -> tgt.class.system = evaluate('http://terminology.hl7.org/CodeSystem/v3-ActCode') "ambulatoryClassSystem";
+  src.startDateTime as v -> tgt.period.start = copy(v) "startTime";
+  src.appointmentReason as v -> tgt.type.coding = copy(v) "appointmentReason";
+  src.location as v -> tgt.location.location.display = copy(v) "locationDisplay";
+}
+
+// Draft and experimental. Reference resolution, source-system extension population, semantic reconciliation, UCUM normalization, temporal normalization, and validation are orchestrated outside this Phase 1 map unless explicitly shown.

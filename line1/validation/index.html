@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Validation Dashboard — FHIR-Native Interoperability Framework</title>
+  <link rel="stylesheet" href="../../css/main.css" />
+  <style>
+    /* Validation Dashboard page-specific styles */
+
+    /* --- Hero section (matching other pages) --- */
+    .validation-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      padding: 3.5rem 0 2.5rem;
+      border-bottom: 1px solid var(--navy-border);
+    }
+    .validation-hero h1 {
+      color: var(--white);
+      font-size: 2.25rem;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    .validation-hero .subtitle {
+      color: var(--gray-400);
+      font-size: 1.05rem;
+      max-width: 700px;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+
+    /* --- Section styles --- */
+    .section {
+      padding: 2.5rem 0;
+    }
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--gray-900);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gray-200);
+    }
+
+    /* --- Status indicators --- */
+    .status-indicators {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .status-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 0.75rem 1.25rem;
+      box-shadow: var(--shadow-sm);
+      flex: 1;
+      min-width: 200px;
+    }
+    .status-icon {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .status-icon.teal {
+      background-color: var(--teal);
+      box-shadow: 0 0 6px rgba(20,184,166,0.4);
+    }
+    .status-icon.amber {
+      background-color: var(--amber);
+      box-shadow: 0 0 6px rgba(245,158,11,0.4);
+    }
+    .status-label {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--gray-700);
+    }
+    .status-result {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.15rem 0.55rem;
+      border-radius: 9999px;
+      white-space: nowrap;
+      margin-left: auto;
+    }
+    .status-result.teal {
+      background-color: rgba(20,184,166,0.1);
+      color: var(--teal-dark);
+      border: 1px solid rgba(20,184,166,0.25);
+    }
+    .status-result.amber {
+      background-color: rgba(245,158,11,0.1);
+      color: var(--amber-dark);
+      border: 1px solid rgba(245,158,11,0.25);
+    }
+
+    /* --- Stats cards grid --- */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1rem;
+      text-align: center;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: box-shadow 0.2s ease;
+    }
+    .stat-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--teal);
+      line-height: 1.2;
+    }
+    .stat-value.amber {
+      color: var(--amber);
+    }
+    .stat-value.red {
+      color: var(--red);
+    }
+    .stat-value.gray {
+      color: var(--gray-500);
+    }
+    .stat-value.small {
+      font-size: 1.25rem;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+      margin-top: 0.35rem;
+      line-height: 1.3;
+    }
+
+    /* --- Validation passes list --- */
+    .passes-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2.5rem 0;
+    }
+    .passes-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.7rem 1rem;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      margin-bottom: 0.5rem;
+      box-shadow: var(--shadow-sm);
+      font-size: 0.9rem;
+      color: var(--gray-700);
+      line-height: 1.5;
+    }
+    .pass-check {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: rgba(20,184,166,0.12);
+      color: var(--teal-dark);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-top: 1px;
+    }
+
+    /* --- Downloads section --- */
+    .downloads-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+    .download-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.25rem;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+    .download-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--teal);
+      text-decoration: none;
+    }
+    .download-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .download-name {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--gray-900);
+    }
+    .download-meta {
+      font-size: 0.75rem;
+      color: var(--gray-400);
+      margin-top: 0.1rem;
+      word-break: break-all;
+    }
+    .download-icon {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-md);
+      background-color: rgba(20,184,166,0.08);
+      color: var(--teal);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+      font-weight: 700;
+    }
+
+    /* --- Limitations callout --- */
+    .callout {
+      background-color: rgba(245,158,11,0.06);
+      border: 1px solid rgba(245,158,11,0.2);
+      border-left: 4px solid var(--amber);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .callout-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--amber-dark);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .callout-body {
+      font-size: 0.875rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+    .callout-body ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.25rem 0 0 0;
+    }
+    .callout-body ul li {
+      padding: 0.1rem 0;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+    .callout-body ul li::before {
+      content: "·";
+      position: absolute;
+      left: 0.35rem;
+      color: var(--gray-400);
+      font-weight: 700;
+    }
+
+    /* --- Loading indicator --- */
+    .loading-placeholder {
+      text-align: center;
+      padding: 2rem;
+      color: var(--gray-400);
+      font-size: 0.9rem;
+    }
+
+    /* --- Responsive tweaks --- */
+    @media (max-width: 768px) {
+      .validation-hero h1 { font-size: 1.75rem; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .status-item { min-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================
+       STICKY HEADER (mirroring other pages)
+       ========================================================== -->
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-logo">
+        <span class="logo-badge">XYL</span>
+        Xinyang Li
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="main-nav">
+        <a href="/">Home</a>
+
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle">Research</button>
+          <div class="dropdown-menu">
+            <a href="/line1/">
+              <span class="line-badge" style="background:rgba(20,184,166,0.12);color:var(--teal-dark);">L1</span>
+              FHIR-Native Clinical Data Interoperability
+              <span class="dropdown-desc">Executable FHIR R4 profiles, mappings, quality metrics, provenance &amp; validation</span>
+            </a>
+            <a href="/line2/">
+              <span class="line-badge" style="background:rgba(245,158,11,0.12);color:var(--amber-dark);">L2</span>
+              Explainable RPM &amp; Clinical Decision Support
+              <span class="dropdown-desc">RPM data normalization, SHAP explainability, risk stratification framework</span>
+            </a>
+            <a href="/line3/">
+              <span class="line-badge" style="background:rgba(168,85,247,0.12);color:#7c3aed;">L3</span>
+              Secure Health Information Exchange Governance
+              <span class="dropdown-desc">HIE security architecture, consent management, audit &amp; provenance governance</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="/publications/">Publications</a>
+        <a href="/technical/">Technical Resources</a>
+        <a href="/about/">About</a>
+
+        <span class="badge badge-amber" style="margin-left:0.5rem;">v0.1.0</span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==========================================================
+       MAIN CONTENT
+       ========================================================== -->
+  <main class="main-content">
+
+    <!-- ==========================================================
+         HERO SECTION
+         ========================================================== -->
+    <section class="validation-hero">
+      <div class="container">
+        <h1>Validation Dashboard</h1>
+        <p class="subtitle">Build compilation, package integrity, and offline FHIR validation results for v0.1.0</p>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         STATUS INDICATORS (dynamically loaded)
+         ========================================================== -->
+    <section class="section" style="padding-bottom: 1rem;">
+      <div class="container">
+        <h2 class="section-title">Status Overview</h2>
+
+        <!-- SUSHI compilation, Package assembly, Integrity = always PASSED (teal)
+             Offline FHIR Validation = PASSED WITH INFO (amber) — loaded dynamically -->
+        <div class="status-indicators" id="status-indicators">
+          <div class="status-item">
+            <span class="status-icon teal"></span>
+            <span class="status-label">SUSHI Compilation</span>
+            <span class="status-result teal">PASSED</span>
+          </div>
+          <div class="status-item">
+            <span class="status-icon teal"></span>
+            <span class="status-label">Package Assembly</span>
+            <span class="status-result teal">PASSED</span>
+          </div>
+          <div class="status-item">
+            <span class="status-icon teal"></span>
+            <span class="status-label">Integrity Checks</span>
+            <span class="status-result teal">PASSED</span>
+          </div>
+          <div class="status-item" id="offline-validation-status">
+            <span class="status-icon teal" id="offline-status-dot"></span>
+            <span class="status-label">Offline FHIR Validation</span>
+            <span class="status-result teal" id="offline-status-label">PASSED</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         STATS CARDS (dynamically loaded)
+         ========================================================== -->
+    <section class="section" style="padding-top: 1rem;">
+      <div class="container">
+        <h2 class="section-title">Validation Statistics</h2>
+        <div class="stats-grid" id="stats-grid">
+          <!-- Populated dynamically -->
+          <div class="loading-placeholder">Loading statistics…</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         VALIDATION PASSES
+         ========================================================== -->
+    <section class="section" id="validation-passes-section">
+      <div class="container">
+        <h2 class="section-title">Validation Passes</h2>
+        <ul class="passes-list" id="passes-list">
+          <li class="loading-placeholder">Loading validation passes…</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         DOWNLOAD REPORTS
+         ========================================================== -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Download Reports</h2>
+        <div class="downloads-grid">
+
+          <a href="/data/BUILD_REPORT.md" class="download-card" target="_blank">
+            <div class="download-info">
+              <div class="download-name">BUILD_REPORT.md</div>
+              <div class="download-meta">Build compilation results</div>
+            </div>
+            <span class="download-icon">&#8595;</span>
+          </a>
+
+          <a href="/data/VALIDATION_REPORT.md" class="download-card" target="_blank">
+            <div class="download-info">
+              <div class="download-name">VALIDATION_REPORT.md</div>
+              <div class="download-meta">Package validation summary</div>
+            </div>
+            <span class="download-icon">&#8595;</span>
+          </a>
+
+          <a href="/data/OFFLINE_FHIR_VALIDATION_REPORT.md" class="download-card" target="_blank">
+            <div class="download-info">
+              <div class="download-name">OFFLINE_FHIR_VALIDATION_REPORT.md</div>
+              <div class="download-meta">Offline FHIR validation results</div>
+            </div>
+            <span class="download-icon">&#8595;</span>
+          </a>
+
+          <a href="/data/BUILD_LOG.txt" class="download-card" target="_blank">
+            <div class="download-info">
+              <div class="download-name">BUILD_LOG.txt</div>
+              <div class="download-meta">Build process log</div>
+            </div>
+            <span class="download-icon">&#8595;</span>
+          </a>
+
+          <a href="/data/package-manifest.json" class="download-card" target="_blank">
+            <div class="download-info">
+              <div class="download-name">Package Manifest</div>
+              <div class="download-meta">li-xinyang-interop-r4 v0.1.0 &middot; 116 resources</div>
+            </div>
+            <span class="download-icon">&#8595;</span>
+          </a>
+
+          <a href="/data/package-manifest.json" class="download-card" target="_blank">
+            <div class="download-info">
+              <div class="download-name">SHA-256 Records</div>
+              <div class="download-meta" id="sha256-display">c18c7c1fb86f0429599305239195340fd6afa2bbd8f0e212008e9d7fd1a5f874</div>
+            </div>
+            <span class="download-icon">&#8595;</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         LIMITATIONS DISCLAIMER
+         ========================================================== -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="callout">
+          <div class="callout-title">
+            <span>&#9888;&#65039;</span> Limitations &amp; Scope
+          </div>
+          <div class="callout-body">
+            This validation record does not establish:
+            <ul>
+              <li>hospital deployment;</li>
+              <li>production acceptance;</li>
+              <li>clinical-safety validation;</li>
+              <li>performance validation;</li>
+              <li>independent adopter validation;</li>
+              <li>official HL7 certification.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================
+       FOOTER
+       ========================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <p class="mb-1">&copy; 2025 Li Xinyang FHIR-Native Interoperability Framework</p>
+        <p class="mb-0 text-xs">Licensed under the Apache License, Version 2.0</p>
+      </div>
+      <div>
+        <span class="badge" style="color:#a855f7;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);">DRAFT &amp; EXPERIMENTAL — NOT FOR PRODUCTION USE</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================
+       JAVASCRIPT — Load real validation data
+       ========================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      /**
+       * Load both JSON feeds, then render the dashboard.
+       */
+      Promise.all([
+        fetch('/data/VALIDATION_REPORT.json').then(function (r) { if (!r.ok) throw new Error('VALIDATION_REPORT.json failed'); return r.json(); }),
+        fetch('/data/OFFLINE_FHIR_VALIDATION_REPORT.json').then(function (r) { if (!r.ok) throw new Error('OFFLINE_FHIR_VALIDATION_REPORT.json failed'); return r.json(); }),
+        fetch('/data/package-manifest.json').then(function (r) { if (!r.ok) throw new Error('package-manifest.json failed'); return r.json(); })
+      ])
+        .then(function (results) {
+          var vr = results[0]; // VALIDATION_REPORT.json
+          var ov = results[1]; // OFFLINE_FHIR_VALIDATION_REPORT.json
+          var pm = results[2]; // package-manifest.json
+
+          // --- 1. Update Offline FHIR Validation status ---
+          var dotEl = document.getElementById('offline-status-dot');
+          var labelEl = document.getElementById('offline-status-label');
+          if (dotEl && labelEl && ov && ov.totals) {
+            var t = ov.totals;
+            // No fatal, errors, or warnings — only informational/info → PASSED WITH INFO
+            if (t.fatal === 0 && t.error === 0 && t.warning === 0 && (t.information > 0 || t.info > 0)) {
+              dotEl.className = 'status-icon amber';
+              labelEl.className = 'status-result amber';
+              labelEl.textContent = 'PASSED WITH INFORMATIONAL FINDINGS';
+            } else if (t.fatal === 0 && t.error === 0 && t.warning === 0) {
+              dotEl.className = 'status-icon teal';
+              labelEl.className = 'status-result teal';
+              labelEl.textContent = 'PASSED';
+            } else {
+              dotEl.className = 'status-icon red';
+              labelEl.className = 'status-result red';
+              labelEl.textContent = 'ISSUES FOUND';
+            }
+          }
+
+          // --- 2. Render stats cards ---
+          renderStats(vr, ov);
+
+          // --- 3. Render validation passes ---
+          renderPasses(vr);
+
+          // --- 4. Update SHA-256 display ---
+          var shaEl = document.getElementById('sha256-display');
+          if (shaEl && pm && pm.sha256) {
+            shaEl.textContent = pm.sha256;
+          }
+        })
+        .catch(function (err) {
+          console.error('Validation dashboard error:', err);
+          var els = ['status-indicators', 'stats-grid', 'passes-list'];
+          els.forEach(function (id) {
+            var el = document.getElementById(id);
+            if (el) el.innerHTML = '<div class="alert alert-red" style="grid-column:1/-1;margin:0;"><span class="alert-title">Error</span>Could not load validation data. Please try refreshing the page.</div>';
+          });
+        });
+
+      /**
+       * Render the statistics cards grid.
+       */
+      function renderStats(vr, ov) {
+        var grid = document.getElementById('stats-grid');
+        if (!grid) return;
+
+        var resourceCount = (vr && vr.resourceCount) || 0;
+        var structDefs = (vr && vr.counts && vr.counts.StructureDefinition) || 0;
+        var pkgErrors = (vr && vr.errors && vr.errors.length) || 0;
+        var pkgWarnings = (vr && vr.warnings && vr.warnings.length) || 0;
+
+        var offlineResources = (ov && ov.totals && ov.totals.resources) || 0;
+        var offlineFatal = (ov && ov.totals && ov.totals.fatal) || 0;
+        var offlineErrors = (ov && ov.totals && ov.totals.error) || 0;
+        var offlineWarnings = (ov && ov.totals && ov.totals.warning) || 0;
+        var offlineInfo = (ov && ov.totals && ov.totals.information) || 0;
+        var offlineInfo2 = (ov && ov.totals && ov.totals.info) || 0;
+        var offlineTotal = (ov && ov.totals && ov.totals.totalIssues) || 0;
+
+        var cards = [
+          { value: resourceCount, label: 'Generated JSON Resources' },
+          { value: structDefs, label: 'StructureDefinitions' },
+          { value: pkgErrors, label: 'Package Check Errors', cls: pkgErrors > 0 ? 'red' : 'gray' },
+          { value: pkgWarnings, label: 'Package Check Warnings', cls: pkgWarnings > 0 ? 'amber' : 'gray' },
+          { value: offlineResources, label: 'Offline Resources Validated' },
+          // Fatal / Errors / Warnings combined card
+          { value: offlineFatal + ' / ' + offlineErrors + ' / ' + offlineWarnings, label: 'Fatal / Errors / Warnings', small: true, cls: (offlineFatal + offlineErrors + offlineWarnings) > 0 ? 'red' : 'gray' },
+          // Informational: information + info
+          { value: offlineTotal, label: 'Informational Findings (' + offlineInfo + ' information + ' + offlineInfo2 + ' info)', cls: 'amber', small: true },
+        ];
+
+        grid.innerHTML = '';
+        cards.forEach(function (card) {
+          var div = document.createElement('div');
+          div.className = 'stat-card';
+          var valCls = 'stat-value';
+          if (card.cls) valCls += ' ' + card.cls;
+          if (card.small) valCls += ' small';
+          div.innerHTML =
+            '<div class="' + valCls + '">' + card.value + '</div>' +
+            '<div class="stat-label">' + card.label + '</div>';
+          grid.appendChild(div);
+        });
+      }
+
+      /**
+       * Render the validation passes list.
+       */
+      function renderPasses(vr) {
+        var list = document.getElementById('passes-list');
+        if (!list) return;
+
+        if (!vr || !vr.passes || !vr.passes.length) {
+          list.innerHTML = '<li style="color:var(--gray-400);">No validation passes recorded.</li>';
+          return;
+        }
+
+        list.innerHTML = '';
+        vr.passes.forEach(function (passText) {
+          var li = document.createElement('li');
+          li.innerHTML = '<span class="pass-check">&#10003;</span> ' + escapeHtml(passText);
+          list.appendChild(li);
+        });
+      }
+
+      /**
+       * Simple HTML escaping utility.
+       */
+      function escapeHtml(str) {
+        if (!str) return '';
+        var div = document.createElement('div');
+        div.appendChild(document.createTextNode(str));
+        return div.innerHTML;
+      }
+
+    })();
+  </script>
+  <script src="../../js/main.js"></script>
+</body>
+</html>

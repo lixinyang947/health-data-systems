@@ -1,0 +1,158 @@
+{
+  "packageVersion": "0.1.0",
+  "generatedDate": "2026-07-21",
+  "conceptMaps": [
+    {
+      "id": "v2-administrative-gender-to-fhir",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-administrative-gender-to-fhir",
+      "title": "HL7 v2 Administrative Sex to FHIR Administrative Gender",
+      "hasBundledMappings": true
+    },
+    {
+      "id": "v2-abnormal-flag-to-observation-interpretation",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-abnormal-flag-to-observation-interpretation",
+      "title": "HL7 v2 Abnormal Flags to FHIR Observation Interpretation",
+      "hasBundledMappings": true
+    },
+    {
+      "id": "v2-patient-class-to-encounter-class",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-patient-class-to-encounter-class",
+      "title": "HL7 v2 Patient Class to FHIR Encounter Class",
+      "hasBundledMappings": true
+    },
+    {
+      "id": "v2-order-control-to-request-status",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-order-control-to-request-status",
+      "title": "HL7 v2 Order Control to FHIR Request Status",
+      "hasBundledMappings": true
+    },
+    {
+      "id": "v2-result-status-to-observation-status",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-result-status-to-observation-status",
+      "title": "HL7 v2 Result Status to FHIR Observation Status",
+      "hasBundledMappings": true
+    },
+    {
+      "id": "v2-result-status-to-diagnostic-report-status",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-result-status-to-diagnostic-report-status",
+      "title": "HL7 v2 Result Status to FHIR DiagnosticReport Status",
+      "hasBundledMappings": true
+    },
+    {
+      "id": "ndc-to-rxnorm-template",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/ndc-to-rxnorm-template",
+      "title": "NDC to RxNorm Crosswalk Template",
+      "hasBundledMappings": false
+    },
+    {
+      "id": "icd9cm-to-icd10cm-template",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/icd9cm-to-icd10cm-template",
+      "title": "ICD-9-CM to ICD-10-CM Crosswalk Template",
+      "hasBundledMappings": false
+    },
+    {
+      "id": "local-lab-to-loinc-template",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/local-lab-to-loinc-template",
+      "title": "Local Laboratory Code to LOINC Template",
+      "hasBundledMappings": false
+    },
+    {
+      "id": "local-clinical-to-snomed-template",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/local-clinical-to-snomed-template",
+      "title": "Local Clinical Code to SNOMED CT Template",
+      "hasBundledMappings": false
+    },
+    {
+      "id": "local-medication-to-rxnorm-template",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/local-medication-to-rxnorm-template",
+      "title": "Local Medication Code to RxNorm Template",
+      "hasBundledMappings": false
+    }
+  ],
+  "structureMaps": [
+    {
+      "id": "v2-pid-to-patient",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-pid-to-patient",
+      "title": "HL7 v2 PID to HITC Canonical Patient",
+      "source": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2PID",
+      "target": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-patient"
+    },
+    {
+      "id": "v2-pv1-to-encounter",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-pv1-to-encounter",
+      "title": "HL7 v2 PV1 to HITC Canonical Encounter",
+      "source": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2PV1",
+      "target": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-encounter"
+    },
+    {
+      "id": "v2-obx-to-observation",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-obx-to-observation",
+      "title": "HL7 v2 OBX to HITC Canonical Observation",
+      "source": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2OBX",
+      "target": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-observation"
+    },
+    {
+      "id": "v2-obr-to-diagnosticreport",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-obr-to-diagnosticreport",
+      "title": "HL7 v2 OBR to HITC Canonical DiagnosticReport",
+      "source": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2OBR",
+      "target": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-diagnostic-report"
+    },
+    {
+      "id": "v2-orc-to-servicerequest",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-orc-to-servicerequest",
+      "title": "HL7 v2 ORC to HITC Canonical ServiceRequest",
+      "source": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2ORC",
+      "target": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-service-request"
+    },
+    {
+      "id": "v2-sch-to-encounter",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-sch-to-encounter",
+      "title": "HL7 v2 SCH to Planned Encounter",
+      "source": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2SCH",
+      "target": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-encounter"
+    },
+    {
+      "id": "v2-txa-to-documentreference",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-txa-to-documentreference",
+      "title": "HL7 v2 TXA to HITC Canonical DocumentReference",
+      "source": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2TXA",
+      "target": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-document-reference"
+    },
+    {
+      "id": "ccda-problem-to-condition",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/ccda-problem-to-condition",
+      "title": "C-CDA Problem Entry to HITC Canonical Condition",
+      "source": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCCCDAEntry",
+      "target": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-condition"
+    },
+    {
+      "id": "ccda-allergy-to-allergyintolerance",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/ccda-allergy-to-allergyintolerance",
+      "title": "C-CDA Allergy Entry to HITC Canonical AllergyIntolerance",
+      "source": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCCCDAEntry",
+      "target": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-allergy-intolerance"
+    },
+    {
+      "id": "ccda-procedure-to-procedure",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/ccda-procedure-to-procedure",
+      "title": "C-CDA Procedure Entry to HITC Canonical Procedure",
+      "source": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCCCDAEntry",
+      "target": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-procedure"
+    },
+    {
+      "id": "ccda-medication-to-medicationstatement",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/ccda-medication-to-medicationstatement",
+      "title": "C-CDA Medication Entry to HITC Canonical MedicationStatement",
+      "source": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCCCDAEntry",
+      "target": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-medication-statement"
+    },
+    {
+      "id": "ccda-discharge-medication-to-medicationrequest",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/ccda-discharge-medication-to-medicationrequest",
+      "title": "C-CDA Discharge Medication Entry to HITC Canonical MedicationRequest",
+      "source": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCCCDAEntry",
+      "target": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-medication-request"
+    }
+  ]
+}

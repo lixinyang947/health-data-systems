@@ -1,0 +1,81 @@
+feature_id,domain,source_stream,loinc_ref,ucum_unit,window,derivation,personal_baseline,missing_policy,mimic_computable
+CV01_hr_mean_1h,cardiovascular,HR,8867-4,/min,1h,mean of validated readings,no,window coverage <20% -> NaN,Y
+CV02_hr_max_1h,cardiovascular,HR,8867-4,/min,1h,max of validated readings,no,same,Y
+CV03_hr_min_6h,cardiovascular,HR,8867-4,/min,6h,min of validated readings,no,same,Y
+CV04_hr_mean_24h,cardiovascular,HR,8867-4,/min,24h,mean of validated readings,no,same,Y
+CV05_hr_slope_6h,cardiovascular,HR,8867-4,/min/h,6h,least-squares slope on hourly series,no,needs >=3 points,Y
+CV06_hrv_rmssd_24h,cardiovascular,HR-RR,,ms,24h,RMSSD of RR intervals; ICU fallback: RMS of successive hourly HR diffs,no,beat data absent -> proxy,partial
+CV07_hrv_sdnn_24h,cardiovascular,HR-RR,,ms,24h,SD of NN intervals; ICU fallback: SD of hourly HR,no,same,partial
+CV08_hr_z_base_24h,cardiovascular,HR,8867-4,{z},24h,(24h mean - baseline median)/baseline SD,yes (7d median; >=5d),baseline unavailable -> NaN + indicator,partial
+CV09_resting_hr_7d,cardiovascular,HR,8867-4,/min,7d,sleep-period median; ICU proxy: 10th percentile of hourly HR,no,same,partial
+CV10_nocturnal_dip_7d,cardiovascular,HR,8867-4,{ratio},7d,night(00-06) mean / day(08-20) mean,no,coverage gate,partial
+CV11_sbp_mean_24h,cardiovascular,SBP,8480-6,mm[Hg],24h,mean,no,coverage gate,Y
+CV12_sbp_max_24h,cardiovascular,SBP,8480-6,mm[Hg],24h,max,no,coverage gate,Y
+CV13_sbp_slope_7d,cardiovascular,SBP,8480-6,mm[Hg]/d,7d,slope of daily means,no,needs >=3 daily points,partial
+CV14_dbp_mean_24h,cardiovascular,DBP,8462-4,mm[Hg],24h,mean,no,coverage gate,Y
+CV15_map_mean_24h,cardiovascular,MAP,8478-0,mm[Hg],24h,mean,no,coverage gate,Y
+CV16_pulse_pressure_24h,cardiovascular,SBP+DBP,,mm[Hg],24h,mean of paired (SBP-DBP),no,both streams required,Y
+CV17_sbp_sd_24h,cardiovascular,SBP,8480-6,mm[Hg],24h,standard deviation,no,coverage gate,Y
+CV18_sbp_z_base_24h,cardiovascular,SBP,8480-6,{z},24h,z vs personal baseline,yes,same as CV08,partial
+CV19_hypotension_events_24h,cardiovascular,MAP,,{count},24h,count of hourly MAP<65,no,coverage gate,Y
+CV20_severe_htn_events_24h,cardiovascular,SBP,,{count},24h,count of hourly SBP>=180,no,coverage gate,Y
+RS01_spo2_mean_1h,respiratory,SpO2,59408-5,%,1h,mean,no,coverage gate,Y
+RS02_spo2_min_6h,respiratory,SpO2,59408-5,%,6h,min,no,coverage gate,Y
+RS03_spo2_mean_24h,respiratory,SpO2,59408-5,%,24h,mean,no,coverage gate,Y
+RS04_spo2_t90_24h,respiratory,SpO2,,min,24h,minutes below 90% (hourly proxy x60),no,coverage gate,partial
+RS05_desat_events_24h,respiratory,SpO2,,{count},24h,count hourly mean >=4% below prior-6h median,no,coverage gate,partial
+RS06_spo2_z_base_24h,respiratory,SpO2,59408-5,{z},24h,z vs personal baseline,yes,same as CV08,partial
+RS07_rr_mean_1h,respiratory,RR,9279-1,/min,1h,mean,no,coverage gate,Y
+RS08_rr_max_6h,respiratory,RR,9279-1,/min,6h,max,no,coverage gate,Y
+RS09_rr_mean_24h,respiratory,RR,9279-1,/min,24h,mean,no,coverage gate,Y
+RS10_rr_slope_6h,respiratory,RR,9279-1,/min/h,6h,least-squares slope,no,needs >=3 points,Y
+RS11_tachypnea_events_24h,respiratory,RR,,{count},24h,count of hourly RR>24,no,coverage gate,Y
+RS12_rox_proxy_24h,respiratory,SpO2+RR,,{ratio},24h,SpO2 24h mean / RR 24h mean,no,both streams required,Y
+MB01_glu_mean_24h,metabolic,Glucose,2345-7,mg/dL,24h,mean,no,sparse labs -> coverage gate + indicator,Y
+MB02_glu_max_24h,metabolic,Glucose,2345-7,mg/dL,24h,max,no,same,Y
+MB03_glu_min_24h,metabolic,Glucose,2345-7,mg/dL,24h,min,no,same,Y
+MB04_glu_cv_24h,metabolic,Glucose,,%,24h,SD/mean*100,no,needs >=3 values,Y
+MB05_tir_24h,metabolic,Glucose,,%,24h,% values in 70-180,no,same,Y
+MB06_tbr70_24h,metabolic,Glucose,,%,24h,% values <70,no,same,Y
+MB07_tar180_24h,metabolic,Glucose,,%,24h,% values >180,no,same,Y
+MB08_glu_slope_6h,metabolic,Glucose,2345-7,mg/dL/h,6h,least-squares slope,no,needs >=3 points,Y
+MB09_hypo_events_24h,metabolic,Glucose,,{count},24h,count glucose<54,no,same,Y
+MB10_glu_z_base_7d,metabolic,Glucose,2345-7,{z},7d,z vs personal baseline,yes,same as CV08,partial
+AC01_steps_24h,activity,Device steps,41950-7,{count},24h,sum,no,stream absent -> NaN + indicator,N
+AC02_active_min_24h,activity,Device,,min,24h,minutes moderate+ intensity,no,same,N
+AC03_sedentary_ratio_24h,activity,Device,,%,24h,sedentary minutes/wear minutes,no,same,N
+AC04_steps_z_base_7d,activity,Device steps,41950-7,{z},7d,z vs personal baseline,yes,same,N
+AC05_sleep_dur_24h,activity,Device sleep,,h,24h,total sleep duration,no,same,N
+AC06_sleep_eff_24h,activity,Device sleep,,%,24h,sleep time/time in bed,no,same,N
+AC07_sleep_frag_24h,activity,Device sleep,,{index},24h,awakenings per sleep hour,no,same,N
+AC08_rem_ratio_24h,activity,Device sleep,,%,24h,REM/total sleep,no,same,N
+AC09_activity_intensity_24h,activity,Device,,{met-min},24h,mean MET-minutes,no,same,N
+AC10_circadian_shift_7d,activity,Device,,min,7d,|activity onset - median onset|,no,same,N
+VT01_temp_mean_24h,vitals,Temperature,8310-5,Cel,24h,mean,no,coverage gate,Y
+VT02_temp_max_24h,vitals,Temperature,8310-5,Cel,24h,max,no,coverage gate,Y
+VT03_temp_z_base_24h,vitals,Temperature,8310-5,{z},24h,z vs personal baseline,yes,same as CV08,partial
+VT04_weight_7d,vitals,Weight,29463-7,kg,7d,latest value,no,LOCF<=7d,Y
+VT05_weight_change_7d,vitals,Weight,29463-7,kg,7d,latest - earliest in window,no,needs >=2 values,Y
+VT06_bmi,vitals,Weight+Height,39156-5,kg/m2,static,weight/height^2,no,height absent -> NaN,partial
+CP01_mews_max_24h,composite,derived,,{score},24h,max hourly MEWS (GCS->AVPU mapped),no,documented proxy,Y
+CP02_qsofa_flag_24h,composite,derived,,{flag},24h,1 if any hour qSOFA>=2,no,same,Y
+CP03_news2_max_24h,composite,derived,,{score},24h,max hourly NEWS2 proxy (scale 1; no O2 points),no,same,Y
+CP04_charlson,context,EHR diagnoses,,{score},static,Charlson index (mimiciv_derived.charlson),no,never missing for hadm,Y
+CP05_int_cardio_renal,composite,derived,,{score},24h,renal_disease flag x |MAP z-score|,no,component gate,Y
+CP06_int_dm_cvd,composite,derived,,{score},24h,diabetes flag x CVD flag x MB04,no,component gate,Y
+CP07_polypharmacy,context,EHR meds,,{count},static,distinct active drugs at prediction time,no,none -> 0,Y
+CP08_hosp_30d_flag,context,EHR admits,,{flag},30d,prior admission within 30d,no,computable,Y
+CP09_ed_30d_flag,context,EHR ED,,{flag},30d,ED visit within 30d,no,not in MIMIC -> NaN + indicator,N
+CP10_frailty_proxy_7d,composite,Device+HR,,{score},7d,low activity + blunted HR recovery,no,device absent -> NaN + indicator,N
+PR01_dyspnea_24h,patient_reported,Survey,,{score},24h,0-10 Likert,no,nonresponse -> NaN + indicator,N
+PR02_fatigue_24h,patient_reported,Survey,,{score},24h,0-10,no,same,N
+PR03_pain_24h,patient_reported,Survey,,{score},24h,0-10,no,same,N
+PR04_dizziness_24h,patient_reported,Survey,,{score},24h,0-10,no,same,N
+PR05_wellbeing_24h,patient_reported,Survey,,{score},24h,0-10,no,same,N
+PR06_med_adherence_7d,patient_reported,Survey,,%,7d,self-reported adherence %,no,same,N
+PR07_dyspnea_delta_24h,patient_reported,Survey,,{score},24h,today - yesterday,no,same,N
+PR08_symptom_composite_24h,patient_reported,Survey,,{score},24h,0.4*dyspnea+0.3*fatigue+0.3*dizziness,no,same,N
+PR09_mood_screen_7d,patient_reported,Survey,44250-9,{score},7d,PHQ-2,no,same,N
+PR10_pro_completeness_7d,patient_reported,Survey,,%,7d,answered/scheduled %,no,same,N
+DQ01_wear_adherence_7d,data_quality,Device,,%,7d,wear minutes/expected minutes; ICU proxy: measurement coverage,no,coverage gate,partial
+DQ02_data_completeness_24h,data_quality,All,,%,24h,populated streams/expected streams,no,always computable,Y

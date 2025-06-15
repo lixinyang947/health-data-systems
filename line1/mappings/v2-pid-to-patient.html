@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PID → Patient — Mapping Details</title>
+  <link rel="stylesheet" href="../../css/main.css" />
+  <style>
+    /* Detail page layout */
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 992px) {
+      .detail-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .detail-section {
+      margin-bottom: 2rem;
+    }
+
+    .detail-section h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Mapping table (three-column) */
+    .mapping-table-wrapper {
+      overflow-x: auto;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--gray-200);
+      margin-bottom: 1.5rem;
+    }
+
+    .mapping-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+
+    .mapping-table thead {
+      background: var(--gray-50);
+    }
+
+    .mapping-table th {
+      font-weight: 600;
+      text-align: left;
+      padding: 0.75rem 1rem;
+      border-bottom: 2px solid var(--gray-200);
+      color: var(--gray-600);
+      font-size: 0.8125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .mapping-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--gray-100);
+      color: var(--gray-700);
+      vertical-align: top;
+    }
+
+    .mapping-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .mapping-table tr:hover td {
+      background-color: var(--gray-50);
+    }
+
+    .mapping-table .hl7-field {
+      font-family: var(--font-mono);
+      font-weight: 500;
+      color: var(--gray-800);
+      white-space: nowrap;
+    }
+
+    .mapping-table .rule-cell {
+      color: var(--gray-600);
+    }
+
+    .mapping-table .rule-cell .rule-badge {
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      padding: 0.15rem 0.5rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.25rem;
+    }
+
+    .mapping-table .rule-cell .rule-badge.normalization {
+      background: rgba(168,85,247,0.10);
+      color: #7c3aed;
+      border: 1px solid rgba(168,85,247,0.18);
+    }
+
+    .mapping-table .rule-cell .rule-badge.component {
+      background: rgba(20,184,166,0.10);
+      color: var(--teal-dark);
+      border: 1px solid rgba(20,184,166,0.18);
+    }
+
+    .mapping-table .rule-cell .rule-badge.translation {
+      background: rgba(245,158,11,0.10);
+      color: var(--amber-dark);
+      border: 1px solid rgba(245,158,11,0.18);
+    }
+
+    .mapping-table .fhir-target {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+    }
+
+    .mapping-table .fhir-target .resource-type {
+      color: var(--teal-dark);
+      font-weight: 600;
+    }
+
+    .mapping-table .fhir-target .element-path {
+      color: var(--gray-600);
+    }
+
+    /* Info cards */
+    .info-card {
+      background-color: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      padding: 1.25rem;
+    }
+
+    .info-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .info-card .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .info-card .info-row:last-child {
+      border-bottom: none;
+    }
+
+    .info-card .info-label {
+      font-size: 0.8125rem;
+      color: var(--gray-500);
+    }
+
+    .info-card .info-value {
+      font-size: 0.8125rem;
+      color: var(--gray-800);
+      font-weight: 500;
+    }
+
+    .related-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8125rem;
+    }
+
+    .related-table th {
+      text-align: left;
+      font-weight: 600;
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--gray-200);
+      color: var(--gray-500);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    .related-table td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--gray-100);
+      color: var(--gray-700);
+    }
+
+    .related-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.875rem;
+      color: var(--gray-500);
+      margin-bottom: 1.5rem;
+    }
+
+    .back-link:hover {
+      color: var(--teal);
+      text-decoration: none;
+    }
+
+    .overview-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================
+       STICKY HEADER
+       ========================================================== -->
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-logo">
+        <span class="logo-badge">XYL</span>
+        Xinyang Li
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="main-nav">
+        <a href="/">Home</a>
+
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle">Research</button>
+          <div class="dropdown-menu">
+            <a href="/line1/">
+              <span class="line-badge" style="background:rgba(20,184,166,0.12);color:var(--teal-dark);">L1</span>
+              FHIR-Native Clinical Data Interoperability
+              <span class="dropdown-desc">Executable FHIR R4 profiles, mappings, quality metrics, provenance &amp; validation</span>
+            </a>
+            <a href="/line2/">
+              <span class="line-badge" style="background:rgba(245,158,11,0.12);color:var(--amber-dark);">L2</span>
+              Explainable RPM &amp; Clinical Decision Support
+              <span class="dropdown-desc">RPM data normalization, SHAP explainability, risk stratification framework</span>
+            </a>
+            <a href="/line3/">
+              <span class="line-badge" style="background:rgba(168,85,247,0.12);color:#7c3aed;">L3</span>
+              Secure Health Information Exchange Governance
+              <span class="dropdown-desc">HIE security architecture, consent management, audit &amp; provenance governance</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="/publications/">Publications</a>
+        <a href="/technical/">Technical Resources</a>
+        <a href="/about/">About</a>
+
+        <span class="badge badge-amber" style="margin-left:0.5rem;">v0.1.0</span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==========================================================
+       MAIN CONTENT
+       ========================================================== -->
+  <main class="main-content">
+
+    <div class="container">
+
+      <!-- Breadcrumb back link -->
+      <a href="/line1/mappings/" class="back-link">
+        <span>&larr;</span> Back to All Mappings
+      </a>
+
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1>PID → Patient</h1>
+        <p style="color:var(--gray-500);font-size:1rem;">
+          HL7 v2 PID segment to FHIR R4 Patient resource — structural and semantic transformation details.
+        </p>
+        <div class="overview-badges" style="margin-top:0.75rem;">
+          <span class="badge" style="color:#a855f7;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);">StructureMap</span>
+          <span class="badge" style="color:#0d9488;background:rgba(13,148,136,0.10);border:1px solid rgba(13,148,136,0.20);">Structural Mapping</span>
+          <span class="badge badge-amber">Draft</span>
+          <span class="badge badge-teal">v2-pid-to-patient</span>
+        </div>
+      </div>
+
+      <!-- Two-column layout -->
+      <div class="detail-grid">
+
+        <!-- LEFT COLUMN: Column mapping table -->
+        <div>
+
+          <div class="detail-section">
+            <h2>
+              <span style="font-size:0.875rem;color:var(--teal);">&#8594;</span>
+              Field Mapping Details
+            </h2>
+
+            <div class="mapping-table-wrapper">
+              <table class="mapping-table">
+                <thead>
+                  <tr>
+                    <th style="width:22%;">HL7 v2 Field</th>
+                    <th style="width:38%;">Transformation Rule</th>
+                    <th style="width:40%;">FHIR Target</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="hl7-field">PID-3</span><br /><span style="font-size:0.75rem;color:var(--gray-400);">Patient Identifier List</span></td>
+                    <td class="rule-cell">
+                      <span class="rule-badge normalization">Normalization</span>
+                      <div style="margin-top:0.25rem;">Identifier normalization: extract CX components, assign system URI, set period use</div>
+                    </td>
+                    <td><span class="fhir-target"><span class="resource-type">Patient</span><span class="element-path">.identifier</span></span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="hl7-field">PID-5</span><br /><span style="font-size:0.75rem;color:var(--gray-400);">Patient Name</span></td>
+                    <td class="rule-cell">
+                      <span class="rule-badge component">Component Mapping</span>
+                      <div style="margin-top:0.25rem;">Name component mapping: XPN → HumanName with family/given/prefix/suffix extraction</div>
+                    </td>
+                    <td><span class="fhir-target"><span class="resource-type">Patient</span><span class="element-path">.name</span></span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="hl7-field">PID-7</span><br /><span style="font-size:0.75rem;color:var(--gray-400);">Date/Time of Birth</span></td>
+                    <td class="rule-cell">
+                      <span class="rule-badge normalization">Normalization</span>
+                      <div style="margin-top:0.25rem;">Date normalization: TS → FHIR date, timezone adjustment</div>
+                    </td>
+                    <td><span class="fhir-target"><span class="resource-type">Patient</span><span class="element-path">.birthDate</span></span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="hl7-field">PID-8</span><br /><span style="font-size:0.75rem;color:var(--gray-400);">Administrative Sex</span></td>
+                    <td class="rule-cell">
+                      <span class="rule-badge translation">ConceptMap Translation</span>
+                      <div style="margin-top:0.25rem;">ConceptMap: <a href="../../data/resources/ConceptMap-v2-administrative-gender-to-fhir.json">v2-administrative-gender-to-fhir</a></div>
+                    </td>
+                    <td><span class="fhir-target"><span class="resource-type">Patient</span><span class="element-path">.gender</span></span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="hl7-field">PID-11</span><br /><span style="font-size:0.75rem;color:var(--gray-400);">Patient Address</span></td>
+                    <td class="rule-cell">
+                      <span class="rule-badge component">Component Mapping</span>
+                      <div style="margin-top:0.25rem;">Address component mapping: XAD → Address with street/city/state/postalCode/country extraction</div>
+                    </td>
+                    <td><span class="fhir-target"><span class="resource-type">Patient</span><span class="element-path">.address</span></span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p style="font-size:0.8125rem;color:var(--gray-400);">
+              This table shows a representative subset of the full field-level mapping. The complete mapping is defined in the StructureMap and FML source files.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: Sidebar info -->
+        <div>
+
+          <!-- StructureMap Info -->
+          <div class="info-card" style="margin-bottom:1.25rem;">
+            <h3>StructureMap Details</h3>
+            <div class="info-row">
+              <span class="info-label">ID</span>
+              <span class="info-value"><code>v2-pid-to-patient</code></span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Status</span>
+              <span class="info-value"><span class="status-indicator status-draft">Draft</span></span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Source</span>
+              <span class="info-value" style="font-size:0.75rem;max-width:200px;text-align:right;word-break:break-all;">HL7 v2 PID Segment<br /><span style="color:var(--gray-400);">(HITCV2PID)</span></span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Target</span>
+              <span class="info-value" style="font-size:0.75rem;max-width:200px;text-align:right;word-break:break-all;">FHIR R4 Patient<br /><span style="color:var(--gray-400);">(hitc-canonical-patient)</span></span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Type</span>
+              <span class="info-value">Structural Mapping</span>
+            </div>
+          </div>
+
+          <!-- Related ConceptMaps -->
+          <div class="info-card" style="margin-bottom:1.25rem;">
+            <h3>Related ConceptMaps</h3>
+            <table class="related-table">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>View</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>HL7 v2 Administrative Sex to FHIR Administrative Gender</td>
+                  <td><a href="../../data/resources/ConceptMap-v2-administrative-gender-to-fhir.json" class="btn btn-ghost btn-sm">JSON</a></td>
+                </tr>
+                <tr>
+                  <td>HL7 v2 Patient Class to FHIR Encounter Class</td>
+                  <td><a href="../../data/resources/ConceptMap-v2-patient-class-to-encounter-class.json" class="btn btn-ghost btn-sm">JSON</a></td>
+                </tr>
+                <tr>
+                  <td>NDC to RxNorm Crosswalk Template</td>
+                  <td><a href="../../data/resources/ConceptMap-ndc-to-rxnorm-template.json" class="btn btn-ghost btn-sm">JSON</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Download / View Links -->
+          <div class="info-card">
+            <h3>Artifact Files</h3>
+            <div style="display:flex;flex-direction:column;gap:0.5rem;">
+              <a href="../../data/resources/StructureMap-v2-pid-to-patient.json" class="btn btn-primary" style="justify-content:center;">
+                View StructureMap JSON
+              </a>
+              <a href="../../data/v2-pid-to-patient.map" class="btn btn-secondary" style="justify-content:center;">
+                View FML Source
+              </a>
+              <a href="https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-pid-to-patient" class="btn btn-ghost" style="justify-content:center;" target="_blank" rel="noopener">
+                Canonical URL &nearr;
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ==========================================================
+       FOOTER
+       ========================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <p class="mb-1">&copy; 2025 Li Xinyang FHIR-Native Interoperability Framework</p>
+        <p class="mb-0 text-xs">Licensed under the Apache License, Version 2.0</p>
+      </div>
+      <div>
+        <span class="badge" style="color:#a855f7;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);">DRAFT &amp; EXPERIMENTAL — NOT FOR PRODUCTION USE</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

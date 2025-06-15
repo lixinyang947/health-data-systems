@@ -1,0 +1,16 @@
+map "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-obx-to-observation" = "V2OBXToObservation"
+
+uses "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2OBX" alias V2OBX as source
+uses "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-observation" alias Observation as target
+
+group V2OBXToObservation(source src : HITCV2OBX, target tgt : Observation) {
+  src.observationIdentifier as v -> tgt.code.coding = copy(v) "observationCode";
+  src.resultStatus as v -> tgt.status = translate(v, 'https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-result-status-to-observation-status', 'code') "resultStatus";
+  src.observationDateTime as v -> tgt.effectiveDateTime = copy(v) "effectiveTime";
+  src.value as v -> tgt.valueString = copy(v) "observationValue";
+  src.units as v -> tgt.valueQuantity.code = copy(v) "units";
+  src.abnormalFlags as v -> tgt.interpretation.coding.code = translate(v, 'https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-abnormal-flag-to-observation-interpretation', 'code') "interpretation";
+  src.referenceRange as v -> tgt.referenceRange.text = copy(v) "referenceRange";
+}
+
+// Draft and experimental. Reference resolution, source-system extension population, semantic reconciliation, UCUM normalization, temporal normalization, and validation are orchestrated outside this Phase 1 map unless explicitly shown.

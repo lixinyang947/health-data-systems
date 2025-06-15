@@ -1,0 +1,15 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "HITCMappingStrategyVS",
+  "id": "hitc-mapping-strategy",
+  "title": "HITC Mapping Strategy Value Set",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/ValueSet/hitc-mapping-strategy",
+  "compose": {
+    "include": [
+      {
+        "system": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-mapping-strategy"
+      }
+    ]
+  }
+}

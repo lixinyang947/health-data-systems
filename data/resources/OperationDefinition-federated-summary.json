@@ -1,0 +1,57 @@
+{
+  "resourceType": "OperationDefinition",
+  "id": "federated-summary",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/OperationDefinition/federated-summary",
+  "version": "0.1.0",
+  "name": "HITCFederatedSummary",
+  "title": "HITC Federated Patient Summary Operation",
+  "status": "draft",
+  "experimental": true,
+  "date": "2026-07-21",
+  "publisher": "Xinyang Li",
+  "description": "Decomposes a patient-summary request into institution-specific subqueries, merges results, and returns a canonical Bundle.",
+  "purpose": "Defines the requirements contract for the low-latency federated query workflow; performance targets remain prospective.",
+  "kind": "operation",
+  "code": "federated-summary",
+  "comment": "The operation contract does not prescribe a particular patient-matching or cache implementation.",
+  "resource": [
+    "Patient"
+  ],
+  "system": false,
+  "type": true,
+  "instance": true,
+  "parameter": [
+    {
+      "name": "identifier",
+      "use": "in",
+      "min": 0,
+      "max": "*",
+      "documentation": "Patient business identifier(s) used for probabilistic or deterministic matching.",
+      "type": "Identifier"
+    },
+    {
+      "name": "section",
+      "use": "in",
+      "min": 0,
+      "max": "*",
+      "documentation": "Requested summary sections, such as medications, problems, allergies, labs, or procedures.",
+      "type": "code"
+    },
+    {
+      "name": "maxAge",
+      "use": "in",
+      "min": 0,
+      "max": "1",
+      "documentation": "Maximum acceptable cache age.",
+      "type": "Duration"
+    },
+    {
+      "name": "result",
+      "use": "out",
+      "min": 1,
+      "max": "1",
+      "documentation": "Fused canonical patient-summary Bundle. The returned Bundle SHALL conform to https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-exchange-bundle.",
+      "type": "Bundle"
+    }
+  ]
+}

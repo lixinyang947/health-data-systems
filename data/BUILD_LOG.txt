@@ -1,0 +1,67 @@
+
+> li-xinyang-interop-r4-ig-source@0.1.0 build
+> npm run build:fsh && npm run assemble && npm run check && npm run validate:offline
+
+
+> li-xinyang-interop-r4-ig-source@0.1.0 build:fsh
+> sushi build . --snapshot
+
+info  Running SUSHI v3.20.0 (implements FHIR Shorthand specification v3.0.0)
+info  Arguments:
+info    --snapshot
+info    /mnt/data/Li_Xinyang_FHIR_R4_Interop_IG
+info  No output path specified. Output to .
+info  Using configuration file: /mnt/data/Li_Xinyang_FHIR_R4_Interop_IG/sushi-config.yaml
+info  Importing FSH text...
+info  Preprocessed 9 documents with 21 aliases.
+info  Imported 69 definitions and 17 instances.
+info  Loaded virtual package sushi-r5forR4#1.0.0 with 7 resources
+warn  Failed to load automatically-provided hl7.fhir.uv.tools.r4#latest
+warn  Failed to load automatically-provided hl7.terminology.r4#latest
+info  Loaded hl7.fhir.r4.core#4.0.1 with 11351 resources
+warn  Failed to load automatically-provided hl7.fhir.uv.extensions.r4#latest
+info  Loaded virtual package sushi-local#LOCAL with 29 resources
+info  Converting FSH to FHIR resources...
+info  Converted 55 FHIR StructureDefinitions.
+info  Converted 7 FHIR CodeSystems.
+info  Converted 7 FHIR ValueSets.
+info  Converted 17 FHIR instances.
+info  Exporting FHIR resources as JSON...
+info  Exported 86 FHIR resources as JSON.
+info  Assembling Implementation Guide sources...
+info  Generated ImplementationGuide-li-xinyang-interop-r4.json
+info  Assembled Implementation Guide sources; ready for IG Publisher.
+info  The _build script hosted at https://github.com/HL7/ig-publisher-scripts is useful for downloading and running the IG Publisher.
+
+========================= SUSHI RESULTS ===========================
+|  -------------------------------------------------------------  |
+| |    Profiles   |  Extensions  |   Logicals   |   Resources   | |
+| |-------------------------------------------------------------| |
+| |      35       |      11      |      9       |       0       | |
+|  -------------------------------------------------------------  |
+|  -------------------------------------------------------------  |
+| |      ValueSets     |    CodeSystems    |     Instances      | |
+| |-------------------------------------------------------------| |
+| |         7          |         7         |         17         | |
+|  -------------------------------------------------------------  |
+|                                                                 |
+===================================================================
+| Are you in a no-wind situation?        0 Errors      3 Warnings |
+===================================================================
+
+
+> li-xinyang-interop-r4-ig-source@0.1.0 assemble
+> python scripts/assemble_package.py
+
+Assembled resources in /mnt/data/Li_Xinyang_FHIR_R4_Interop_IG/fsh-generated/resources
+Built FHIR package: /mnt/data/Li_Xinyang_FHIR_R4_Interop_IG/dist/li-xinyang-interop-r4-0.1.0.tgz
+
+> li-xinyang-interop-r4-ig-source@0.1.0 check
+> python scripts/check_package.py
+
+Checks complete: 0 errors, 0 warnings, 7 passed groups
+
+> li-xinyang-interop-r4-ig-source@0.1.0 validate:offline
+> node scripts/validate_records.mjs
+
+Validated 61 resources: 0 fatal, 0 error, 0 warning, 145 informational.

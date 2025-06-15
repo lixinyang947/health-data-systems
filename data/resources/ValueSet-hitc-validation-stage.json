@@ -1,0 +1,15 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "HITCValidationStageVS",
+  "id": "hitc-validation-stage",
+  "title": "HITC Validation Stage Value Set",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/ValueSet/hitc-validation-stage",
+  "compose": {
+    "include": [
+      {
+        "system": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-validation-stage"
+      }
+    ]
+  }
+}

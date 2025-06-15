@@ -1,0 +1,17 @@
+{
+  "name": "li-xinyang-interop-r4",
+  "version": "0.1.0",
+  "description": "Draft FHIR R4 implementation guide for the Li Xinyang FHIR-native interoperability and data-quality methodology.",
+  "type": "fhir.ig",
+  "canonical": "https://example.org/fhir/li-xinyang-interop-r4",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/ImplementationGuide/li-xinyang-interop-r4",
+  "title": "Li Xinyang FHIR-Native Interoperability and Data-Quality Framework (R4)",
+  "author": "Xinyang Li",
+  "license": "Apache-2.0",
+  "fhirVersions": [
+    "4.0.1"
+  ],
+  "dependencies": {
+    "hl7.fhir.r4.core": "4.0.1"
+  }
+}

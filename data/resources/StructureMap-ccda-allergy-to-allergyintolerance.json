@@ -1,0 +1,301 @@
+{
+  "resourceType": "StructureMap",
+  "id": "ccda-allergy-to-allergyintolerance",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/ccda-allergy-to-allergyintolerance",
+  "version": "0.1.0",
+  "name": "CCDAAllergyToAllergyIntolerance",
+  "title": "C-CDA Allergy Entry to HITC Canonical AllergyIntolerance",
+  "status": "draft",
+  "experimental": true,
+  "date": "2026-07-21",
+  "publisher": "Xinyang Li",
+  "description": "XPath-extracted C-CDA allergy entry to AllergyIntolerance structure map.",
+  "copyright": "© 2026 Xinyang Li. Draft technical specification.",
+  "purpose": "Reduces silent allergy-data loss by requiring explicit clinical and verification status in the target profile.",
+  "structure": [
+    {
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCCCDAEntry",
+      "mode": "source",
+      "alias": "CCDAEntry",
+      "documentation": "Normalized logical input model for the source segment or C-CDA entry."
+    },
+    {
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-allergy-intolerance",
+      "mode": "target",
+      "alias": "AllergyIntolerance",
+      "documentation": "Strict-at-core canonical FHIR R4 target profile."
+    }
+  ],
+  "group": [
+    {
+      "name": "CCDAAllergyToAllergyIntolerance",
+      "typeMode": "types",
+      "documentation": "Phase 1 structural mapping. Terminology translation, UCUM normalization, ISO 8601 normalization, and value-set validation occur in Phase 2 unless explicitly invoked by a translate rule.",
+      "input": [
+        {
+          "name": "src",
+          "type": "HITCCCDAEntry",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "AllergyIntolerance",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "identifier",
+          "source": [
+            {
+              "context": "src",
+              "element": "entryId",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "identifier.value",
+              "transform": "copy"
+            }
+          ]
+        },
+        {
+          "name": "identifierSystem",
+          "source": [
+            {
+              "context": "src",
+              "element": "entryId",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "identifier.system",
+              "transform": "evaluate",
+              "parameter": [
+                {
+                  "valueString": "'https://example.org/fhir/sid/ccda-entry'"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "allergyCode",
+          "source": [
+            {
+              "context": "src",
+              "element": "code",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "code.coding",
+              "transform": "copy"
+            }
+          ]
+        },
+        {
+          "name": "clinicalStatusSystem",
+          "source": [
+            {
+              "context": "src",
+              "element": "entryId",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "clinicalStatus.coding.system",
+              "transform": "evaluate",
+              "parameter": [
+                {
+                  "valueString": "'http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical'"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "clinicalStatus",
+          "source": [
+            {
+              "context": "src",
+              "element": "entryId",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "clinicalStatus.coding.code",
+              "transform": "evaluate",
+              "parameter": [
+                {
+                  "valueString": "'active'"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "verificationSystem",
+          "source": [
+            {
+              "context": "src",
+              "element": "entryId",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "verificationStatus.coding.system",
+              "transform": "evaluate",
+              "parameter": [
+                {
+                  "valueString": "'http://terminology.hl7.org/CodeSystem/allergyintolerance-verification'"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "verificationStatus",
+          "source": [
+            {
+              "context": "src",
+              "element": "entryId",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "verificationStatus.coding.code",
+              "transform": "evaluate",
+              "parameter": [
+                {
+                  "valueString": "'confirmed'"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "allergyType",
+          "source": [
+            {
+              "context": "src",
+              "element": "entryId",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "type",
+              "transform": "evaluate",
+              "parameter": [
+                {
+                  "valueString": "'allergy'"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "criticality",
+          "source": [
+            {
+              "context": "src",
+              "element": "entryId",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "criticality",
+              "transform": "evaluate",
+              "parameter": [
+                {
+                  "valueString": "'unable-to-assess'"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "onset",
+          "source": [
+            {
+              "context": "src",
+              "element": "effectiveTime",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "onsetDateTime",
+              "transform": "copy"
+            }
+          ]
+        },
+        {
+          "name": "recordedDate",
+          "source": [
+            {
+              "context": "src",
+              "element": "effectiveTime",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "recordedDate",
+              "transform": "copy"
+            }
+          ]
+        },
+        {
+          "name": "patientIdentifier",
+          "source": [
+            {
+              "context": "src",
+              "element": "subjectIdentifier",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "patient.identifier.value",
+              "transform": "copy"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

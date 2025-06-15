@@ -1,0 +1,15 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "HITCTransformationActivityVS",
+  "id": "hitc-transformation-activity",
+  "title": "HITC Transformation Activity Value Set",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/ValueSet/hitc-transformation-activity",
+  "compose": {
+    "include": [
+      {
+        "system": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-transformation-activity"
+      }
+    ]
+  }
+}

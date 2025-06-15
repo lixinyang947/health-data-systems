@@ -1,0 +1,38 @@
+{
+  "resourceType": "Patient",
+  "id": "ExamplePatient",
+  "meta": {
+    "profile": [
+      "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-patient"
+    ]
+  },
+  "extension": [
+    {
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-source-system",
+      "valueIdentifier": {
+        "system": "urn:ietf:rfc:3986",
+        "value": "urn:oid:1.2.840.114350.1.13.99999.1.7.2.688879"
+      }
+    }
+  ],
+  "identifier": [
+    {
+      "system": "https://example.org/fhir/sid/mrn",
+      "value": "MRN-100045"
+    }
+  ],
+  "name": [
+    {
+      "use": "official",
+      "family": "Chen",
+      "given": [
+        "Mei"
+      ]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-03-12",
+  "managingOrganization": {
+    "reference": "Organization/ExampleHospital"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "HITCQualityMetricVS",
+  "id": "hitc-quality-metric",
+  "title": "HITC Data Quality Metric Value Set",
+  "description": "The six quality metrics defined by the interoperability methodology.",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/ValueSet/hitc-quality-metric",
+  "compose": {
+    "include": [
+      {
+        "system": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-quality-metric"
+      }
+    ]
+  }
+}

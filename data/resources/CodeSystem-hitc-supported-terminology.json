@@ -1,0 +1,62 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "draft",
+  "content": "complete",
+  "name": "HITCSupportedTerminologyCS",
+  "id": "hitc-supported-terminology",
+  "title": "HITC Supported Terminology System Codes",
+  "description": "The twelve terminology systems identified by the methodology.",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-supported-terminology",
+  "concept": [
+    {
+      "code": "icd-10-cm",
+      "display": "ICD-10-CM"
+    },
+    {
+      "code": "icd-9-cm",
+      "display": "ICD-9-CM"
+    },
+    {
+      "code": "snomed-ct",
+      "display": "SNOMED CT"
+    },
+    {
+      "code": "loinc",
+      "display": "LOINC"
+    },
+    {
+      "code": "rxnorm",
+      "display": "RxNorm"
+    },
+    {
+      "code": "ndc",
+      "display": "NDC"
+    },
+    {
+      "code": "cpt",
+      "display": "CPT"
+    },
+    {
+      "code": "hcpcs",
+      "display": "HCPCS"
+    },
+    {
+      "code": "cvx",
+      "display": "CVX"
+    },
+    {
+      "code": "ucum",
+      "display": "UCUM"
+    },
+    {
+      "code": "hl7-v2-0078",
+      "display": "HL7 v2 Table 0078"
+    },
+    {
+      "code": "administrative-gender",
+      "display": "HL7 Administrative Gender"
+    }
+  ],
+  "caseSensitive": true,
+  "count": 12
+}

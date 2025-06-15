@@ -1,0 +1,931 @@
+{
+  "index-version": 1,
+  "files": [
+    {
+      "filename": "Bundle-ExampleCanonicalExchange.json",
+      "resourceType": "Bundle",
+      "id": "ExampleCanonicalExchange",
+      "type": "collection",
+      "kind": "instance"
+    },
+    {
+      "filename": "CapabilityStatement-hitc-interop-server.json",
+      "resourceType": "CapabilityStatement",
+      "id": "hitc-interop-server",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/CapabilityStatement/hitc-interop-server",
+      "version": "0.1.0",
+      "kind": "requirements"
+    },
+    {
+      "filename": "CodeSystem-hitc-mapping-strategy.json",
+      "resourceType": "CodeSystem",
+      "id": "hitc-mapping-strategy",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-mapping-strategy",
+      "kind": "codesystem"
+    },
+    {
+      "filename": "CodeSystem-hitc-observation-category.json",
+      "resourceType": "CodeSystem",
+      "id": "hitc-observation-category",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-observation-category",
+      "kind": "codesystem"
+    },
+    {
+      "filename": "CodeSystem-hitc-quality-metric.json",
+      "resourceType": "CodeSystem",
+      "id": "hitc-quality-metric",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-quality-metric",
+      "kind": "codesystem"
+    },
+    {
+      "filename": "CodeSystem-hitc-source-format.json",
+      "resourceType": "CodeSystem",
+      "id": "hitc-source-format",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-source-format",
+      "kind": "codesystem"
+    },
+    {
+      "filename": "CodeSystem-hitc-supported-terminology.json",
+      "resourceType": "CodeSystem",
+      "id": "hitc-supported-terminology",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-supported-terminology",
+      "kind": "codesystem"
+    },
+    {
+      "filename": "CodeSystem-hitc-transformation-activity.json",
+      "resourceType": "CodeSystem",
+      "id": "hitc-transformation-activity",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-transformation-activity",
+      "kind": "codesystem"
+    },
+    {
+      "filename": "CodeSystem-hitc-validation-stage.json",
+      "resourceType": "CodeSystem",
+      "id": "hitc-validation-stage",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-validation-stage",
+      "kind": "codesystem"
+    },
+    {
+      "filename": "ConceptMap-icd9cm-to-icd10cm-template.json",
+      "resourceType": "ConceptMap",
+      "id": "icd9cm-to-icd10cm-template",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/icd9cm-to-icd10cm-template",
+      "version": "0.1.0",
+      "kind": "conceptmap"
+    },
+    {
+      "filename": "ConceptMap-local-clinical-to-snomed-template.json",
+      "resourceType": "ConceptMap",
+      "id": "local-clinical-to-snomed-template",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/local-clinical-to-snomed-template",
+      "version": "0.1.0",
+      "kind": "conceptmap"
+    },
+    {
+      "filename": "ConceptMap-local-lab-to-loinc-template.json",
+      "resourceType": "ConceptMap",
+      "id": "local-lab-to-loinc-template",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/local-lab-to-loinc-template",
+      "version": "0.1.0",
+      "kind": "conceptmap"
+    },
+    {
+      "filename": "ConceptMap-local-medication-to-rxnorm-template.json",
+      "resourceType": "ConceptMap",
+      "id": "local-medication-to-rxnorm-template",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/local-medication-to-rxnorm-template",
+      "version": "0.1.0",
+      "kind": "conceptmap"
+    },
+    {
+      "filename": "ConceptMap-ndc-to-rxnorm-template.json",
+      "resourceType": "ConceptMap",
+      "id": "ndc-to-rxnorm-template",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/ndc-to-rxnorm-template",
+      "version": "0.1.0",
+      "kind": "conceptmap"
+    },
+    {
+      "filename": "ConceptMap-v2-abnormal-flag-to-observation-interpretation.json",
+      "resourceType": "ConceptMap",
+      "id": "v2-abnormal-flag-to-observation-interpretation",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-abnormal-flag-to-observation-interpretation",
+      "version": "0.1.0",
+      "kind": "conceptmap"
+    },
+    {
+      "filename": "ConceptMap-v2-administrative-gender-to-fhir.json",
+      "resourceType": "ConceptMap",
+      "id": "v2-administrative-gender-to-fhir",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-administrative-gender-to-fhir",
+      "version": "0.1.0",
+      "kind": "conceptmap"
+    },
+    {
+      "filename": "ConceptMap-v2-order-control-to-request-status.json",
+      "resourceType": "ConceptMap",
+      "id": "v2-order-control-to-request-status",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-order-control-to-request-status",
+      "version": "0.1.0",
+      "kind": "conceptmap"
+    },
+    {
+      "filename": "ConceptMap-v2-patient-class-to-encounter-class.json",
+      "resourceType": "ConceptMap",
+      "id": "v2-patient-class-to-encounter-class",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-patient-class-to-encounter-class",
+      "version": "0.1.0",
+      "kind": "conceptmap"
+    },
+    {
+      "filename": "ConceptMap-v2-result-status-to-diagnostic-report-status.json",
+      "resourceType": "ConceptMap",
+      "id": "v2-result-status-to-diagnostic-report-status",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-result-status-to-diagnostic-report-status",
+      "version": "0.1.0",
+      "kind": "conceptmap"
+    },
+    {
+      "filename": "ConceptMap-v2-result-status-to-observation-status.json",
+      "resourceType": "ConceptMap",
+      "id": "v2-result-status-to-observation-status",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-result-status-to-observation-status",
+      "version": "0.1.0",
+      "kind": "conceptmap"
+    },
+    {
+      "filename": "Condition-ExampleCondition.json",
+      "resourceType": "Condition",
+      "id": "ExampleCondition",
+      "kind": "instance"
+    },
+    {
+      "filename": "Device-ExampleSourceEHR.json",
+      "resourceType": "Device",
+      "id": "ExampleSourceEHR",
+      "type": {
+        "text": "Electronic health record source system"
+      },
+      "kind": "instance"
+    },
+    {
+      "filename": "DocumentReference-ExampleSourceDocument.json",
+      "resourceType": "DocumentReference",
+      "id": "ExampleSourceDocument",
+      "type": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "34133-9",
+            "display": "Summary of episode note"
+          }
+        ]
+      },
+      "kind": "instance"
+    },
+    {
+      "filename": "Encounter-ExampleEncounter.json",
+      "resourceType": "Encounter",
+      "id": "ExampleEncounter",
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "185349003",
+              "display": "Encounter for check up"
+            }
+          ]
+        }
+      ],
+      "kind": "instance"
+    },
+    {
+      "filename": "ImplementationGuide-li-xinyang-interop-r4.json",
+      "resourceType": "ImplementationGuide",
+      "id": "li-xinyang-interop-r4",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ImplementationGuide/li-xinyang-interop-r4",
+      "version": "0.1.0",
+      "kind": "implementationguide"
+    },
+    {
+      "filename": "Location-ExampleLocation.json",
+      "resourceType": "Location",
+      "id": "ExampleLocation",
+      "kind": "instance"
+    },
+    {
+      "filename": "Observation-ExampleHbA1cObservation.json",
+      "resourceType": "Observation",
+      "id": "ExampleHbA1cObservation",
+      "kind": "instance"
+    },
+    {
+      "filename": "Observation-ExampleQualityCSC.json",
+      "resourceType": "Observation",
+      "id": "ExampleQualityCSC",
+      "kind": "instance"
+    },
+    {
+      "filename": "Observation-ExampleQualityFFR.json",
+      "resourceType": "Observation",
+      "id": "ExampleQualityFFR",
+      "kind": "instance"
+    },
+    {
+      "filename": "Observation-ExampleQualityMSR.json",
+      "resourceType": "Observation",
+      "id": "ExampleQualityMSR",
+      "kind": "instance"
+    },
+    {
+      "filename": "Observation-ExampleQualityRIR.json",
+      "resourceType": "Observation",
+      "id": "ExampleQualityRIR",
+      "kind": "instance"
+    },
+    {
+      "filename": "Observation-ExampleQualityTC.json",
+      "resourceType": "Observation",
+      "id": "ExampleQualityTC",
+      "kind": "instance"
+    },
+    {
+      "filename": "Observation-ExampleQualityTCR.json",
+      "resourceType": "Observation",
+      "id": "ExampleQualityTCR",
+      "kind": "instance"
+    },
+    {
+      "filename": "OperationDefinition-federated-summary.json",
+      "resourceType": "OperationDefinition",
+      "id": "federated-summary",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/OperationDefinition/federated-summary",
+      "version": "0.1.0",
+      "kind": "operation",
+      "type": true
+    },
+    {
+      "filename": "OperationDefinition-validate-exchange.json",
+      "resourceType": "OperationDefinition",
+      "id": "validate-exchange",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/OperationDefinition/validate-exchange",
+      "version": "0.1.0",
+      "kind": "operation",
+      "type": false
+    },
+    {
+      "filename": "Organization-ExampleHospital.json",
+      "resourceType": "Organization",
+      "id": "ExampleHospital",
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+              "code": "prov",
+              "display": "Healthcare Provider"
+            }
+          ]
+        }
+      ],
+      "kind": "instance"
+    },
+    {
+      "filename": "Patient-ExamplePatient.json",
+      "resourceType": "Patient",
+      "id": "ExamplePatient",
+      "kind": "instance"
+    },
+    {
+      "filename": "Practitioner-ExampleReviewer.json",
+      "resourceType": "Practitioner",
+      "id": "ExampleReviewer",
+      "kind": "instance"
+    },
+    {
+      "filename": "Provenance-ExampleMappingProvenance.json",
+      "resourceType": "Provenance",
+      "id": "ExampleMappingProvenance",
+      "kind": "instance"
+    },
+    {
+      "filename": "SearchParameter-observation-validation-stage.json",
+      "resourceType": "SearchParameter",
+      "id": "observation-validation-stage",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/SearchParameter/observation-validation-stage",
+      "version": "0.1.0",
+      "type": "token",
+      "kind": "searchparameter"
+    },
+    {
+      "filename": "SearchParameter-provenance-mapping-strategy.json",
+      "resourceType": "SearchParameter",
+      "id": "provenance-mapping-strategy",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/SearchParameter/provenance-mapping-strategy",
+      "version": "0.1.0",
+      "type": "token",
+      "kind": "searchparameter"
+    },
+    {
+      "filename": "Specimen-ExampleSpecimen.json",
+      "resourceType": "Specimen",
+      "id": "ExampleSpecimen",
+      "type": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "119297000",
+            "display": "Blood specimen"
+          }
+        ]
+      },
+      "kind": "instance"
+    },
+    {
+      "filename": "StructureDefinition-HITCCCDAEntry.json",
+      "resourceType": "StructureDefinition",
+      "id": "HITCCCDAEntry",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCCCDAEntry",
+      "kind": "logical",
+      "type": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCCCDAEntry"
+    },
+    {
+      "filename": "StructureDefinition-HITCV2MSH.json",
+      "resourceType": "StructureDefinition",
+      "id": "HITCV2MSH",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2MSH",
+      "kind": "logical",
+      "type": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2MSH"
+    },
+    {
+      "filename": "StructureDefinition-HITCV2OBR.json",
+      "resourceType": "StructureDefinition",
+      "id": "HITCV2OBR",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2OBR",
+      "kind": "logical",
+      "type": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2OBR"
+    },
+    {
+      "filename": "StructureDefinition-HITCV2OBX.json",
+      "resourceType": "StructureDefinition",
+      "id": "HITCV2OBX",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2OBX",
+      "kind": "logical",
+      "type": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2OBX"
+    },
+    {
+      "filename": "StructureDefinition-HITCV2ORC.json",
+      "resourceType": "StructureDefinition",
+      "id": "HITCV2ORC",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2ORC",
+      "kind": "logical",
+      "type": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2ORC"
+    },
+    {
+      "filename": "StructureDefinition-HITCV2PID.json",
+      "resourceType": "StructureDefinition",
+      "id": "HITCV2PID",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2PID",
+      "kind": "logical",
+      "type": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2PID"
+    },
+    {
+      "filename": "StructureDefinition-HITCV2PV1.json",
+      "resourceType": "StructureDefinition",
+      "id": "HITCV2PV1",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2PV1",
+      "kind": "logical",
+      "type": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2PV1"
+    },
+    {
+      "filename": "StructureDefinition-HITCV2SCH.json",
+      "resourceType": "StructureDefinition",
+      "id": "HITCV2SCH",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2SCH",
+      "kind": "logical",
+      "type": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2SCH"
+    },
+    {
+      "filename": "StructureDefinition-HITCV2TXA.json",
+      "resourceType": "StructureDefinition",
+      "id": "HITCV2TXA",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2TXA",
+      "kind": "logical",
+      "type": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2TXA"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-allergy-intolerance.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-allergy-intolerance",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-allergy-intolerance",
+      "kind": "resource",
+      "type": "AllergyIntolerance"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-audit-event.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-audit-event",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-audit-event",
+      "kind": "resource",
+      "type": "AuditEvent"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-care-plan.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-care-plan",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-care-plan",
+      "kind": "resource",
+      "type": "CarePlan"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-care-team.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-care-team",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-care-team",
+      "kind": "resource",
+      "type": "CareTeam"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-composition.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-composition",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-composition",
+      "kind": "resource",
+      "type": "Composition"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-condition.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-condition",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-condition",
+      "kind": "resource",
+      "type": "Condition"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-consent.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-consent",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-consent",
+      "kind": "resource",
+      "type": "Consent"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-coverage.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-coverage",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-coverage",
+      "kind": "resource",
+      "type": "Coverage"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-device-use-statement.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-device-use-statement",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-device-use-statement",
+      "kind": "resource",
+      "type": "DeviceUseStatement"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-device.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-device",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-device",
+      "kind": "resource",
+      "type": "Device"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-diagnostic-report.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-diagnostic-report",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-diagnostic-report",
+      "kind": "resource",
+      "type": "DiagnosticReport"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-document-reference.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-document-reference",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-document-reference",
+      "kind": "resource",
+      "type": "DocumentReference"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-encounter.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-encounter",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-encounter",
+      "kind": "resource",
+      "type": "Encounter"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-episode-of-care.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-episode-of-care",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-episode-of-care",
+      "kind": "resource",
+      "type": "EpisodeOfCare"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-goal.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-goal",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-goal",
+      "kind": "resource",
+      "type": "Goal"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-immunization.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-immunization",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-immunization",
+      "kind": "resource",
+      "type": "Immunization"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-location.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-location",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-location",
+      "kind": "resource",
+      "type": "Location"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-medication-administration.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-medication-administration",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-medication-administration",
+      "kind": "resource",
+      "type": "MedicationAdministration"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-medication-request.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-medication-request",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-medication-request",
+      "kind": "resource",
+      "type": "MedicationRequest"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-medication-statement.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-medication-statement",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-medication-statement",
+      "kind": "resource",
+      "type": "MedicationStatement"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-medication.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-medication",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-medication",
+      "kind": "resource",
+      "type": "Medication"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-observation.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-observation",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-observation",
+      "kind": "resource",
+      "type": "Observation"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-organization.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-organization",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-organization",
+      "kind": "resource",
+      "type": "Organization"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-patient.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-patient",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-patient",
+      "kind": "resource",
+      "type": "Patient"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-practitioner-role.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-practitioner-role",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-practitioner-role",
+      "kind": "resource",
+      "type": "PractitionerRole"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-practitioner.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-practitioner",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-practitioner",
+      "kind": "resource",
+      "type": "Practitioner"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-procedure.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-procedure",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-procedure",
+      "kind": "resource",
+      "type": "Procedure"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-provenance.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-provenance",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-provenance",
+      "kind": "resource",
+      "type": "Provenance"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-questionnaire-response.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-questionnaire-response",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-questionnaire-response",
+      "kind": "resource",
+      "type": "QuestionnaireResponse"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-related-person.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-related-person",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-related-person",
+      "kind": "resource",
+      "type": "RelatedPerson"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-service-request.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-service-request",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-service-request",
+      "kind": "resource",
+      "type": "ServiceRequest"
+    },
+    {
+      "filename": "StructureDefinition-hitc-canonical-specimen.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-canonical-specimen",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-specimen",
+      "kind": "resource",
+      "type": "Specimen"
+    },
+    {
+      "filename": "StructureDefinition-hitc-exchange-bundle.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-exchange-bundle",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-exchange-bundle",
+      "kind": "resource",
+      "type": "Bundle"
+    },
+    {
+      "filename": "StructureDefinition-hitc-laboratory-observation.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-laboratory-observation",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-laboratory-observation",
+      "kind": "resource",
+      "type": "Observation"
+    },
+    {
+      "filename": "StructureDefinition-hitc-mapping-confidence.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-mapping-confidence",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-mapping-confidence",
+      "kind": "complex-type",
+      "type": "Extension"
+    },
+    {
+      "filename": "StructureDefinition-hitc-mapping-reviewer.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-mapping-reviewer",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-mapping-reviewer",
+      "kind": "complex-type",
+      "type": "Extension"
+    },
+    {
+      "filename": "StructureDefinition-hitc-mapping-strategy.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-mapping-strategy",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-mapping-strategy",
+      "kind": "complex-type",
+      "type": "Extension"
+    },
+    {
+      "filename": "StructureDefinition-hitc-merkle-root.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-merkle-root",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-merkle-root",
+      "kind": "complex-type",
+      "type": "Extension"
+    },
+    {
+      "filename": "StructureDefinition-hitc-original-code.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-original-code",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-original-code",
+      "kind": "complex-type",
+      "type": "Extension"
+    },
+    {
+      "filename": "StructureDefinition-hitc-quality-denominator.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-quality-denominator",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-quality-denominator",
+      "kind": "complex-type",
+      "type": "Extension"
+    },
+    {
+      "filename": "StructureDefinition-hitc-quality-metric-observation.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-quality-metric-observation",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-quality-metric-observation",
+      "kind": "resource",
+      "type": "Observation"
+    },
+    {
+      "filename": "StructureDefinition-hitc-quality-numerator.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-quality-numerator",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-quality-numerator",
+      "kind": "complex-type",
+      "type": "Extension"
+    },
+    {
+      "filename": "StructureDefinition-hitc-source-format.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-source-format",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-source-format",
+      "kind": "complex-type",
+      "type": "Extension"
+    },
+    {
+      "filename": "StructureDefinition-hitc-source-system.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-source-system",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-source-system",
+      "kind": "complex-type",
+      "type": "Extension"
+    },
+    {
+      "filename": "StructureDefinition-hitc-transformation-step.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-transformation-step",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-transformation-step",
+      "kind": "complex-type",
+      "type": "Extension"
+    },
+    {
+      "filename": "StructureDefinition-hitc-validation-stage.json",
+      "resourceType": "StructureDefinition",
+      "id": "hitc-validation-stage",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-validation-stage",
+      "kind": "complex-type",
+      "type": "Extension"
+    },
+    {
+      "filename": "StructureMap-ccda-allergy-to-allergyintolerance.json",
+      "resourceType": "StructureMap",
+      "id": "ccda-allergy-to-allergyintolerance",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/ccda-allergy-to-allergyintolerance",
+      "version": "0.1.0",
+      "kind": "structuremap"
+    },
+    {
+      "filename": "StructureMap-ccda-discharge-medication-to-medicationrequest.json",
+      "resourceType": "StructureMap",
+      "id": "ccda-discharge-medication-to-medicationrequest",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/ccda-discharge-medication-to-medicationrequest",
+      "version": "0.1.0",
+      "kind": "structuremap"
+    },
+    {
+      "filename": "StructureMap-ccda-medication-to-medicationstatement.json",
+      "resourceType": "StructureMap",
+      "id": "ccda-medication-to-medicationstatement",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/ccda-medication-to-medicationstatement",
+      "version": "0.1.0",
+      "kind": "structuremap"
+    },
+    {
+      "filename": "StructureMap-ccda-problem-to-condition.json",
+      "resourceType": "StructureMap",
+      "id": "ccda-problem-to-condition",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/ccda-problem-to-condition",
+      "version": "0.1.0",
+      "kind": "structuremap"
+    },
+    {
+      "filename": "StructureMap-ccda-procedure-to-procedure.json",
+      "resourceType": "StructureMap",
+      "id": "ccda-procedure-to-procedure",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/ccda-procedure-to-procedure",
+      "version": "0.1.0",
+      "kind": "structuremap"
+    },
+    {
+      "filename": "StructureMap-v2-obr-to-diagnosticreport.json",
+      "resourceType": "StructureMap",
+      "id": "v2-obr-to-diagnosticreport",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-obr-to-diagnosticreport",
+      "version": "0.1.0",
+      "kind": "structuremap"
+    },
+    {
+      "filename": "StructureMap-v2-obx-to-observation.json",
+      "resourceType": "StructureMap",
+      "id": "v2-obx-to-observation",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-obx-to-observation",
+      "version": "0.1.0",
+      "kind": "structuremap"
+    },
+    {
+      "filename": "StructureMap-v2-orc-to-servicerequest.json",
+      "resourceType": "StructureMap",
+      "id": "v2-orc-to-servicerequest",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-orc-to-servicerequest",
+      "version": "0.1.0",
+      "kind": "structuremap"
+    },
+    {
+      "filename": "StructureMap-v2-pid-to-patient.json",
+      "resourceType": "StructureMap",
+      "id": "v2-pid-to-patient",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-pid-to-patient",
+      "version": "0.1.0",
+      "kind": "structuremap"
+    },
+    {
+      "filename": "StructureMap-v2-pv1-to-encounter.json",
+      "resourceType": "StructureMap",
+      "id": "v2-pv1-to-encounter",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-pv1-to-encounter",
+      "version": "0.1.0",
+      "kind": "structuremap"
+    },
+    {
+      "filename": "StructureMap-v2-sch-to-encounter.json",
+      "resourceType": "StructureMap",
+      "id": "v2-sch-to-encounter",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-sch-to-encounter",
+      "version": "0.1.0",
+      "kind": "structuremap"
+    },
+    {
+      "filename": "StructureMap-v2-txa-to-documentreference.json",
+      "resourceType": "StructureMap",
+      "id": "v2-txa-to-documentreference",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-txa-to-documentreference",
+      "version": "0.1.0",
+      "kind": "structuremap"
+    },
+    {
+      "filename": "ValueSet-hitc-mapping-strategy.json",
+      "resourceType": "ValueSet",
+      "id": "hitc-mapping-strategy",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ValueSet/hitc-mapping-strategy",
+      "kind": "valueset"
+    },
+    {
+      "filename": "ValueSet-hitc-observation-category.json",
+      "resourceType": "ValueSet",
+      "id": "hitc-observation-category",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ValueSet/hitc-observation-category",
+      "kind": "valueset"
+    },
+    {
+      "filename": "ValueSet-hitc-quality-metric.json",
+      "resourceType": "ValueSet",
+      "id": "hitc-quality-metric",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ValueSet/hitc-quality-metric",
+      "kind": "valueset"
+    },
+    {
+      "filename": "ValueSet-hitc-source-format.json",
+      "resourceType": "ValueSet",
+      "id": "hitc-source-format",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ValueSet/hitc-source-format",
+      "kind": "valueset"
+    },
+    {
+      "filename": "ValueSet-hitc-supported-terminology.json",
+      "resourceType": "ValueSet",
+      "id": "hitc-supported-terminology",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ValueSet/hitc-supported-terminology",
+      "kind": "valueset"
+    },
+    {
+      "filename": "ValueSet-hitc-transformation-activity.json",
+      "resourceType": "ValueSet",
+      "id": "hitc-transformation-activity",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ValueSet/hitc-transformation-activity",
+      "kind": "valueset"
+    },
+    {
+      "filename": "ValueSet-hitc-validation-stage.json",
+      "resourceType": "ValueSet",
+      "id": "hitc-validation-stage",
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/ValueSet/hitc-validation-stage",
+      "kind": "valueset"
+    }
+  ]
+}

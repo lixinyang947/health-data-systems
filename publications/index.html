@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publications & Technical Reports — Xinyang Li</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <style>
+    .pub-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #0f1d36 50%, #0a1628 100%);
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid var(--navy-border);
+    }
+    .pub-hero h1 { color: var(--white); font-size: 2.25rem; line-height: 1.2; margin-bottom: 0.75rem; }
+    .pub-hero .subtitle { color: var(--gray-400); font-size: 1.05rem; max-width: 800px; line-height: 1.7; margin-bottom: 0; }
+    .section { padding: 2.5rem 0; }
+    .section-title { font-size: 1.35rem; font-weight: 600; color: var(--gray-900); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--gray-200); }
+    .report-card { display: flex; align-items: flex-start; gap: 1rem; padding: 1.25rem; background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); margin-bottom: 1rem; }
+    .report-card .report-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.15rem; }
+    .report-card .report-info { flex: 1; }
+    .report-card .report-title { font-weight: 600; font-size: 0.95rem; color: var(--gray-800); }
+    .report-card .report-desc { font-size: 0.8rem; color: var(--gray-500); margin-top: 0.15rem; }
+    .report-card .report-meta { font-size: 0.7rem; color: var(--gray-400); margin-top: 0.25rem; }
+    .report-card .report-dl { flex-shrink: 0; }
+    .pub-tag { display: inline-block; font-size: 0.55rem; font-weight: 700; padding: 0.1rem 0.4rem; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em; margin-right: 0.35rem; }
+    .pub-tag.l1 { background: rgba(20,184,166,0.12); color: var(--teal-dark); }
+    .pub-tag.l2 { background: rgba(245,158,11,0.12); color: var(--amber-dark); }
+    .pub-tag.l3 { background: rgba(168,85,247,0.12); color: #7c3aed; }
+    @media (max-width: 768px) { .pub-hero h1 { font-size: 1.5rem; } .report-card { flex-direction: column; } .report-card .report-dl { align-self: flex-start; } }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-logo"><span class="logo-badge">XYL</span>Xinyang Li</a>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav class="main-nav">
+        <a href="/">Home</a>
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle">Research</button>
+          <div class="dropdown-menu">
+            <a href="/line1/"><span class="line-badge" style="background:rgba(20,184,166,0.12);color:var(--teal-dark);">L1</span>FHIR-Native Clinical Data Interoperability<span class="dropdown-desc">Executable FHIR R4 profiles, mappings, quality metrics, provenance &amp; validation</span></a>
+            <a href="/line2/"><span class="line-badge" style="background:rgba(245,158,11,0.12);color:var(--amber-dark);">L2</span>Explainable RPM &amp; Clinical Decision Support<span class="dropdown-desc">RPM data normalization, SHAP explainability, risk stratification framework</span></a>
+            <a href="/line3/"><span class="line-badge" style="background:rgba(168,85,247,0.12);color:#7c3aed;">L3</span>Secure Health Information Exchange Governance<span class="dropdown-desc">HIE security architecture, consent management, audit &amp; provenance governance</span></a>
+          </div>
+        </div>
+        <a href="/publications/" class="active">Publications</a>
+        <a href="/technical/">Technical Resources</a>
+        <a href="/about/">About</a>
+        <span class="badge badge-amber" style="margin-left:0.5rem;">v0.1.0</span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="pub-hero">
+    <div class="container">
+      <h1>Publications &amp; Technical Reports</h1>
+      <p class="subtitle">
+        This page provides publications, technical reports, and research documentation associated with Xinyang Li's health-data systems research activities.
+      </p>
+      <p class="subtitle" style="margin-top:0.5rem;">
+        The materials cover healthcare interoperability, clinical intelligence, remote patient monitoring, secure health information exchange, and standards-based health data governance.
+      </p>
+    </div>
+  </section>
+
+  <!-- TECHNICAL REPORTS -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Technical Reports</h2>
+
+      <div class="report-card">
+        <div class="report-icon">📄</div>
+        <div class="report-info">
+          <div class="report-title">FHIR-Native Clinical Data Interoperability and Data-Quality Framework</div>
+          <div class="report-desc">Technical report documenting the FHIR R4-based methodology for canonical data modeling, HL7 v2/C-CDA structural mapping, terminology reconciliation, quality metrics, provenance, and validation.</div>
+          <div class="report-meta"><span class="pub-tag l1">L1</span>Version 1.0 &middot; July 2026 &middot; 12 KB</div>
+        </div>
+        <div class="report-dl">
+          <a href="/pdf/Li_Xinyang_FHIR_Native_Interoperability_Technical_Report_v1.0.pdf" class="btn btn-primary btn-sm" download>Download PDF</a>
+        </div>
+      </div>
+
+      <div class="report-card">
+        <div class="report-icon">📄</div>
+        <div class="report-info">
+          <div class="report-title">Explainable RPM-CDS Risk Stratification Framework</div>
+          <div class="report-desc">Technical report documenting the explainable AI framework for remote patient monitoring, including FHIR R4 data normalization, 80-feature physiological dictionary, SHAP-based explainability, and clinical decision-support integration.</div>
+          <div class="report-meta"><span class="pub-tag l2">L2</span>Version 1.0 &middot; July 2026 &middot; 16 KB</div>
+        </div>
+        <div class="report-dl">
+          <a href="/pdf/Li_Xinyang_RPM_CDS_Technical_Report_v1.0.pdf" class="btn btn-primary btn-sm" download>Download PDF</a>
+        </div>
+      </div>
+
+      <div class="report-card">
+        <div class="report-icon">📄</div>
+        <div class="report-info">
+          <div class="report-title">Zero-Trust, Consent-Aware Secure HIE Governance Framework</div>
+          <div class="report-desc">Technical report documenting the security governance architecture for health information exchange, including identity governance, ABAC authorization, FHIR Consent management, audit integrity with Merkle-tree chaining, and privacy-preserving federated access.</div>
+          <div class="report-meta"><span class="pub-tag l3">L3</span>Version 1.0 &middot; July 2026 &middot; 15 KB</div>
+        </div>
+        <div class="report-dl">
+          <a href="/pdf/Li_Xinyang_Secure_HIE_Governance_Technical_Report_v1.0.pdf" class="btn btn-primary btn-sm" download>Download PDF</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NOTE -->
+  <section class="section" style="background:var(--gray-50);border-top:1px solid var(--gray-200);">
+    <div class="container">
+      <div class="alert" style="background:rgba(20,184,166,0.06);border:1px solid rgba(20,184,166,0.2);border-radius:var(--radius-md);padding:0.75rem 1rem;font-size:0.8rem;color:var(--teal-dark);">
+        Peer-reviewed publications and conference proceedings will be listed here as they become available.
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div><p class="mb-1">&copy; 2025–2026 Xinyang Li. Integrated Methods for Digital Health Data Systems.</p><p class="mb-0 text-xs">Licensed under Apache License, Version 2.0. Draft &amp; experimental — not for production use.</p></div>
+      <div><span class="badge" style="color:#a855f7;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);">DRAFT &amp; EXPERIMENTAL</span></div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

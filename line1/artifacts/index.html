@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artifact Explorer — Xinyang Li</title>
+  <link rel="stylesheet" href="../css/main.css" />
+  <style>
+    .artifact-hero { background: linear-gradient(135deg, var(--navy) 0%, #0f1d36 50%, #0a1628 100%); padding: 3rem 0 2rem; border-bottom: 1px solid var(--navy-border); }
+    .artifact-hero h1 { color: var(--white); font-size: 2rem; line-height: 1.2; margin-bottom: 0.5rem; }
+    .artifact-hero .subtitle { color: var(--gray-400); font-size: 1rem; }
+    .explorer-controls { padding: 1.5rem 0; }
+    .filter-buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+    .filter-btn { font-size: 0.8rem; font-weight: 500; padding: 0.35rem 0.85rem; border-radius: 999px; border: 1px solid var(--gray-200); background: var(--white); color: var(--gray-600); cursor: pointer; transition: all 0.2s ease; }
+    .filter-btn:hover { border-color: var(--teal); color: var(--teal-dark); background: rgba(20,184,166,0.04); }
+    .filter-btn.active { background: var(--teal); color: var(--white); border-color: var(--teal); }
+    .result-count { font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1rem; }
+    .artifact-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 1.25rem; transition: box-shadow 0.2s ease, transform 0.2s ease; display: flex; flex-direction: column; }
+    .artifact-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .artifact-card .card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.75rem; margin-bottom: 0.75rem; padding-bottom: 0; border-bottom: none; }
+    .artifact-card .card-title { font-size: 0.95rem; font-weight: 600; color: var(--gray-900); line-height: 1.3; word-break: break-word; flex: 1; }
+    .artifact-card .card-meta { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.75rem; }
+    .artifact-card .type-badge { font-size: 0.65rem; font-weight: 600; padding: 0.15rem 0.5rem; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .artifact-card .status-badge { font-size: 0.65rem; font-weight: 600; padding: 0.15rem 0.5rem; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.04em; background: rgba(245,158,11,0.12); color: var(--amber-dark); border: 1px solid rgba(245,158,11,0.25); }
+    .artifact-card .version-badge { font-size: 0.65rem; font-weight: 600; padding: 0.15rem 0.5rem; border-radius: 999px; background: rgba(20,184,166,0.1); color: var(--teal-dark); border: 1px solid rgba(20,184,166,0.2); }
+    .artifact-card .group-label { font-size: 0.7rem; color: var(--gray-500); margin-bottom: 0.75rem; text-transform: capitalize; }
+    .artifact-card .card-actions { display: flex; gap: 0.5rem; margin-top: auto; padding-top: 0.75rem; border-top: 1px solid var(--gray-100); }
+    .artifact-card .card-actions a { font-size: 0.8rem; padding: 0.3rem 0.7rem; border-radius: var(--radius-md); text-decoration: none; transition: all 0.2s ease; }
+    .artifact-card .card-actions .details-link { background: var(--teal); color: var(--white); }
+    .artifact-card .card-actions .details-link:hover { background: var(--teal-dark); }
+    .artifact-card .card-actions .json-link { background: var(--gray-100); color: var(--gray-700); }
+    .artifact-card .card-actions .json-link:hover { background: var(--gray-200); }
+    .loading { text-align: center; padding: 3rem; color: var(--gray-400); }
+    .empty-state { text-align: center; padding: 3rem; color: var(--gray-500); }
+    .empty-state h3 { margin-bottom: 0.5rem; color: var(--gray-600); }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-logo"><span class="logo-badge">XYL</span>Xinyang Li</a>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav class="main-nav">
+        <a href="/">Home</a>
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle">Research</button>
+          <div class="dropdown-menu">
+            <a href="/line1/"><span class="line-badge" style="background:rgba(20,184,166,0.12);color:var(--teal-dark);">L1</span>FHIR-Native Clinical Data Interoperability<span class="dropdown-desc">Executable FHIR R4 profiles, mappings, quality metrics, provenance &amp; validation</span></a>
+            <a href="/line2/"><span class="line-badge" style="background:rgba(245,158,11,0.12);color:var(--amber-dark);">L2</span>Explainable RPM &amp; Clinical Decision Support<span class="dropdown-desc">RPM data normalization, SHAP explainability, risk stratification framework</span></a>
+            <a href="/line3/"><span class="line-badge" style="background:rgba(168,85,247,0.12);color:#7c3aed;">L3</span>Secure Health Information Exchange Governance<span class="dropdown-desc">HIE security architecture, consent management, audit &amp; provenance governance</span></a>
+          </div>
+        </div>
+        <a href="/publications/">Publications</a>
+        <a href="/technical/">Technical Resources</a>
+        <a href="/about/">About</a>
+        <span class="badge badge-amber" style="margin-left:0.5rem;">v0.1.0</span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="artifact-hero">
+    <div class="container">
+      <h1>Artifact Explorer</h1>
+      <p class="subtitle">Browse all 116 FHIR artifacts in the HITC Interoperability Framework</p>
+    </div>
+  </section>
+
+  <!-- Controls -->
+  <section class="explorer-controls">
+    <div class="container">
+      <div class="filter-buttons" id="filterButtons">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="profiles">Profiles</button>
+        <button class="filter-btn" data-filter="extensions">Extensions</button>
+        <button class="filter-btn" data-filter="logical-models">Logical Models</button>
+        <button class="filter-btn" data-filter="structure-maps">StructureMaps</button>
+        <button class="filter-btn" data-filter="concept-maps">ConceptMaps</button>
+        <button class="filter-btn" data-filter="code-systems">CodeSystems</button>
+        <button class="filter-btn" data-filter="value-sets">ValueSets</button>
+        <button class="filter-btn" data-filter="operations">Operations</button>
+        <button class="filter-btn" data-filter="capability-statements">Capability Statements</button>
+        <button class="filter-btn" data-filter="examples">Examples</button>
+      </div>
+      <div class="search-input-wrapper">
+        <span class="search-icon">&#128269;</span>
+        <input type="text" class="search-input" id="searchInput" placeholder="Search artifacts by name, type, or group..." />
+      </div>
+      <div class="result-count" id="resultCount"></div>
+    </div>
+  </section>
+
+  <!-- Card Grid -->
+  <section style="padding-bottom:3rem;">
+    <div class="container">
+      <div class="card-grid" id="artifactGrid">
+        <div class="loading">Loading artifacts…</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div><p class="mb-1">&copy; 2025–2026 Xinyang Li. Integrated Methods for Digital Health Data Systems.</p><p class="mb-0 text-xs">Licensed under Apache License, Version 2.0. Draft &amp; experimental — not for production use.</p></div>
+      <div><span class="badge" style="color:#a855f7;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);">DRAFT &amp; EXPERIMENTAL</span></div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+
+  <script>
+    (function() {
+      var artifacts = [];
+      var currentFilter = 'all';
+      var currentSearch = '';
+
+      // Type color map
+      var typeColors = {
+        'StructureDefinition': { color: '#14b8a6', bg: 'rgba(20,184,166,0.12)', label: 'StructureDefinition' },
+        'StructureMap': { color: '#a855f7', bg: 'rgba(168,85,247,0.12)', label: 'StructureMap' },
+        'ConceptMap': { color: '#16a34a', bg: 'rgba(22,163,74,0.12)', label: 'ConceptMap' },
+        'CodeSystem': { color: '#d97706', bg: 'rgba(245,158,11,0.12)', label: 'CodeSystem' },
+        'ValueSet': { color: '#0d9488', bg: 'rgba(13,148,136,0.12)', label: 'ValueSet' },
+        'OperationDefinition': { color: '#ef4444', bg: 'rgba(239,68,68,0.12)', label: 'OperationDefinition' },
+        'CapabilityStatement': { color: '#7c3aed', bg: 'rgba(124,58,237,0.10)', label: 'CapabilityStatement' },
+        'ImplementationGuide': { color: '#6366f1', bg: 'rgba(99,102,241,0.10)', label: 'ImplementationGuide' },
+        'SearchParameter': { color: '#f59e0b', bg: 'rgba(245,158,11,0.10)', label: 'SearchParameter' }
+      };
+
+      function getTypeColor(type) {
+        return typeColors[type] || { color: 'var(--gray-500)', bg: 'var(--gray-100)', label: type };
+      }
+
+      // Map resourceType to filter group
+      function getFilterGroup(artifact) {
+        var group = artifact.group || '';
+        var type = artifact.resourceType || '';
+
+        if (group === 'profiles') return 'profiles';
+        if (group === 'extensions') return 'extensions';
+        if (group === 'logical-models') return 'logical-models';
+        if (group === 'structure-maps') return 'structure-maps';
+        if (group === 'examples') return 'examples';
+
+        // Map by resourceType for terminology group
+        if (type === 'ConceptMap') return 'concept-maps';
+        if (type === 'CodeSystem') return 'code-systems';
+        if (type === 'ValueSet') return 'value-sets';
+        if (type === 'OperationDefinition' || type === 'SearchParameter') return 'operations';
+        if (type === 'CapabilityStatement') return 'capability-statements';
+        if (type === 'ImplementationGuide') return 'implementation-guide';
+
+        return group || 'other';
+      }
+
+      // Capitalize group name for display
+      function formatGroup(group) {
+        if (!group) return '';
+        return group.replace(/-/g, ' ').replace(/\b\w/g, function(l) { return l.toUpperCase(); });
+      }
+
+      // Escape HTML
+      function escapeHtml(str) {
+        if (!str) return '';
+        var div = document.createElement('div');
+        div.appendChild(document.createTextNode(str));
+        return div.innerHTML;
+      }
+
+      // Render cards
+      function render(filter, search) {
+        var grid = document.getElementById('artifactGrid');
+        var countEl = document.getElementById('resultCount');
+
+        var filtered = artifacts.filter(function(a) {
+          // Filter
+          if (filter !== 'all') {
+            var fg = getFilterGroup(a);
+            if (fg !== filter) return false;
+          }
+          // Search
+          if (search) {
+            var q = search.toLowerCase();
+            var title = (a.title || a.id || '').toLowerCase();
+            var type = (a.resourceType || '').toLowerCase();
+            var group = (a.group || '').toLowerCase();
+            var id = (a.id || '').toLowerCase();
+            if (title.indexOf(q) === -1 && type.indexOf(q) === -1 && group.indexOf(q) === -1 && id.indexOf(q) === -1) {
+              return false;
+            }
+          }
+          return true;
+        });
+
+        countEl.textContent = 'Showing ' + filtered.length + ' of ' + artifacts.length + ' artifacts';
+
+        if (filtered.length === 0) {
+          grid.innerHTML = '<div class="empty-state"><h3>No artifacts found</h3><p>Try adjusting your filter or search query.</p></div>';
+          return;
+        }
+
+        var html = '';
+        filtered.forEach(function(a) {
+          var title = a.title || a.id || 'Untitled';
+          var type = a.resourceType || 'Unknown';
+          var status = a.status || 'unknown';
+          var version = a.version || '';
+          var group = a.group || '';
+          var file = a.file || '';
+          var id = a.id || '';
+          var tc = getTypeColor(type);
+          var groupDisplay = formatGroup(group);
+
+          html += '<div class="artifact-card">';
+          html += '<div class="card-header">';
+          html += '<div class="card-title">' + escapeHtml(title) + '</div>';
+          html += '</div>';
+          html += '<div class="card-meta">';
+          html += '<span class="type-badge" style="color:' + tc.color + ';background:' + tc.bg + ';border:1px solid ' + tc.color + '22;">' + type + '</span>';
+          if (status) {
+            html += '<span class="status-badge">' + escapeHtml(status) + '</span>';
+          }
+          if (version) {
+            html += '<span class="version-badge">v' + escapeHtml(version) + '</span>';
+          }
+          html += '</div>';
+          if (groupDisplay) {
+            html += '<div class="group-label">' + escapeHtml(groupDisplay) + '</div>';
+          }
+          html += '<div class="card-actions">';
+          html += '<a href="/line1/artifacts/_detail.html?id=' + encodeURIComponent(id) + '" class="details-link">View Details</a>';
+          if (file) {
+            html += '<a href="/data/resources/' + encodeURIComponent(file) + '" class="json-link" target="_blank">View JSON</a>';
+          }
+          html += '</div>';
+          html += '</div>';
+        });
+
+        grid.innerHTML = html;
+      }
+
+      // Load data
+      fetch('../data/artifacts.json')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          artifacts = data.artifacts || [];
+          render(currentFilter, currentSearch);
+        })
+        .catch(function(err) {
+          document.getElementById('artifactGrid').innerHTML = '<div class="empty-state"><h3>Error loading artifacts</h3><p>' + escapeHtml(err.message) + '</p></div>';
+        });
+
+      // Filter buttons
+      var filterBtns = document.querySelectorAll('.filter-btn');
+      filterBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          filterBtns.forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          currentFilter = btn.getAttribute('data-filter');
+          render(currentFilter, currentSearch);
+        });
+      });
+
+      // Search input
+      var searchInput = document.getElementById('searchInput');
+      searchInput.addEventListener('input', function() {
+        currentSearch = searchInput.value;
+        render(currentFilter, currentSearch);
+      });
+
+      // URL-based filter (for links like ?filter=profiles)
+      var urlParams = new URLSearchParams(window.location.search);
+      var urlFilter = urlParams.get('filter');
+      if (urlFilter) {
+        filterBtns.forEach(function(btn) {
+          if (btn.getAttribute('data-filter') === urlFilter) {
+            btn.classList.add('active');
+            currentFilter = urlFilter;
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+        render(currentFilter, currentSearch);
+      }
+    })();
+  </script>
+</body>
+</html>

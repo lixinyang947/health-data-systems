@@ -1,0 +1,200 @@
+{
+  "resourceType": "StructureMap",
+  "id": "v2-obx-to-observation",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-obx-to-observation",
+  "version": "0.1.0",
+  "name": "V2OBXToObservation",
+  "title": "HL7 v2 OBX to HITC Canonical Observation",
+  "status": "draft",
+  "experimental": true,
+  "date": "2026-07-21",
+  "publisher": "Xinyang Li",
+  "description": "Declarative structural mapping from OBX to the canonical Observation profile.",
+  "copyright": "© 2026 Xinyang Li. Draft technical specification.",
+  "purpose": "Implements the structural half of the two-phase ORU mapping pipeline.",
+  "structure": [
+    {
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2OBX",
+      "mode": "source",
+      "alias": "V2OBX",
+      "documentation": "Normalized logical input model for the source segment or C-CDA entry."
+    },
+    {
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-observation",
+      "mode": "target",
+      "alias": "Observation",
+      "documentation": "Strict-at-core canonical FHIR R4 target profile."
+    }
+  ],
+  "group": [
+    {
+      "name": "V2OBXToObservation",
+      "typeMode": "types",
+      "documentation": "Phase 1 structural mapping. Terminology translation, UCUM normalization, ISO 8601 normalization, and value-set validation occur in Phase 2 unless explicitly invoked by a translate rule.",
+      "input": [
+        {
+          "name": "src",
+          "type": "HITCV2OBX",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "Observation",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "observationCode",
+          "source": [
+            {
+              "context": "src",
+              "element": "observationIdentifier",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "code.coding",
+              "transform": "copy"
+            }
+          ]
+        },
+        {
+          "name": "resultStatus",
+          "source": [
+            {
+              "context": "src",
+              "element": "resultStatus",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "status",
+              "transform": "translate",
+              "parameter": [
+                {
+                  "valueId": "v"
+                },
+                {
+                  "valueString": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-result-status-to-observation-status"
+                },
+                {
+                  "valueString": "code"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "effectiveTime",
+          "source": [
+            {
+              "context": "src",
+              "element": "observationDateTime",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "effectiveDateTime",
+              "transform": "copy"
+            }
+          ]
+        },
+        {
+          "name": "observationValue",
+          "source": [
+            {
+              "context": "src",
+              "element": "value",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "valueString",
+              "transform": "copy"
+            }
+          ],
+          "documentation": "Phase 2 may parse and normalize numeric quantities."
+        },
+        {
+          "name": "units",
+          "source": [
+            {
+              "context": "src",
+              "element": "units",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "valueQuantity.code",
+              "transform": "copy"
+            }
+          ],
+          "documentation": "Phase 2 normalizes the unit coding to UCUM."
+        },
+        {
+          "name": "interpretation",
+          "source": [
+            {
+              "context": "src",
+              "element": "abnormalFlags",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "interpretation.coding.code",
+              "transform": "translate",
+              "parameter": [
+                {
+                  "valueId": "v"
+                },
+                {
+                  "valueString": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-abnormal-flag-to-observation-interpretation"
+                },
+                {
+                  "valueString": "code"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "referenceRange",
+          "source": [
+            {
+              "context": "src",
+              "element": "referenceRange",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "referenceRange.text",
+              "transform": "copy"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

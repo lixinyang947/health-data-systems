@@ -1,0 +1,34 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "draft",
+  "content": "complete",
+  "name": "HITCValidationStageCS",
+  "id": "hitc-validation-stage",
+  "title": "HITC Validation Stage Codes",
+  "description": "Composable validation stages specified by the methodology.",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-validation-stage",
+  "concept": [
+    {
+      "code": "r-sch",
+      "display": "R-SCH",
+      "definition": "FHIR schema and profile conformance."
+    },
+    {
+      "code": "r-ref",
+      "display": "R-REF",
+      "definition": "Reference integrity validation."
+    },
+    {
+      "code": "r-term",
+      "display": "R-TERM",
+      "definition": "Terminology conformance validation."
+    },
+    {
+      "code": "qmc",
+      "display": "Quality Metrics Collector",
+      "definition": "Collection and emission of data-quality metrics."
+    }
+  ],
+  "caseSensitive": true,
+  "count": 4
+}

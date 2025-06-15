@@ -1,0 +1,311 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "HITCV2ORC",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2ORC",
+  "name": "HITCV2ORC",
+  "title": "HL7 v2 ORC Logical Model",
+  "status": "draft",
+  "description": "Representative ORC fields used by the ServiceRequest structure map.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2ORC",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "snapshot": {
+    "element": [
+      {
+        "id": "HITCV2ORC",
+        "path": "HITCV2ORC",
+        "short": "HL7 v2 ORC Logical Model",
+        "definition": "Representative ORC fields used by the ServiceRequest structure map.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "HITCV2ORC",
+          "min": 0,
+          "max": "*"
+        },
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ],
+        "isModifier": false,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2ORC.orderControl",
+        "path": "HITCV2ORC.orderControl",
+        "short": "ORC-1 Order Control",
+        "definition": "ORC-1 Order Control",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2ORC.orderControl",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2ORC.placerOrderNumber",
+        "path": "HITCV2ORC.placerOrderNumber",
+        "short": "ORC-2 Placer Order Number",
+        "definition": "ORC-2 Placer Order Number",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2ORC.placerOrderNumber",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2ORC.fillerOrderNumber",
+        "path": "HITCV2ORC.fillerOrderNumber",
+        "short": "ORC-3 Filler Order Number",
+        "definition": "ORC-3 Filler Order Number",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2ORC.fillerOrderNumber",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2ORC.orderStatus",
+        "path": "HITCV2ORC.orderStatus",
+        "short": "ORC-5 Order Status",
+        "definition": "ORC-5 Order Status",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2ORC.orderStatus",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2ORC.transactionDateTime",
+        "path": "HITCV2ORC.transactionDateTime",
+        "short": "ORC-9 Date/Time of Transaction",
+        "definition": "ORC-9 Date/Time of Transaction",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2ORC.transactionDateTime",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2ORC.orderingProvider",
+        "path": "HITCV2ORC.orderingProvider",
+        "short": "ORC-12 Ordering Provider",
+        "definition": "ORC-12 Ordering Provider",
+        "min": 1,
+        "max": "*",
+        "base": {
+          "path": "HITCV2ORC.orderingProvider",
+          "min": 1,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "HITCV2ORC",
+        "path": "HITCV2ORC",
+        "short": "HL7 v2 ORC Logical Model",
+        "definition": "Representative ORC fields used by the ServiceRequest structure map."
+      },
+      {
+        "id": "HITCV2ORC.orderControl",
+        "path": "HITCV2ORC.orderControl",
+        "short": "ORC-1 Order Control",
+        "definition": "ORC-1 Order Control",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2ORC.placerOrderNumber",
+        "path": "HITCV2ORC.placerOrderNumber",
+        "short": "ORC-2 Placer Order Number",
+        "definition": "ORC-2 Placer Order Number",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2ORC.fillerOrderNumber",
+        "path": "HITCV2ORC.fillerOrderNumber",
+        "short": "ORC-3 Filler Order Number",
+        "definition": "ORC-3 Filler Order Number",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2ORC.orderStatus",
+        "path": "HITCV2ORC.orderStatus",
+        "short": "ORC-5 Order Status",
+        "definition": "ORC-5 Order Status",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2ORC.transactionDateTime",
+        "path": "HITCV2ORC.transactionDateTime",
+        "short": "ORC-9 Date/Time of Transaction",
+        "definition": "ORC-9 Date/Time of Transaction",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2ORC.orderingProvider",
+        "path": "HITCV2ORC.orderingProvider",
+        "short": "ORC-12 Ordering Provider",
+        "definition": "ORC-12 Ordering Provider",
+        "min": 1,
+        "max": "*",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      }
+    ]
+  }
+}

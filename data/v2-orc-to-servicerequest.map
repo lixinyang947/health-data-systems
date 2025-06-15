@@ -1,0 +1,15 @@
+map "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-orc-to-servicerequest" = "V2ORCToServiceRequest"
+
+uses "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2ORC" alias V2ORC as source
+uses "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-service-request" alias ServiceRequest as target
+
+group V2ORCToServiceRequest(source src : HITCV2ORC, target tgt : ServiceRequest) {
+  src.placerOrderNumber as v -> tgt.identifier.value = copy(v) "orderIdentifier";
+  src.placerOrderNumber as v -> tgt.identifier.system = evaluate('https://example.org/fhir/sid/order') "identifierSystem";
+  src.orderControl as v -> tgt.status = translate(v, 'https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-order-control-to-request-status', 'code') "requestStatus";
+  src.orderControl as v -> tgt.intent = evaluate('order') "requestIntent";
+  src.transactionDateTime as v -> tgt.authoredOn = copy(v) "authoredOn";
+  src.orderingProvider as v -> tgt.requester.display = copy(v) "requesterDisplay";
+}
+
+// Draft and experimental. Reference resolution, source-system extension population, semantic reconciliation, UCUM normalization, temporal normalization, and validation are orchestrated outside this Phase 1 map unless explicitly shown.

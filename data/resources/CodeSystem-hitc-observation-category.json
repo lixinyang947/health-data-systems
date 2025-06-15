@@ -1,0 +1,19 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "draft",
+  "content": "complete",
+  "name": "HITCObservationCategoryCS",
+  "id": "hitc-observation-category",
+  "title": "HITC Observation Category Codes",
+  "description": "Additional observation categories required by the inline data-quality pipeline.",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-observation-category",
+  "concept": [
+    {
+      "code": "data-quality",
+      "display": "Data quality",
+      "definition": "Observation reports a data-quality metric for an exchange source or transaction."
+    }
+  ],
+  "caseSensitive": true,
+  "count": 1
+}

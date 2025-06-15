@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explainable RPM-CDS Framework — Xinyang Li</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <style>
+    .line2-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a1a0a 50%, #0f1d36 100%);
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid var(--navy-border);
+    }
+    .line2-hero h1 { color: var(--white); font-size: 2.25rem; line-height: 1.2; margin-bottom: 0.75rem; }
+    .line2-hero .subtitle { color: var(--gray-400); font-size: 1.05rem; max-width: 800px; line-height: 1.7; }
+    .section { padding: 2.5rem 0; }
+    .section-title { font-size: 1.35rem; font-weight: 600; color: var(--gray-900); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--gray-200); }
+    .arch-flow { display: flex; flex-direction: column; align-items: center; gap: 0.35rem; padding: 1.5rem; }
+    .arch-step { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 1rem 1.5rem; text-align: center; min-width: 300px; box-shadow: var(--shadow-sm); }
+    .arch-step .step-title { font-weight: 600; font-size: 0.9rem; color: var(--gray-800); }
+    .arch-step .step-desc { font-size: 0.75rem; color: var(--gray-500); margin-top: 0.15rem; }
+    .arch-step.s1 { border-left: 4px solid var(--gray-400); }
+    .arch-step.s2 { border-left: 4px solid var(--teal); }
+    .arch-step.s3 { border-left: 4px solid #f59e0b; }
+    .arch-step.s4 { border-left: 4px solid #ef4444; }
+    .arch-step.s5 { border-left: 4px solid #a855f7; }
+    .arch-step.s6 { border-left: 4px solid #14b8a6; }
+    .arch-arrow { color: var(--gray-300); font-size: 1.25rem; }
+    .deliverable-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid var(--gray-100); }
+    .deliverable-item:last-child { border-bottom: none; }
+    .deliverable-item .check { color: var(--teal); font-weight: 700; font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag-cloud span { font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 999px; background: var(--gray-100); color: var(--gray-600); border: 1px solid var(--gray-200); }
+    .tag-cloud span:hover { background: var(--teal); color: var(--white); border-color: var(--teal); }
+    .layer-card { border-left: 3px solid; padding: 1.25rem; margin-bottom: 1rem; }
+    .layer-card.l1 { border-color: var(--gray-400); }
+    .layer-card.l2 { border-color: var(--teal); }
+    .layer-card.l3 { border-color: #f59e0b; }
+    .layer-card.l4 { border-color: #ef4444; }
+    .layer-card.l5 { border-color: #a855f7; }
+    .layer-card.l6 { border-color: #14b8a6; }
+    @media (max-width: 768px) { .line2-hero h1 { font-size: 1.5rem; } .arch-step { min-width: auto; } }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-logo"><span class="logo-badge">XYL</span>Xinyang Li</a>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav class="main-nav">
+        <a href="/">Home</a>
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle">Research</button>
+          <div class="dropdown-menu">
+            <a href="/line1/"><span class="line-badge" style="background:rgba(20,184,166,0.12);color:var(--teal-dark);">L1</span>FHIR-Native Clinical Data Interoperability<span class="dropdown-desc">Executable FHIR R4 profiles, mappings, quality metrics, provenance &amp; validation</span></a>
+            <a href="/line2/"><span class="line-badge" style="background:rgba(245,158,11,0.12);color:var(--amber-dark);">L2</span>Explainable RPM &amp; Clinical Decision Support<span class="dropdown-desc">RPM data normalization, SHAP explainability, risk stratification framework</span></a>
+            <a href="/line3/"><span class="line-badge" style="background:rgba(168,85,247,0.12);color:#7c3aed;">L3</span>Secure Health Information Exchange Governance<span class="dropdown-desc">HIE security architecture, consent management, audit &amp; provenance governance</span></a>
+          </div>
+        </div>
+        <a href="/publications/">Publications</a>
+        <a href="/technical/">Technical Resources</a>
+        <a href="/about/">About</a>
+        <span class="badge badge-amber" style="margin-left:0.5rem;">v0.1.0</span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="line2-hero">
+    <div class="container">
+      <div class="flex flex-wrap gap-2" style="margin-bottom:1rem;">
+        <span class="methodology-badge" style="background:rgba(245,158,11,0.12);color:var(--amber-light);border:1px solid rgba(245,158,11,0.3);">LINE 2 — CLINICAL INTELLIGENCE</span>
+        <span class="methodology-badge" style="background:rgba(255,255,255,0.06);color:var(--gray-400);border:1px solid rgba(255,255,255,0.1);">Methodology — Draft</span>
+      </div>
+      <h1>Explainable Risk Stratification and Clinical Decision-Support Framework for Remote Patient Monitoring</h1>
+      <p class="subtitle">An explainable AI framework integrating FHIR R4 data normalization, physiological feature engineering, machine-learning risk stratification, and SHAP-based clinical explanation generation.</p>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Overview</h2>
+      <p style="color:var(--gray-700);line-height:1.8;margin-bottom:1.25rem;">
+        The Remote Patient Monitoring Clinical Decision Support (RPM-CDS) Framework is an explainable artificial intelligence framework designed to transform continuous patient-generated health data into structured clinical risk intelligence.
+      </p>
+      <p style="color:var(--gray-700);line-height:1.8;margin-bottom:1.25rem;">
+        The framework integrates HL7 FHIR R4-based data normalization, physiological feature engineering, machine-learning risk stratification, explainable AI, and clinical decision-support workflows. It provides a standardized methodology for converting heterogeneous RPM data streams, including wearable sensors, home monitoring devices, and electronic health record observations, into actionable clinical insights.
+      </p>
+      <p style="color:var(--gray-700);line-height:1.8;">
+        The framework introduces an interpretable risk prediction pipeline that combines physiological feature modeling, machine-learning-based risk estimation, and SHAP-based explanation generation. Unlike conventional black-box prediction systems, the framework emphasizes <strong>explanation-as-a-clinical-artifact</strong> by representing model reasoning through interoperable clinical resources such as FHIR DiagnosticReport.
+      </p>
+    </div>
+  </section>
+
+  <!-- TECHNICAL CONTRIBUTION -->
+  <section class="section" style="background:var(--gray-50);border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200);">
+    <div class="container">
+      <h2 class="section-title">Technical Contribution</h2>
+      <p style="color:var(--gray-700);line-height:1.8;margin-bottom:1.25rem;">The core contribution of the RPM-CDS Framework is the integration of explainable machine learning with healthcare interoperability standards. The framework defines:</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;">
+        <div class="card" style="padding:1.25rem;"><strong style="color:var(--teal-dark);">1</strong><h4 style="margin:0.5rem 0 0.25rem;font-size:0.95rem;">Physiological Feature Dictionary</h4><p style="font-size:0.8rem;color:var(--gray-500);margin:0;">A structured dictionary containing 80 RPM-related features with LOINC references, UCUM units, and missing-data policies</p></div>
+        <div class="card" style="padding:1.25rem;"><strong style="color:var(--teal-dark);">2</strong><h4 style="margin:0.5rem 0 0.25rem;font-size:0.95rem;">FHIR R4 Data Normalization</h4><p style="font-size:0.8rem;color:var(--gray-500);margin:0;">Observation-based standardization of multi-stream RPM telemetry into interoperable FHIR resources</p></div>
+        <div class="card" style="padding:1.25rem;"><strong style="color:var(--teal-dark);">3</strong><h4 style="margin:0.5rem 0 0.25rem;font-size:0.95rem;">ML Risk Stratification</h4><p style="font-size:0.8rem;color:var(--gray-500);margin:0;">XGBoost-based risk prediction pipeline with probability calibration and risk score generation</p></div>
+        <div class="card" style="padding:1.25rem;"><strong style="color:var(--teal-dark);">4</strong><h4 style="margin:0.5rem 0 0.25rem;font-size:0.95rem;">SHAP Explainability</h4><p style="font-size:0.8rem;color:var(--gray-500);margin:0;">Feature attribution and explanation generation using SHAP values mapped to clinical contexts</p></div>
+        <div class="card" style="padding:1.25rem;"><strong style="color:var(--teal-dark);">5</strong><h4 style="margin:0.5rem 0 0.25rem;font-size:0.95rem;">Clinical Explanation Artifact</h4><p style="font-size:0.8rem;color:var(--gray-500);margin:0;">FHIR DiagnosticReport-based representation of model reasoning for clinical workflows</p></div>
+        <div class="card" style="padding:1.25rem;"><strong style="color:var(--teal-dark);">6</strong><h4 style="margin:0.5rem 0 0.25rem;font-size:0.95rem;">Context-Aware CDS Workflow</h4><p style="font-size:0.8rem;color:var(--gray-500);margin:0;">Clinical decision-support workflow integrating risk review, alerting, and clinical interpretation</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Architecture Workflow</h2>
+      <div class="arch-flow">
+        <div class="arch-step s1"><div class="step-title">Remote Patient Monitoring Data</div><div class="step-desc">Wearables / Home BP / CGM / EHR</div></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step s2"><div class="step-title">FHIR R4 Data Normalization</div><div class="step-desc">Observation Resources — LOINC — UCUM</div></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step s3"><div class="step-title">Physiological Feature Engineering</div><div class="step-desc">80-Feature Dictionary — 17 Clinical Domains</div></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step s4"><div class="step-title">Risk Stratification Model</div><div class="step-desc">XGBoost + Probability Calibration</div></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step s5"><div class="step-title">Explainable AI Layer</div><div class="step-desc">SHAP Feature Attribution — Risk Explanation</div></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step s6"><div class="step-title">Clinical Decision Support</div><div class="step-desc">CDS Workflow — Alerting — Risk Review</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE LAYERS -->
+  <section class="section" style="background:var(--gray-50);border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200);">
+    <div class="container">
+      <h2 class="section-title">Architecture Layers</h2>
+      <div class="layer-card l1"><h4 style="margin:0 0 0.25rem;font-size:0.95rem;">Layer 1: Data Acquisition</h4><p style="font-size:0.8rem;color:var(--gray-500);margin:0;">Wearable devices · Home blood pressure monitoring · Continuous glucose monitoring · EHR laboratory observations</p></div>
+      <div class="layer-card l2"><h4 style="margin:0 0 0.25rem;font-size:0.95rem;">Layer 2: Interoperability Layer</h4><p style="font-size:0.8rem;color:var(--gray-500);margin:0;">HL7 FHIR R4 · Observation Resource · LOINC terminology · UCUM units</p></div>
+      <div class="layer-card l3"><h4 style="margin:0 0 0.25rem;font-size:0.95rem;">Layer 3: Feature Engineering Layer</h4><p style="font-size:0.8rem;color:var(--gray-500);margin:0;">RPM 80-Feature Dictionary · Cardiovascular · Respiratory · Metabolic · Activity · Patient-reported indicators · Data quality indicators</p></div>
+      <div class="layer-card l4"><h4 style="margin:0 0 0.25rem;font-size:0.95rem;">Layer 4: AI Risk Modeling</h4><p style="font-size:0.8rem;color:var(--gray-500);margin:0;">XGBoost risk model · Probability calibration · Risk score generation</p></div>
+      <div class="layer-card l5"><h4 style="margin:0 0 0.25rem;font-size:0.95rem;">Layer 5: Explainability Layer</h4><p style="font-size:0.8rem;color:var(--gray-500);margin:0;">SHAP feature attribution · Risk explanation · Feature contribution · Clinical interpretation</p></div>
+      <div class="layer-card l6"><h4 style="margin:0 0 0.25rem;font-size:0.95rem;">Layer 6: CDS Integration</h4><p style="font-size:0.8rem;color:var(--gray-500);margin:0;">Clinical alerting · Risk review · Decision support workflow</p></div>
+    </div>
+  </section>
+
+  <!-- COMPLETED DELIVERABLES -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Completed Deliverables</h2>
+      <div class="card" style="padding:1.5rem;">
+        <div class="deliverable-item"><span class="check">✓</span><div><strong>RPM-CDS Framework Methodology</strong><br><span style="font-size:0.8rem;color:var(--gray-500);">System architecture, data pipeline, risk stratification approach, CDS workflow design.</span></div></div>
+        <div class="deliverable-item"><span class="check">✓</span><div><strong>RPM 80-Feature Dictionary</strong><br><span style="font-size:0.8rem;color:var(--gray-500);">80 structured features with feature ID, clinical domain, source stream, LOINC reference, UCUM unit, window definition, derivation logic, and missing-data policies.</span><br><a href="/data/RPM_80_Feature_Dictionary_v0.9.csv" class="btn btn-ghost btn-sm" style="margin-top:0.25rem;">Download CSV</a></div></div>
+        <div class="deliverable-item"><span class="check">✓</span><div><strong>Explainable AI Framework</strong><br><span style="font-size:0.8rem;color:var(--gray-500);">SHAP explanation workflow, feature attribution mapping, explanation generation methodology.</span></div></div>
+        <div class="deliverable-item"><span class="check">✓</span><div><strong>FHIR Clinical Artifact Design</strong><br><span style="font-size:0.8rem;color:var(--gray-500);">FHIR Observation mapping for RPM data, FHIR DiagnosticReport representation for SHAP explanations.</span></div></div>
+        <div class="deliverable-item"><span class="check">✓</span><div><strong>Validation Protocol</strong><br><span style="font-size:0.8rem;color:var(--gray-500);">MIMIC-III/MIMIC-IV retrospective validation design, benchmark comparison, AUROC evaluation plan, precision improvement assessment, false-positive reduction analysis.</span></div></div>
+      </div>
+      <div class="alert" style="margin-top:1rem;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.2);border-radius:var(--radius-md);padding:0.75rem 1rem;font-size:0.8rem;color:var(--amber-dark);">
+        <strong>Planned:</strong> Prospective RPM pilot validation, clinician review study, and multi-site evaluation are planned as future work and are not claimed as completed deliverables.
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNICAL KEYWORDS -->
+  <section class="section" style="background:var(--gray-50);border-top:1px solid var(--gray-200);">
+    <div class="container">
+      <h2 class="section-title">Technical Keywords</h2>
+      <div class="tag-cloud">
+        <span>Remote Patient Monitoring (RPM)</span><span>Clinical Decision Support (CDS)</span><span>FHIR R4</span><span>HL7 FHIR</span><span>FHIR Observation</span><span>FHIR DiagnosticReport</span><span>Explainable AI (XAI)</span><span>SHAP</span><span>Machine Learning</span><span>Risk Stratification</span><span>XGBoost</span><span>Probability Calibration</span><span>Healthcare Interoperability</span><span>Digital Health</span><span>Clinical Informatics</span><span>Precision Monitoring</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div><p class="mb-1">&copy; 2025–2026 Xinyang Li. Integrated Methods for Digital Health Data Systems.</p><p class="mb-0 text-xs">Licensed under Apache License, Version 2.0. Draft &amp; experimental — not for production use.</p></div>
+      <div><span class="badge" style="color:#a855f7;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);">DRAFT &amp; EXPERIMENTAL</span></div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

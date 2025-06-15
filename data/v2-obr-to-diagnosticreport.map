@@ -1,0 +1,15 @@
+map "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-obr-to-diagnosticreport" = "V2OBRToDiagnosticReport"
+
+uses "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2OBR" alias V2OBR as source
+uses "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-diagnostic-report" alias DiagnosticReport as target
+
+group V2OBRToDiagnosticReport(source src : HITCV2OBR, target tgt : DiagnosticReport) {
+  src.fillerOrderNumber as v -> tgt.identifier.value = copy(v) "reportIdentifier";
+  src.fillerOrderNumber as v -> tgt.identifier.system = evaluate('https://example.org/fhir/sid/diagnostic-report') "identifierSystem";
+  src.universalServiceIdentifier as v -> tgt.code.coding = copy(v) "reportCode";
+  src.observationDateTime as v -> tgt.effectiveDateTime = copy(v) "effectiveTime";
+  src.resultStatus as v -> tgt.status = translate(v, 'https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-result-status-to-diagnostic-report-status', 'code') "reportStatus";
+  src.diagnosticServiceSectionId as v -> tgt.category.coding.code = copy(v) "category";
+}
+
+// Draft and experimental. Reference resolution, source-system extension population, semantic reconciliation, UCUM normalization, temporal normalization, and validation are orchestrated outside this Phase 1 map unless explicitly shown.

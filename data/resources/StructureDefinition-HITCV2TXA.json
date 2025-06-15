@@ -1,0 +1,434 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "HITCV2TXA",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2TXA",
+  "name": "HITCV2TXA",
+  "title": "HL7 v2 TXA Logical Model",
+  "status": "draft",
+  "description": "Representative TXA fields used by the MDM-to-DocumentReference structure map.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2TXA",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "snapshot": {
+    "element": [
+      {
+        "id": "HITCV2TXA",
+        "path": "HITCV2TXA",
+        "short": "HL7 v2 TXA Logical Model",
+        "definition": "Representative TXA fields used by the MDM-to-DocumentReference structure map.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "HITCV2TXA",
+          "min": 0,
+          "max": "*"
+        },
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ],
+        "isModifier": false,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2TXA.setId",
+        "path": "HITCV2TXA.setId",
+        "short": "TXA-1 Set ID",
+        "definition": "TXA-1 Set ID",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2TXA.setId",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "positiveInt"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2TXA.documentType",
+        "path": "HITCV2TXA.documentType",
+        "short": "TXA-2 Document Type",
+        "definition": "TXA-2 Document Type",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2TXA.documentType",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2TXA.documentContentPresentation",
+        "path": "HITCV2TXA.documentContentPresentation",
+        "short": "TXA-3 Document Content Presentation",
+        "definition": "TXA-3 Document Content Presentation",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2TXA.documentContentPresentation",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2TXA.activityDateTime",
+        "path": "HITCV2TXA.activityDateTime",
+        "short": "TXA-6 Origination Date/Time",
+        "definition": "TXA-6 Origination Date/Time",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2TXA.activityDateTime",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2TXA.primaryActivityProvider",
+        "path": "HITCV2TXA.primaryActivityProvider",
+        "short": "TXA-9 Originator Code/Name",
+        "definition": "TXA-9 Originator Code/Name",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "HITCV2TXA.primaryActivityProvider",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2TXA.uniqueDocumentNumber",
+        "path": "HITCV2TXA.uniqueDocumentNumber",
+        "short": "TXA-12 Unique Document Number",
+        "definition": "TXA-12 Unique Document Number",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2TXA.uniqueDocumentNumber",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2TXA.documentCompletionStatus",
+        "path": "HITCV2TXA.documentCompletionStatus",
+        "short": "TXA-17 Document Completion Status",
+        "definition": "TXA-17 Document Completion Status",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2TXA.documentCompletionStatus",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2TXA.documentAvailabilityStatus",
+        "path": "HITCV2TXA.documentAvailabilityStatus",
+        "short": "TXA-19 Document Availability Status",
+        "definition": "TXA-19 Document Availability Status",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2TXA.documentAvailabilityStatus",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2TXA.sourceUri",
+        "path": "HITCV2TXA.sourceUri",
+        "short": "Location of document payload",
+        "definition": "Location of document payload",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2TXA.sourceUri",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "uri"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "HITCV2TXA",
+        "path": "HITCV2TXA",
+        "short": "HL7 v2 TXA Logical Model",
+        "definition": "Representative TXA fields used by the MDM-to-DocumentReference structure map."
+      },
+      {
+        "id": "HITCV2TXA.setId",
+        "path": "HITCV2TXA.setId",
+        "short": "TXA-1 Set ID",
+        "definition": "TXA-1 Set ID",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "positiveInt"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2TXA.documentType",
+        "path": "HITCV2TXA.documentType",
+        "short": "TXA-2 Document Type",
+        "definition": "TXA-2 Document Type",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2TXA.documentContentPresentation",
+        "path": "HITCV2TXA.documentContentPresentation",
+        "short": "TXA-3 Document Content Presentation",
+        "definition": "TXA-3 Document Content Presentation",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2TXA.activityDateTime",
+        "path": "HITCV2TXA.activityDateTime",
+        "short": "TXA-6 Origination Date/Time",
+        "definition": "TXA-6 Origination Date/Time",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2TXA.primaryActivityProvider",
+        "path": "HITCV2TXA.primaryActivityProvider",
+        "short": "TXA-9 Originator Code/Name",
+        "definition": "TXA-9 Originator Code/Name",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2TXA.uniqueDocumentNumber",
+        "path": "HITCV2TXA.uniqueDocumentNumber",
+        "short": "TXA-12 Unique Document Number",
+        "definition": "TXA-12 Unique Document Number",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2TXA.documentCompletionStatus",
+        "path": "HITCV2TXA.documentCompletionStatus",
+        "short": "TXA-17 Document Completion Status",
+        "definition": "TXA-17 Document Completion Status",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2TXA.documentAvailabilityStatus",
+        "path": "HITCV2TXA.documentAvailabilityStatus",
+        "short": "TXA-19 Document Availability Status",
+        "definition": "TXA-19 Document Availability Status",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2TXA.sourceUri",
+        "path": "HITCV2TXA.sourceUri",
+        "short": "Location of document payload",
+        "definition": "Location of document payload",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ]
+      }
+    ]
+  }
+}

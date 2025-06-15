@@ -1,0 +1,197 @@
+{
+  "resourceType": "StructureMap",
+  "id": "v2-pv1-to-encounter",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-pv1-to-encounter",
+  "version": "0.1.0",
+  "name": "V2PV1ToEncounter",
+  "title": "HL7 v2 PV1 to HITC Canonical Encounter",
+  "status": "draft",
+  "experimental": true,
+  "date": "2026-07-21",
+  "publisher": "Xinyang Li",
+  "description": "Declarative structural mapping from PV1 to the canonical Encounter profile.",
+  "copyright": "© 2026 Xinyang Li. Draft technical specification.",
+  "purpose": "Implements ADT encounter extraction while leaving patient and organization reference resolution to the bundle assembler.",
+  "structure": [
+    {
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2PV1",
+      "mode": "source",
+      "alias": "V2PV1",
+      "documentation": "Normalized logical input model for the source segment or C-CDA entry."
+    },
+    {
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-encounter",
+      "mode": "target",
+      "alias": "Encounter",
+      "documentation": "Strict-at-core canonical FHIR R4 target profile."
+    }
+  ],
+  "group": [
+    {
+      "name": "V2PV1ToEncounter",
+      "typeMode": "types",
+      "documentation": "Phase 1 structural mapping. Terminology translation, UCUM normalization, ISO 8601 normalization, and value-set validation occur in Phase 2 unless explicitly invoked by a translate rule.",
+      "input": [
+        {
+          "name": "src",
+          "type": "HITCV2PV1",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "Encounter",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "visitIdentifier",
+          "source": [
+            {
+              "context": "src",
+              "element": "visitNumber",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "identifier.value",
+              "transform": "copy"
+            }
+          ]
+        },
+        {
+          "name": "identifierSystem",
+          "source": [
+            {
+              "context": "src",
+              "element": "visitNumber",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "identifier.system",
+              "transform": "evaluate",
+              "parameter": [
+                {
+                  "valueString": "'https://example.org/fhir/sid/visit'"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "encounterClass",
+          "source": [
+            {
+              "context": "src",
+              "element": "patientClass",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "class.code",
+              "transform": "translate",
+              "parameter": [
+                {
+                  "valueId": "v"
+                },
+                {
+                  "valueString": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-patient-class-to-encounter-class"
+                },
+                {
+                  "valueString": "code"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "encounterClassSystem",
+          "source": [
+            {
+              "context": "src",
+              "element": "patientClass",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "class.system",
+              "transform": "evaluate",
+              "parameter": [
+                {
+                  "valueString": "'http://terminology.hl7.org/CodeSystem/v3-ActCode'"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "admitTime",
+          "source": [
+            {
+              "context": "src",
+              "element": "admitDateTime",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "period.start",
+              "transform": "copy"
+            }
+          ]
+        },
+        {
+          "name": "dischargeTime",
+          "source": [
+            {
+              "context": "src",
+              "element": "dischargeDateTime",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "period.end",
+              "transform": "copy"
+            }
+          ]
+        },
+        {
+          "name": "hospitalService",
+          "source": [
+            {
+              "context": "src",
+              "element": "hospitalService",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "type.coding.code",
+              "transform": "copy"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

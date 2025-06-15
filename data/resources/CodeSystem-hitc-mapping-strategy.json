@@ -1,0 +1,39 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "draft",
+  "content": "complete",
+  "name": "HITCMappingStrategyCS",
+  "id": "hitc-mapping-strategy",
+  "title": "HITC Mapping Strategy Codes",
+  "description": "Resolution strategies used by the terminology bridge.",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-mapping-strategy",
+  "concept": [
+    {
+      "code": "exact",
+      "display": "Exact lookup",
+      "definition": "Direct crosswalk or exact-code lookup."
+    },
+    {
+      "code": "fuzzy-tfidf",
+      "display": "TF-IDF fuzzy match",
+      "definition": "Description-based TF-IDF candidate resolution."
+    },
+    {
+      "code": "validate-code",
+      "display": "FHIR validate-code",
+      "definition": "Value-set membership checked using the FHIR validate-code operation."
+    },
+    {
+      "code": "human-reviewed",
+      "display": "Human reviewed",
+      "definition": "Mapping accepted or revised by an authorized reviewer."
+    },
+    {
+      "code": "unmapped",
+      "display": "Unmapped",
+      "definition": "No acceptable target concept was resolved."
+    }
+  ],
+  "caseSensitive": true,
+  "count": 5
+}

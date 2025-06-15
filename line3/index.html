@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secure HIE Governance Framework — Xinyang Li</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <style>
+    .line3-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a0a2e 50%, #0f1d36 100%);
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid var(--navy-border);
+    }
+    .line3-hero h1 { color: var(--white); font-size: 2.25rem; line-height: 1.2; margin-bottom: 0.75rem; }
+    .line3-hero .subtitle { color: var(--gray-400); font-size: 1.05rem; max-width: 800px; line-height: 1.7; }
+    .section { padding: 2.5rem 0; }
+    .section-title { font-size: 1.35rem; font-weight: 600; color: var(--gray-900); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--gray-200); }
+    .arch-flow { display: flex; flex-direction: column; align-items: center; gap: 0.35rem; padding: 1.5rem; }
+    .arch-step { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 1rem 1.5rem; text-align: center; min-width: 300px; box-shadow: var(--shadow-sm); }
+    .arch-step .step-title { font-weight: 600; font-size: 0.9rem; color: var(--gray-800); }
+    .arch-step .step-desc { font-size: 0.75rem; color: var(--gray-500); margin-top: 0.15rem; }
+    .arch-step.s1 { border-left: 4px solid #6366f1; }
+    .arch-step.s2 { border-left: 4px solid #a855f7; }
+    .arch-step.s3 { border-left: 4px solid #14b8a6; }
+    .arch-step.s4 { border-left: 4px solid #f59e0b; }
+    .arch-step.s5 { border-left: 4px solid #ef4444; }
+    .arch-arrow { color: var(--gray-300); font-size: 1.25rem; }
+    .deliverable-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid var(--gray-100); }
+    .deliverable-item:last-child { border-bottom: none; }
+    .deliverable-item .check { color: var(--teal); font-weight: 700; font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag-cloud span { font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 999px; background: var(--gray-100); color: var(--gray-600); border: 1px solid var(--gray-200); transition: all 0.2s; cursor: default; }
+    .tag-cloud span:hover { background: #7c3aed; color: var(--white); border-color: #7c3aed; }
+    .layer-card { border-left: 3px solid; padding: 1.25rem; margin-bottom: 1rem; background: var(--white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+    .layer-card.l1 { border-color: #6366f1; }
+    .layer-card.l2 { border-color: #a855f7; }
+    .layer-card.l3 { border-color: #14b8a6; }
+    .layer-card.l4 { border-color: #f59e0b; }
+    .layer-card.l5 { border-color: #ef4444; }
+    .contribution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+    @media (max-width: 768px) { .line3-hero h1 { font-size: 1.5rem; } .arch-step { min-width: auto; } }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-logo"><span class="logo-badge">XYL</span>Xinyang Li</a>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav class="main-nav">
+        <a href="/">Home</a>
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle">Research</button>
+          <div class="dropdown-menu">
+            <a href="/line1/"><span class="line-badge" style="background:rgba(20,184,166,0.12);color:var(--teal-dark);">L1</span>FHIR-Native Clinical Data Interoperability<span class="dropdown-desc">Executable FHIR R4 profiles, mappings, quality metrics, provenance &amp; validation</span></a>
+            <a href="/line2/"><span class="line-badge" style="background:rgba(245,158,11,0.12);color:var(--amber-dark);">L2</span>Explainable RPM &amp; Clinical Decision Support<span class="dropdown-desc">RPM data normalization, SHAP explainability, risk stratification framework</span></a>
+            <a href="/line3/"><span class="line-badge" style="background:rgba(168,85,247,0.12);color:#7c3aed;">L3</span>Secure Health Information Exchange Governance<span class="dropdown-desc">HIE security architecture, consent management, audit &amp; provenance governance</span></a>
+          </div>
+        </div>
+        <a href="/publications/">Publications</a>
+        <a href="/technical/">Technical Resources</a>
+        <a href="/about/">About</a>
+        <span class="badge badge-amber" style="margin-left:0.5rem;">v0.1.0</span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="line3-hero">
+    <div class="container">
+      <div class="flex flex-wrap gap-2" style="margin-bottom:1rem;">
+        <span class="methodology-badge" style="background:rgba(168,85,247,0.15);color:#c084fc;border:1px solid rgba(168,85,247,0.3);">LINE 3 — GOVERNANCE &amp; SECURITY</span>
+        <span class="methodology-badge" style="background:rgba(255,255,255,0.06);color:var(--gray-400);border:1px solid rgba(255,255,255,0.1);">Framework — Draft</span>
+      </div>
+      <h1>Zero-Trust, Consent-Aware Governance Framework for Secure Health Information Exchange</h1>
+      <p class="subtitle">A security and governance architecture combining zero-trust principles, consent-aware data governance, attribute-based access control, audit integrity mechanisms, and privacy-preserving research access for interoperable healthcare data exchange.</p>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Overview</h2>
+      <p style="color:var(--gray-700);line-height:1.8;margin-bottom:1.25rem;">
+        The Secure HIE Governance Framework is a security and governance architecture designed to enable trusted health information exchange across distributed healthcare environments.
+      </p>
+      <p style="color:var(--gray-700);line-height:1.8;margin-bottom:1.25rem;">
+        The framework combines zero-trust security principles, consent-aware data governance, attribute-based access control, audit integrity mechanisms, and privacy-preserving research access workflows to support secure exchange of interoperable healthcare data.
+      </p>
+      <p style="color:var(--gray-700);line-height:1.8;">
+        Built upon healthcare interoperability standards including HL7 FHIR, the framework addresses critical challenges in modern Health Information Exchange (HIE), including identity verification, authorization management, consent enforcement, auditability, and privacy protection.
+      </p>
+    </div>
+  </section>
+
+  <!-- TECHNICAL CONTRIBUTION -->
+  <section class="section" style="background:var(--gray-50);border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200);">
+    <div class="container">
+      <h2 class="section-title">Technical Contribution</h2>
+      <p style="color:var(--gray-700);line-height:1.8;margin-bottom:1.25rem;">The framework introduces a multi-layer governance model integrating:</p>
+      <div class="contribution-grid">
+        <div class="card" style="padding:1.25rem;"><strong style="color:#7c3aed;">1</strong><h4 style="margin:0.5rem 0 0.25rem;font-size:0.95rem;">Identity-Aware Authentication</h4><p style="font-size:0.8rem;color:var(--gray-500);margin:0;">OIDC-based authentication with clinical role verification and identity governance</p></div>
+        <div class="card" style="padding:1.25rem;"><strong style="color:#7c3aed;">2</strong><h4 style="margin:0.5rem 0 0.25rem;font-size:0.95rem;">Purpose-Based Authorization</h4><p style="font-size:0.8rem;color:var(--gray-500);margin:0;">Attribute-based access control with XACML 3.0 policy engine and deny-by-default enforcement</p></div>
+        <div class="card" style="padding:1.25rem;"><strong style="color:#7c3aed;">3</strong><h4 style="margin:0.5rem 0 0.25rem;font-size:0.95rem;">Consent Lifecycle Management</h4><p style="font-size:0.8rem;color:var(--gray-500);margin:0;">FHIR Consent R4-based authorization lifecycle with revocation propagation</p></div>
+        <div class="card" style="padding:1.25rem;"><strong style="color:#7c3aed;">4</strong><h4 style="margin:0.5rem 0 0.25rem;font-size:0.95rem;">Immutable Audit Lineage</h4><p style="font-size:0.8rem;color:var(--gray-500);margin:0;">FHIR AuditEvent with Merkle-tree integrity chaining for tamper-evident audit trails</p></div>
+        <div class="card" style="padding:1.25rem;"><strong style="color:#7c3aed;">5</strong><h4 style="margin:0.5rem 0 0.25rem;font-size:0.95rem;">Privacy-Preserving Federated Access</h4><p style="font-size:0.8rem;color:var(--gray-500);margin:0;">Federated query with differential privacy and minimum cohort suppression for research access</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOVERNANCE ARCHITECTURE -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Secure HIE Governance Architecture</h2>
+      <div class="arch-flow">
+        <div class="arch-step s1"><div class="step-title">Healthcare Data Exchange</div><div class="step-desc">Hospitals / Research / Payers</div></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step s1"><div class="step-title">Identity Governance Layer</div><div class="step-desc">OIDC Authentication · Clinical Role Verification</div></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step s2"><div class="step-title">Authorization Governance</div><div class="step-desc">ABAC Policy Engine · XACML 3.0 · Deny-by-Default</div></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step s3"><div class="step-title">Consent Management Layer</div><div class="step-desc">FHIR Consent R4 · Revocation Propagation</div></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step s4"><div class="step-title">Audit &amp; Trust Layer</div><div class="step-desc">FHIR AuditEvent · Merkle Integrity Chain</div></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step s5"><div class="step-title">Privacy-Preserving Analytics</div><div class="step-desc">Federated Query · Differential Privacy</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOVERNANCE LAYERS -->
+  <section class="section" style="background:var(--gray-50);border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200);">
+    <div class="container">
+      <h2 class="section-title">Governance Model</h2>
+      <div class="layer-card l1"><h4 style="margin:0 0 0.25rem;font-size:0.95rem;">Layer 1: Identity Governance</h4><p style="font-size:0.8rem;color:var(--gray-500);margin:0;">OIDC authentication · Clinical identity verification · Role validation</p></div>
+      <div class="layer-card l2"><h4 style="margin:0 0 0.25rem;font-size:0.95rem;">Layer 2: Authorization Governance</h4><p style="font-size:0.8rem;color:var(--gray-500);margin:0;">ABAC (Attribute-Based Access Control) · XACML 3.0 · Deny-by-default policy · Access governed by: user role, clinical purpose, data sensitivity, context</p></div>
+      <div class="layer-card l3"><h4 style="margin:0 0 0.25rem;font-size:0.95rem;">Layer 3: Consent Governance</h4><p style="font-size:0.8rem;color:var(--gray-500);margin:0;">FHIR Consent R4 · Patient authorization · Consent lifecycle · Revocation propagation</p></div>
+      <div class="layer-card l4"><h4 style="margin:0 0 0.25rem;font-size:0.95rem;">Layer 4: Audit Governance</h4><p style="font-size:0.8rem;color:var(--gray-500);margin:0;">FHIR AuditEvent · Merkle-tree audit chaining · Traceability · Integrity · Accountability</p></div>
+      <div class="layer-card l5"><h4 style="margin:0 0 0.25rem;font-size:0.95rem;">Layer 5: Privacy-Preserving Research Access</h4><p style="font-size:0.8rem;color:var(--gray-500);margin:0;">Federated query · Differential privacy · Minimum cohort suppression</p></div>
+    </div>
+  </section>
+
+  <!-- COMPLETED DELIVERABLES -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Completed Deliverables</h2>
+      <div class="card" style="padding:1.5rem;">
+        <div class="deliverable-item"><span class="check">✓</span><div><strong>Secure HIE Governance Methodology</strong><br><span style="font-size:0.8rem;color:var(--gray-500);">Zero-trust architecture, consent-aware governance, security workflow design.</span></div></div>
+        <div class="deliverable-item"><span class="check">✓</span><div><strong>Identity and Access Control Model</strong><br><span style="font-size:0.8rem;color:var(--gray-500);">OIDC authentication integration, ABAC authorization framework, policy enforcement design.</span></div></div>
+        <div class="deliverable-item"><span class="check">✓</span><div><strong>Consent Management Design</strong><br><span style="font-size:0.8rem;color:var(--gray-500);">FHIR Consent R4-based authorization lifecycle with revocation propagation mechanisms.</span></div></div>
+        <div class="deliverable-item"><span class="check">✓</span><div><strong>Audit Integrity Framework</strong><br><span style="font-size:0.8rem;color:var(--gray-500);">FHIR AuditEvent schema, Merkle-tree integrity verification, lineage tracking.</span></div></div>
+        <div class="deliverable-item"><span class="check">✓</span><div><strong>Privacy-Preserving Research Access Model</strong><br><span style="font-size:0.8rem;color:var(--gray-500);">Federated query architecture, differential privacy mechanisms, cohort suppression.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNICAL KEYWORDS -->
+  <section class="section" style="background:var(--gray-50);border-top:1px solid var(--gray-200);">
+    <div class="container">
+      <h2 class="section-title">Technical Keywords</h2>
+      <div class="tag-cloud">
+        <span>Health Information Exchange (HIE)</span><span>Secure HIE</span><span>FHIR</span><span>FHIR Consent</span><span>FHIR AuditEvent</span><span>Zero Trust Architecture</span><span>Consent Management</span><span>Identity Governance</span><span>OIDC</span><span>ABAC</span><span>XACML</span><span>Security Governance</span><span>Privacy-Preserving Computing</span><span>Differential Privacy</span><span>Federated Query</span><span>Healthcare Cybersecurity</span><span>Clinical Data Governance</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div><p class="mb-1">&copy; 2025–2026 Xinyang Li. Integrated Methods for Digital Health Data Systems.</p><p class="mb-0 text-xs">Licensed under Apache License, Version 2.0. Draft &amp; experimental — not for production use.</p></div>
+      <div><span class="badge" style="color:#a855f7;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);">DRAFT &amp; EXPERIMENTAL</span></div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

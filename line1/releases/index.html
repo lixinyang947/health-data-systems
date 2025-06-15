@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Releases — HITC FHIR-Native Interoperability Framework</title>
+  <link rel="stylesheet" href="../../css/main.css" />
+  <style>
+    /* Releases page-specific styles */
+    .release-card {
+      border: 1px solid var(--gray-200);
+      border-left: 4px solid var(--teal);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      box-shadow: var(--shadow-card);
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .release-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .release-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .release-meta-item .label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--gray-400);
+    }
+
+    .release-meta-item .value {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--gray-800);
+      word-break: break-all;
+    }
+
+    .release-meta-item .value.code {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+    }
+
+    .download-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      padding: 1.5rem;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .download-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    .download-card .download-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      border-radius: var(--radius-md);
+      background-color: rgba(20, 184, 166, 0.1);
+      color: var(--teal-dark);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      flex-shrink: 0;
+    }
+
+    .download-card h4 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+      color: var(--gray-900);
+    }
+
+    .download-card p {
+      font-size: 0.8125rem;
+      color: var(--gray-500);
+      line-height: 1.5;
+      margin-bottom: 0.75rem;
+      flex: 1;
+    }
+
+    .download-card .checksum {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      color: var(--gray-400);
+      word-break: break-all;
+      padding: 0.4rem 0.5rem;
+      background: var(--gray-50);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--gray-100);
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+
+    .release-notes-section {
+      margin-top: 3rem;
+    }
+
+    .release-notes-section ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .release-notes-section ul li {
+      position: relative;
+      padding-left: 1.5rem;
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--gray-700);
+    }
+
+    .release-notes-section ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    .future-note {
+      margin-top: 3rem;
+      padding: 1.25rem;
+      background-color: var(--gray-50);
+      border: 1px dashed var(--gray-300);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      color: var(--gray-500);
+      font-size: 0.9375rem;
+    }
+
+    .future-note strong {
+      color: var(--gray-700);
+    }
+
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================
+       STICKY HEADER
+       ========================================================== -->
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-logo">
+        <span class="logo-badge">XYL</span>
+        Xinyang Li
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="main-nav">
+        <a href="/">Home</a>
+
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle">Research</button>
+          <div class="dropdown-menu">
+            <a href="/line1/">
+              <span class="line-badge" style="background:rgba(20,184,166,0.12);color:var(--teal-dark);">L1</span>
+              FHIR-Native Clinical Data Interoperability
+              <span class="dropdown-desc">Executable FHIR R4 profiles, mappings, quality metrics, provenance &amp; validation</span>
+            </a>
+            <a href="/line2/">
+              <span class="line-badge" style="background:rgba(245,158,11,0.12);color:var(--amber-dark);">L2</span>
+              Explainable RPM &amp; Clinical Decision Support
+              <span class="dropdown-desc">RPM data normalization, SHAP explainability, risk stratification framework</span>
+            </a>
+            <a href="/line3/">
+              <span class="line-badge" style="background:rgba(168,85,247,0.12);color:#7c3aed;">L3</span>
+              Secure Health Information Exchange Governance
+              <span class="dropdown-desc">HIE security architecture, consent management, audit &amp; provenance governance</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="/publications/">Publications</a>
+        <a href="/technical/">Technical Resources</a>
+        <a href="/about/">About</a>
+
+        <span class="badge badge-amber" style="margin-left:0.5rem;">v0.1.0</span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==========================================================
+       MAIN CONTENT
+       ========================================================== -->
+  <main class="main-content">
+
+    <!-- Page header -->
+    <section style="background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); padding: 3rem 0 2.5rem; border-bottom: 1px solid var(--navy-border);">
+      <div class="container">
+        <h1 style="color: var(--white); font-size: 2rem; line-height: 1.2; margin-bottom: 0.5rem;">
+          Releases
+        </h1>
+        <p style="color: var(--gray-400); font-size: 1.0625rem; max-width: 700px; margin-bottom: 0; line-height: 1.7;">
+          Versioned release artifacts for the HITC FHIR-Native Interoperability Framework
+        </p>
+      </div>
+    </section>
+
+    <!-- v0.1.0 Release Section -->
+    <section class="section" style="padding: 2.5rem 0;">
+      <div class="container">
+
+        <h2 class="section-title" style="margin-bottom: 1.25rem;">v0.1.0 — Initial Draft Release</h2>
+
+        <!-- Release Info Card -->
+        <div class="release-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+            <h3 style="margin-bottom: 0; font-size: 1.125rem; color: var(--gray-900);">Release Information</h3>
+            <span class="badge badge-amber">Draft &amp; Experimental</span>
+          </div>
+
+          <div class="release-meta">
+            <div class="release-meta-item">
+              <span class="label">Version</span>
+              <span class="value">v0.1.0</span>
+            </div>
+            <div class="release-meta-item">
+              <span class="label">FHIR Version</span>
+              <span class="value">4.0.1</span>
+            </div>
+            <div class="release-meta-item">
+              <span class="label">Release Date</span>
+              <span class="value">July 21, 2026</span>
+            </div>
+            <div class="release-meta-item">
+              <span class="label">Git Commit</span>
+              <span class="value code">5c8d3beff3d6522358b913b4fd5ea37b86a5830e</span>
+            </div>
+            <div class="release-meta-item">
+              <span class="label">Status</span>
+              <span class="value"><span class="badge badge-amber">Draft &amp; Experimental</span></span>
+            </div>
+            <div class="release-meta-item">
+              <span class="label">License</span>
+              <span class="value">Apache-2.0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Download Packages -->
+        <h3 style="margin-bottom: 1rem; margin-top: 2.5rem;">Download Packages</h3>
+
+        <div class="download-grid">
+
+          <!-- a) Source ZIP -->
+          <div class="download-card">
+            <div class="download-icon">&#128230;</div>
+            <h4>Source ZIP</h4>
+            <p>Complete source code including FSH, FML, and build scripts</p>
+            <a href="#" class="btn btn-secondary btn-sm" style="align-self: flex-start;">Download (requires packaging)</a>
+          </div>
+
+          <!-- b) FHIR NPM Package -->
+          <div class="download-card">
+            <div class="download-icon">&#128230;</div>
+            <h4>FHIR NPM Package</h4>
+            <p>li-xinyang-interop-r4-0.1.0.tgz — FHIR NPM package with all generated resources</p>
+            <div class="checksum" id="sha256-npm">SHA-256: Loading…</div>
+            <a href="/data/resources/.index.json" class="btn btn-primary btn-sm" style="align-self: flex-start;">View Package Index</a>
+          </div>
+
+          <!-- c) Artifact Inventory -->
+          <div class="download-card">
+            <div class="download-icon">&#128196;</div>
+            <h4>Artifact Inventory</h4>
+            <p>ARTIFACT_INVENTORY.csv — Complete artifact listing with resource types, versions, and statuses</p>
+            <a href="/data/ARTIFACT_INVENTORY.csv" class="btn btn-primary btn-sm" style="align-self: flex-start;">Download CSV</a>
+          </div>
+
+          <!-- d) Traceability Matrix -->
+          <div class="download-card">
+            <div class="download-icon">&#128202;</div>
+            <h4>Traceability Matrix</h4>
+            <p>TRACEABILITY_MATRIX.csv — Methodology-to-artifact traceability mapping</p>
+            <a href="/data/TRACEABILITY_MATRIX.csv" class="btn btn-primary btn-sm" style="align-self: flex-start;">Download CSV</a>
+          </div>
+
+          <!-- e) Validation Reports -->
+          <div class="download-card">
+            <div class="download-icon">&#128269;</div>
+            <h4>Validation Reports</h4>
+            <p>Complete build and validation reports including SUSHI compilation, deterministic integrity checks, and offline R4 validation</p>
+            <a href="/line1/validation/" class="btn btn-primary btn-sm" style="align-self: flex-start;">View Reports</a>
+          </div>
+
+          <!-- f) Complete Technical Evidence Package -->
+          <div class="download-card">
+            <div class="download-icon">&#128203;</div>
+            <h4>Complete Technical Evidence Package</h4>
+            <p>All evidence documents combined — methodology assumptions, validation reports, traceability, and inventory</p>
+            <a href="/line1/review/" class="btn btn-primary btn-sm" style="align-self: flex-start;">Review Package</a>
+          </div>
+
+        </div>
+
+        <!-- Release Notes -->
+        <div class="release-notes-section">
+          <h3>Release Notes — v0.1.0</h3>
+          <p style="color: var(--gray-500); font-size: 0.875rem; margin-bottom: 1.25rem;">
+            Key information about the initial draft release of the Li Xinyang FHIR-Native Interoperability Framework.
+          </p>
+
+          <h4 style="font-size: 1rem; margin-bottom: 0.75rem; color: var(--gray-700);">What's Included</h4>
+          <ul>
+            <li>Initial FHIR R4 formalization of the interoperability and data-quality methodology.</li>
+            <li><strong>35</strong> canonical FHIR R4 resource profiles with generated snapshots.</li>
+            <li><strong>11</strong> registered extensions for source identity, mapping provenance, validation stages, quality metrics, and tamper-evident lineage.</li>
+            <li><strong>9</strong> normalized source logical models for representative HL7 v2 segments and C-CDA entries.</li>
+            <li>Terminology artifacts for six data-quality metrics and mapping/validation metadata — <strong>7 CodeSystems</strong>, <strong>7 ValueSets</strong>, <strong>11 ConceptMaps</strong>, and <strong>12 StructureMaps</strong> with readable FML sources.</li>
+            <li><strong>1</strong> generated ImplementationGuide, <strong>1</strong> CapabilityStatement, <strong>2</strong> draft OperationDefinitions, and <strong>2</strong> SearchParameters.</li>
+            <li><strong>17</strong> standalone synthetic examples and <strong>1</strong> canonical exchange Bundle.</li>
+            <li>Deterministic integrity checks, offline R4 validation, artifact inventory, traceability matrix, and FHIR NPM package assembly.</li>
+            <li><strong>116</strong> total FHIR JSON resources including 55 StructureDefinitions with generated snapshots.</li>
+          </ul>
+
+          <h4 style="font-size: 1rem; margin-top: 1.5rem; margin-bottom: 0.75rem; color: var(--gray-700);">Build &amp; Validation</h4>
+          <ul>
+            <li>SUSHI 3.20.0 compilation with snapshot generation completed with no errors.</li>
+            <li>Deterministic package-integrity checks passed with no errors or warnings.</li>
+            <li>Offline R4 validation of 61 non-StructureDefinition resources yielded no fatal, error, or warning findings.</li>
+            <li>Build pipeline: SUSHI compilation → assembly → inventory → integrity check → offline validation.</li>
+          </ul>
+
+          <h4 style="font-size: 1rem; margin-top: 1.5rem; margin-bottom: 0.75rem; color: var(--gray-700);">Known Limitations</h4>
+          <ul>
+            <li>This is a <strong>draft and experimental</strong> release — not for production use.</li>
+            <li>The canonical base is <code>https://example.org/fhir/li-xinyang-interop-r4</code>; replace with a controlled, durable domain before publication.</li>
+            <li>NDC→RxNorm, ICD-9-CM→ICD-10-CM, and local-code crosswalks are intentionally empty governance templates.</li>
+            <li>HL7 v2 and C-CDA StructureMaps begin from normalized logical inputs after transport parsing and document/segment extraction.</li>
+            <li>TF-IDF matching, live <code>$validate-code</code>, Merkle-tree storage, and federated-query runtime components are method and interface contracts, not completed services.</li>
+            <li>All examples are synthetic and all performance figures remain targets or concept-of-concept values.</li>
+            <li>Package has not been run through the official HL7 Java validator and does not replace a live terminology-server pass, licensed terminology review, institution-specific conformance testing, security testing, clinical-safety review, or production acceptance testing.</li>
+          </ul>
+        </div>
+
+        <!-- Future releases note -->
+        <div class="future-note">
+          Future releases (<strong>v0.2.0+</strong>) will be listed here once a production domain and canonical URL are established.
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================
+       FOOTER
+       ========================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <p class="mb-1">&copy; 2025 Li Xinyang FHIR-Native Interoperability Framework</p>
+        <p class="mb-0 text-xs">Licensed under the Apache License, Version 2.0</p>
+      </div>
+      <div>
+        <span class="badge" style="color:#a855f7;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);">DRAFT &amp; EXPERIMENTAL — NOT FOR PRODUCTION USE</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================
+       JAVASCRIPT
+       ========================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Load SHA-256 from package-manifest.json
+      fetch('/data/package-manifest.json')
+        .then(function (response) {
+          if (!response.ok) throw new Error('Failed to load package manifest');
+          return response.json();
+        })
+        .then(function (manifest) {
+          var sha256El = document.getElementById('sha256-npm');
+          if (sha256El && manifest.sha256) {
+            sha256El.textContent = 'SHA-256: ' + manifest.sha256;
+          }
+        })
+        .catch(function (err) {
+          console.error('Error loading package manifest:', err);
+          var sha256El = document.getElementById('sha256-npm');
+          if (sha256El) {
+            sha256El.textContent = 'SHA-256: Unable to load checksum';
+          }
+        });
+    });
+  </script>
+  <script src="../../js/main.js"></script>
+</body>
+</html>

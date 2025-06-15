@@ -1,0 +1,68 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "ExampleSourceDocument",
+  "meta": {
+    "profile": [
+      "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-document-reference"
+    ]
+  },
+  "extension": [
+    {
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-source-system",
+      "valueIdentifier": {
+        "system": "urn:ietf:rfc:3986",
+        "value": "urn:oid:1.2.840.114350.1.13.99999.1.7.2.688879"
+      }
+    }
+  ],
+  "identifier": [
+    {
+      "system": "https://example.org/fhir/sid/document",
+      "value": "DOC-CCDA-1001"
+    }
+  ],
+  "status": "current",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34133-9",
+        "display": "Summary of episode note"
+      }
+    ]
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note"
+        }
+      ]
+    }
+  ],
+  "subject": {
+    "reference": "Patient/ExamplePatient"
+  },
+  "date": "2026-07-15T08:59:00-04:00",
+  "author": [
+    {
+      "reference": "Practitioner/ExampleReviewer"
+    }
+  ],
+  "custodian": {
+    "reference": "Organization/ExampleHospital"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "application/hl7-v3+xml",
+        "url": "urn:uuid:8b18f680-49d0-4d0a-a6d2-44f320887cd4"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ihe.formatcode.fhir/CodeSystem/formatcode",
+        "code": "urn:ihe:pcc:xphr:2007"
+      }
+    }
+  ]
+}

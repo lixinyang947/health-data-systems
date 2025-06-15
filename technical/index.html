@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technical Resources — Xinyang Li</title>
+  <link rel="stylesheet" href="../css/main.css" />
+  <style>
+    .hero-research {
+      background: linear-gradient(135deg, var(--navy) 0%, #0f1d36 50%, #0a1628 100%);
+      padding: 5rem 0 4rem;
+      border-bottom: 1px solid var(--navy-border);
+    }
+    .hero-research h1 {
+      color: var(--white);
+      font-size: 2.5rem;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .hero-research .subtitle {
+      color: var(--gray-400);
+      font-size: 1.0625rem;
+      max-width: 700px;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .resource-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-card);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+      display: block;
+      text-decoration: none !important;
+      color: inherit !important;
+    }
+    .resource-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+      border-color: var(--teal);
+    }
+    .resource-card .icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .resource-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--gray-800);
+    }
+    .resource-card p {
+      font-size: 0.875rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+    .note-box {
+      background: var(--gray-100);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      font-size: 0.875rem;
+      color: var(--gray-600);
+    }
+    @media (max-width: 768px) {
+      .hero-research { padding: 3rem 0 2.5rem; }
+      .hero-research h1 { font-size: 1.75rem; }
+      .resource-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-logo">
+        <span class="logo-badge">XYL</span>
+        Xinyang Li
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav">
+        <a href="/">Home</a>
+
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle">Research</button>
+          <div class="dropdown-menu">
+            <a href="/line1/">
+              <span class="line-badge" style="background:rgba(20,184,166,0.12);color:var(--teal-dark);">L1</span>
+              FHIR-Native Clinical Data Interoperability
+              <span class="dropdown-desc">Executable FHIR R4 profiles, mappings, quality metrics, provenance &amp; validation</span>
+            </a>
+            <a href="/line2/">
+              <span class="line-badge" style="background:rgba(245,158,11,0.12);color:var(--amber-dark);">L2</span>
+              Explainable RPM &amp; Clinical Decision Support
+              <span class="dropdown-desc">RPM data normalization, SHAP explainability, risk stratification framework</span>
+            </a>
+            <a href="/line3/">
+              <span class="line-badge" style="background:rgba(168,85,247,0.12);color:#7c3aed;">L3</span>
+              Secure Health Information Exchange Governance
+              <span class="dropdown-desc">HIE security architecture, consent management, audit &amp; provenance governance</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="/publications/">Publications</a>
+        <a href="/technical/" class="active">Technical Resources</a>
+        <a href="/about/">About</a>
+
+        <span class="badge badge-amber" style="margin-left:0.5rem;">v0.1.0</span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-research">
+    <div class="container">
+      <h1>Technical Resources</h1>
+      <p class="subtitle">
+        Access to published methodology artifacts, validation reports, download packages, and reviewer materials.
+      </p>
+    </div>
+  </section>
+
+  <!-- RESOURCE CARDS -->
+  <section class="section">
+    <div class="container">
+      <div class="resource-grid">
+        <a href="/line1/artifacts/" class="resource-card">
+          <span class="icon">&#128218;</span>
+          <h3>Artifact Explorer</h3>
+          <p>Browse all 116 FHIR artifacts across profiles, extensions, maps, terminology, and examples.</p>
+        </a>
+
+        <a href="/line1/validation/" class="resource-card">
+          <span class="icon">&#128200;</span>
+          <h3>Validation Dashboard</h3>
+          <p>Build and validation reports for all FHIR profiles, StructureMaps, and terminology resources.</p>
+        </a>
+
+        <a href="/line1/releases/" class="resource-card">
+          <span class="icon">&#128230;</span>
+          <h3>Downloads &amp; Releases</h3>
+          <p>FHIR NPM package, CSV inventories, source code, and release notes.</p>
+        </a>
+
+        <a href="/line1/review/" class="resource-card">
+          <span class="icon">&#128269;</span>
+          <h3>Reviewer Desk</h3>
+          <p>Independent expert review portal for methodology validation and feedback.</p>
+        </a>
+      </div>
+
+      <div class="note-box">
+        Additional technical resources for Line 2 and Line 3 will be published as those projects mature.
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <p class="mb-1">&copy; 2025–2026 Xinyang Li. Integrated Methods for Digital Health Data Systems.</p>
+        <p class="mb-0 text-xs">Licensed under Apache License, Version 2.0. Draft &amp; experimental — not for production use.</p>
+      </div>
+      <div>
+        <span class="badge" style="color:#a855f7;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);">DRAFT &amp; EXPERIMENTAL</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

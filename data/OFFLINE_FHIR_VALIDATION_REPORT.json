@@ -1,0 +1,2155 @@
+{
+  "package": "li-xinyang-interop-r4",
+  "version": "0.1.0",
+  "fhirVersion": "4.0.1",
+  "validator": "@records-fhir/validator 0.4.2",
+  "generatedAt": "2026-07-21T03:04:43.449Z",
+  "scope": "All assembled non-StructureDefinition JSON resources. Instances use the first declared meta.profile; conformance resources use the R4 base resource profile. StructureDefinitions are covered by the SUSHI snapshot build and deterministic package checks.",
+  "totals": {
+    "resources": 61,
+    "fatal": 0,
+    "error": 0,
+    "warning": 0,
+    "information": 12,
+    "info": 133,
+    "totalIssues": 145
+  },
+  "results": [
+    {
+      "file": "Bundle-ExampleCanonicalExchange.json",
+      "resourceType": "Bundle",
+      "id": "ExampleCanonicalExchange",
+      "profileUrl": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-exchange-bundle",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 6,
+        "info": 18,
+        "total": 24
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "required-metadata-missing-lastUpdated",
+          "path": "meta.lastUpdated",
+          "message": "Bundle resource is missing recommended metadata field: meta.lastUpdated",
+          "ruleId": null,
+          "validationMethod": "required-metadata-check"
+        },
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Bundle.entry[0].resource/*Organization/ExampleHospital*/.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Bundle.entry[1].resource/*Device/ExampleSourceEHR*/.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Bundle.entry[2].resource/*Practitioner/ExampleReviewer*/.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Bundle.entry[3].resource/*Patient/ExamplePatient*/.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Bundle.entry[4].resource/*Location/ExampleLocation*/.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Bundle.entry[5].resource/*Encounter/ExampleEncounter*/.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Bundle.entry[6].resource/*Specimen/ExampleSpecimen*/.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Bundle.entry[7].resource/*Observation/ExampleHbA1cObservation*/.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Bundle.entry[8].resource/*Condition/ExampleCondition*/.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Bundle.entry[9].resource/*DocumentReference/ExampleSourceDocument*/.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Bundle.entry[10].resource/*Observation/ExampleQualityFFR*/.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "information",
+          "code": "best-practice-missing-performer",
+          "path": "Bundle.entry[10].resource/*Observation/ExampleQualityFFR*/.performer",
+          "message": "All Observations should have a `performer`",
+          "ruleId": null,
+          "validationMethod": null
+        },
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Bundle.entry[11].resource/*Observation/ExampleQualityCSC*/.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "information",
+          "code": "best-practice-missing-performer",
+          "path": "Bundle.entry[11].resource/*Observation/ExampleQualityCSC*/.performer",
+          "message": "All Observations should have a `performer`",
+          "ruleId": null,
+          "validationMethod": null
+        },
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Bundle.entry[12].resource/*Observation/ExampleQualityRIR*/.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "information",
+          "code": "best-practice-missing-performer",
+          "path": "Bundle.entry[12].resource/*Observation/ExampleQualityRIR*/.performer",
+          "message": "All Observations should have a `performer`",
+          "ruleId": null,
+          "validationMethod": null
+        },
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Bundle.entry[13].resource/*Observation/ExampleQualityTC*/.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "information",
+          "code": "best-practice-missing-performer",
+          "path": "Bundle.entry[13].resource/*Observation/ExampleQualityTC*/.performer",
+          "message": "All Observations should have a `performer`",
+          "ruleId": null,
+          "validationMethod": null
+        },
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Bundle.entry[14].resource/*Observation/ExampleQualityMSR*/.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "information",
+          "code": "best-practice-missing-performer",
+          "path": "Bundle.entry[14].resource/*Observation/ExampleQualityMSR*/.performer",
+          "message": "All Observations should have a `performer`",
+          "ruleId": null,
+          "validationMethod": null
+        },
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Bundle.entry[15].resource/*Observation/ExampleQualityTCR*/.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "information",
+          "code": "best-practice-missing-performer",
+          "path": "Bundle.entry[15].resource/*Observation/ExampleQualityTCR*/.performer",
+          "message": "All Observations should have a `performer`",
+          "ruleId": null,
+          "validationMethod": null
+        },
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Bundle.entry[16].resource/*Provenance/ExampleMappingProvenance*/.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        }
+      ]
+    },
+    {
+      "file": "CapabilityStatement-hitc-interop-server.json",
+      "resourceType": "CapabilityStatement",
+      "id": "hitc-interop-server",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/CapabilityStatement",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "CapabilityStatement.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "CodeSystem-hitc-mapping-strategy.json",
+      "resourceType": "CodeSystem",
+      "id": "hitc-mapping-strategy",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/CodeSystem",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "CodeSystem.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "CodeSystem-hitc-observation-category.json",
+      "resourceType": "CodeSystem",
+      "id": "hitc-observation-category",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/CodeSystem",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "CodeSystem.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "CodeSystem-hitc-quality-metric.json",
+      "resourceType": "CodeSystem",
+      "id": "hitc-quality-metric",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/CodeSystem",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "CodeSystem.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "CodeSystem-hitc-source-format.json",
+      "resourceType": "CodeSystem",
+      "id": "hitc-source-format",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/CodeSystem",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "CodeSystem.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "CodeSystem-hitc-supported-terminology.json",
+      "resourceType": "CodeSystem",
+      "id": "hitc-supported-terminology",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/CodeSystem",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "CodeSystem.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "CodeSystem-hitc-transformation-activity.json",
+      "resourceType": "CodeSystem",
+      "id": "hitc-transformation-activity",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/CodeSystem",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "CodeSystem.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "CodeSystem-hitc-validation-stage.json",
+      "resourceType": "CodeSystem",
+      "id": "hitc-validation-stage",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/CodeSystem",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "CodeSystem.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "ConceptMap-icd9cm-to-icd10cm-template.json",
+      "resourceType": "ConceptMap",
+      "id": "icd9cm-to-icd10cm-template",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/ConceptMap",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "ConceptMap.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "ConceptMap-local-clinical-to-snomed-template.json",
+      "resourceType": "ConceptMap",
+      "id": "local-clinical-to-snomed-template",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/ConceptMap",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "ConceptMap.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "ConceptMap-local-lab-to-loinc-template.json",
+      "resourceType": "ConceptMap",
+      "id": "local-lab-to-loinc-template",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/ConceptMap",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "ConceptMap.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "ConceptMap-local-medication-to-rxnorm-template.json",
+      "resourceType": "ConceptMap",
+      "id": "local-medication-to-rxnorm-template",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/ConceptMap",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "ConceptMap.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "ConceptMap-ndc-to-rxnorm-template.json",
+      "resourceType": "ConceptMap",
+      "id": "ndc-to-rxnorm-template",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/ConceptMap",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "ConceptMap.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "ConceptMap-v2-abnormal-flag-to-observation-interpretation.json",
+      "resourceType": "ConceptMap",
+      "id": "v2-abnormal-flag-to-observation-interpretation",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/ConceptMap",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "ConceptMap.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "ConceptMap-v2-administrative-gender-to-fhir.json",
+      "resourceType": "ConceptMap",
+      "id": "v2-administrative-gender-to-fhir",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/ConceptMap",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "ConceptMap.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "ConceptMap-v2-order-control-to-request-status.json",
+      "resourceType": "ConceptMap",
+      "id": "v2-order-control-to-request-status",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/ConceptMap",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "ConceptMap.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "ConceptMap-v2-patient-class-to-encounter-class.json",
+      "resourceType": "ConceptMap",
+      "id": "v2-patient-class-to-encounter-class",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/ConceptMap",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "ConceptMap.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "ConceptMap-v2-result-status-to-diagnostic-report-status.json",
+      "resourceType": "ConceptMap",
+      "id": "v2-result-status-to-diagnostic-report-status",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/ConceptMap",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "ConceptMap.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "ConceptMap-v2-result-status-to-observation-status.json",
+      "resourceType": "ConceptMap",
+      "id": "v2-result-status-to-observation-status",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/ConceptMap",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "ConceptMap.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "Condition-ExampleCondition.json",
+      "resourceType": "Condition",
+      "id": "ExampleCondition",
+      "profileUrl": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-condition",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 3,
+        "total": 3
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Condition.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "required-metadata-missing-lastUpdated",
+          "path": "meta.lastUpdated",
+          "message": "Condition resource is missing recommended metadata field: meta.lastUpdated",
+          "ruleId": null,
+          "validationMethod": "required-metadata-check"
+        },
+        {
+          "severity": "info",
+          "code": "required-metadata-missing-versionId",
+          "path": "meta.versionId",
+          "message": "Condition resource is missing recommended metadata field: meta.versionId",
+          "ruleId": null,
+          "validationMethod": "required-metadata-check"
+        }
+      ]
+    },
+    {
+      "file": "Device-ExampleSourceEHR.json",
+      "resourceType": "Device",
+      "id": "ExampleSourceEHR",
+      "profileUrl": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-device",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 1,
+        "total": 1
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Device.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        }
+      ]
+    },
+    {
+      "file": "DocumentReference-ExampleSourceDocument.json",
+      "resourceType": "DocumentReference",
+      "id": "ExampleSourceDocument",
+      "profileUrl": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-document-reference",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 1,
+        "total": 1
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "DocumentReference.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        }
+      ]
+    },
+    {
+      "file": "Encounter-ExampleEncounter.json",
+      "resourceType": "Encounter",
+      "id": "ExampleEncounter",
+      "profileUrl": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-encounter",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 1,
+        "total": 1
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Encounter.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        }
+      ]
+    },
+    {
+      "file": "ImplementationGuide-li-xinyang-interop-r4.json",
+      "resourceType": "ImplementationGuide",
+      "id": "li-xinyang-interop-r4",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/ImplementationGuide",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "ImplementationGuide.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "Location-ExampleLocation.json",
+      "resourceType": "Location",
+      "id": "ExampleLocation",
+      "profileUrl": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-location",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 1,
+        "total": 1
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Location.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        }
+      ]
+    },
+    {
+      "file": "Observation-ExampleHbA1cObservation.json",
+      "resourceType": "Observation",
+      "id": "ExampleHbA1cObservation",
+      "profileUrl": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-laboratory-observation",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Observation.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "required-metadata-missing-lastUpdated",
+          "path": "meta.lastUpdated",
+          "message": "Observation resource is missing recommended metadata field: meta.lastUpdated",
+          "ruleId": null,
+          "validationMethod": "required-metadata-check"
+        }
+      ]
+    },
+    {
+      "file": "Observation-ExampleQualityCSC.json",
+      "resourceType": "Observation",
+      "id": "ExampleQualityCSC",
+      "profileUrl": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-quality-metric-observation",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 1,
+        "info": 2,
+        "total": 3
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Observation.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "required-metadata-missing-lastUpdated",
+          "path": "meta.lastUpdated",
+          "message": "Observation resource is missing recommended metadata field: meta.lastUpdated",
+          "ruleId": null,
+          "validationMethod": "required-metadata-check"
+        },
+        {
+          "severity": "information",
+          "code": "best-practice-missing-performer",
+          "path": "Observation.performer",
+          "message": "All Observations should have a `performer`",
+          "ruleId": null,
+          "validationMethod": null
+        }
+      ]
+    },
+    {
+      "file": "Observation-ExampleQualityFFR.json",
+      "resourceType": "Observation",
+      "id": "ExampleQualityFFR",
+      "profileUrl": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-quality-metric-observation",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 1,
+        "info": 2,
+        "total": 3
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Observation.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "required-metadata-missing-lastUpdated",
+          "path": "meta.lastUpdated",
+          "message": "Observation resource is missing recommended metadata field: meta.lastUpdated",
+          "ruleId": null,
+          "validationMethod": "required-metadata-check"
+        },
+        {
+          "severity": "information",
+          "code": "best-practice-missing-performer",
+          "path": "Observation.performer",
+          "message": "All Observations should have a `performer`",
+          "ruleId": null,
+          "validationMethod": null
+        }
+      ]
+    },
+    {
+      "file": "Observation-ExampleQualityMSR.json",
+      "resourceType": "Observation",
+      "id": "ExampleQualityMSR",
+      "profileUrl": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-quality-metric-observation",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 1,
+        "info": 2,
+        "total": 3
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Observation.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "required-metadata-missing-lastUpdated",
+          "path": "meta.lastUpdated",
+          "message": "Observation resource is missing recommended metadata field: meta.lastUpdated",
+          "ruleId": null,
+          "validationMethod": "required-metadata-check"
+        },
+        {
+          "severity": "information",
+          "code": "best-practice-missing-performer",
+          "path": "Observation.performer",
+          "message": "All Observations should have a `performer`",
+          "ruleId": null,
+          "validationMethod": null
+        }
+      ]
+    },
+    {
+      "file": "Observation-ExampleQualityRIR.json",
+      "resourceType": "Observation",
+      "id": "ExampleQualityRIR",
+      "profileUrl": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-quality-metric-observation",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 1,
+        "info": 2,
+        "total": 3
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Observation.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "required-metadata-missing-lastUpdated",
+          "path": "meta.lastUpdated",
+          "message": "Observation resource is missing recommended metadata field: meta.lastUpdated",
+          "ruleId": null,
+          "validationMethod": "required-metadata-check"
+        },
+        {
+          "severity": "information",
+          "code": "best-practice-missing-performer",
+          "path": "Observation.performer",
+          "message": "All Observations should have a `performer`",
+          "ruleId": null,
+          "validationMethod": null
+        }
+      ]
+    },
+    {
+      "file": "Observation-ExampleQualityTC.json",
+      "resourceType": "Observation",
+      "id": "ExampleQualityTC",
+      "profileUrl": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-quality-metric-observation",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 1,
+        "info": 2,
+        "total": 3
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Observation.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "required-metadata-missing-lastUpdated",
+          "path": "meta.lastUpdated",
+          "message": "Observation resource is missing recommended metadata field: meta.lastUpdated",
+          "ruleId": null,
+          "validationMethod": "required-metadata-check"
+        },
+        {
+          "severity": "information",
+          "code": "best-practice-missing-performer",
+          "path": "Observation.performer",
+          "message": "All Observations should have a `performer`",
+          "ruleId": null,
+          "validationMethod": null
+        }
+      ]
+    },
+    {
+      "file": "Observation-ExampleQualityTCR.json",
+      "resourceType": "Observation",
+      "id": "ExampleQualityTCR",
+      "profileUrl": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-quality-metric-observation",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 1,
+        "info": 2,
+        "total": 3
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Observation.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "required-metadata-missing-lastUpdated",
+          "path": "meta.lastUpdated",
+          "message": "Observation resource is missing recommended metadata field: meta.lastUpdated",
+          "ruleId": null,
+          "validationMethod": "required-metadata-check"
+        },
+        {
+          "severity": "information",
+          "code": "best-practice-missing-performer",
+          "path": "Observation.performer",
+          "message": "All Observations should have a `performer`",
+          "ruleId": null,
+          "validationMethod": null
+        }
+      ]
+    },
+    {
+      "file": "OperationDefinition-federated-summary.json",
+      "resourceType": "OperationDefinition",
+      "id": "federated-summary",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/OperationDefinition",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "OperationDefinition.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "OperationDefinition-validate-exchange.json",
+      "resourceType": "OperationDefinition",
+      "id": "validate-exchange",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/OperationDefinition",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "OperationDefinition.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "Organization-ExampleHospital.json",
+      "resourceType": "Organization",
+      "id": "ExampleHospital",
+      "profileUrl": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-organization",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 1,
+        "total": 1
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Organization.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        }
+      ]
+    },
+    {
+      "file": "Patient-ExamplePatient.json",
+      "resourceType": "Patient",
+      "id": "ExamplePatient",
+      "profileUrl": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-patient",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 3,
+        "total": 3
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Patient.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "required-metadata-missing-lastUpdated",
+          "path": "meta.lastUpdated",
+          "message": "Patient resource is missing recommended metadata field: meta.lastUpdated",
+          "ruleId": null,
+          "validationMethod": "required-metadata-check"
+        },
+        {
+          "severity": "info",
+          "code": "required-metadata-missing-versionId",
+          "path": "meta.versionId",
+          "message": "Patient resource is missing recommended metadata field: meta.versionId",
+          "ruleId": null,
+          "validationMethod": "required-metadata-check"
+        }
+      ]
+    },
+    {
+      "file": "Practitioner-ExampleReviewer.json",
+      "resourceType": "Practitioner",
+      "id": "ExampleReviewer",
+      "profileUrl": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-practitioner",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 1,
+        "total": 1
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Practitioner.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        }
+      ]
+    },
+    {
+      "file": "Provenance-ExampleMappingProvenance.json",
+      "resourceType": "Provenance",
+      "id": "ExampleMappingProvenance",
+      "profileUrl": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-provenance",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Provenance.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "required-metadata-missing-lastUpdated",
+          "path": "meta.lastUpdated",
+          "message": "Provenance resource is missing recommended metadata field: meta.lastUpdated",
+          "ruleId": null,
+          "validationMethod": "required-metadata-check"
+        }
+      ]
+    },
+    {
+      "file": "SearchParameter-observation-validation-stage.json",
+      "resourceType": "SearchParameter",
+      "id": "observation-validation-stage",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/SearchParameter",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "SearchParameter.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "SearchParameter-provenance-mapping-strategy.json",
+      "resourceType": "SearchParameter",
+      "id": "provenance-mapping-strategy",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/SearchParameter",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "SearchParameter.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "Specimen-ExampleSpecimen.json",
+      "resourceType": "Specimen",
+      "id": "ExampleSpecimen",
+      "profileUrl": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-specimen",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 1,
+        "total": 1
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "Specimen.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        }
+      ]
+    },
+    {
+      "file": "StructureMap-ccda-allergy-to-allergyintolerance.json",
+      "resourceType": "StructureMap",
+      "id": "ccda-allergy-to-allergyintolerance",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/StructureMap",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "StructureMap.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "StructureMap-ccda-discharge-medication-to-medicationrequest.json",
+      "resourceType": "StructureMap",
+      "id": "ccda-discharge-medication-to-medicationrequest",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/StructureMap",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "StructureMap.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "StructureMap-ccda-medication-to-medicationstatement.json",
+      "resourceType": "StructureMap",
+      "id": "ccda-medication-to-medicationstatement",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/StructureMap",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "StructureMap.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "StructureMap-ccda-problem-to-condition.json",
+      "resourceType": "StructureMap",
+      "id": "ccda-problem-to-condition",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/StructureMap",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "StructureMap.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "StructureMap-ccda-procedure-to-procedure.json",
+      "resourceType": "StructureMap",
+      "id": "ccda-procedure-to-procedure",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/StructureMap",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "StructureMap.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "StructureMap-v2-obr-to-diagnosticreport.json",
+      "resourceType": "StructureMap",
+      "id": "v2-obr-to-diagnosticreport",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/StructureMap",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "StructureMap.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "StructureMap-v2-obx-to-observation.json",
+      "resourceType": "StructureMap",
+      "id": "v2-obx-to-observation",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/StructureMap",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "StructureMap.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "StructureMap-v2-orc-to-servicerequest.json",
+      "resourceType": "StructureMap",
+      "id": "v2-orc-to-servicerequest",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/StructureMap",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "StructureMap.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "StructureMap-v2-pid-to-patient.json",
+      "resourceType": "StructureMap",
+      "id": "v2-pid-to-patient",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/StructureMap",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "StructureMap.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "StructureMap-v2-pv1-to-encounter.json",
+      "resourceType": "StructureMap",
+      "id": "v2-pv1-to-encounter",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/StructureMap",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "StructureMap.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "StructureMap-v2-sch-to-encounter.json",
+      "resourceType": "StructureMap",
+      "id": "v2-sch-to-encounter",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/StructureMap",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "StructureMap.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "StructureMap-v2-txa-to-documentreference.json",
+      "resourceType": "StructureMap",
+      "id": "v2-txa-to-documentreference",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/StructureMap",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "StructureMap.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "ValueSet-hitc-mapping-strategy.json",
+      "resourceType": "ValueSet",
+      "id": "hitc-mapping-strategy",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/ValueSet",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "ValueSet.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "ValueSet-hitc-observation-category.json",
+      "resourceType": "ValueSet",
+      "id": "hitc-observation-category",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/ValueSet",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "ValueSet.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "ValueSet-hitc-quality-metric.json",
+      "resourceType": "ValueSet",
+      "id": "hitc-quality-metric",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/ValueSet",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "ValueSet.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "ValueSet-hitc-source-format.json",
+      "resourceType": "ValueSet",
+      "id": "hitc-source-format",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/ValueSet",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "ValueSet.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "ValueSet-hitc-supported-terminology.json",
+      "resourceType": "ValueSet",
+      "id": "hitc-supported-terminology",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/ValueSet",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "ValueSet.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "ValueSet-hitc-transformation-activity.json",
+      "resourceType": "ValueSet",
+      "id": "hitc-transformation-activity",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/ValueSet",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "ValueSet.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    },
+    {
+      "file": "ValueSet-hitc-validation-stage.json",
+      "resourceType": "ValueSet",
+      "id": "hitc-validation-stage",
+      "profileUrl": "http://hl7.org/fhir/StructureDefinition/ValueSet",
+      "counts": {
+        "fatal": 0,
+        "error": 0,
+        "warning": 0,
+        "information": 0,
+        "info": 2,
+        "total": 2
+      },
+      "issues": [
+        {
+          "severity": "info",
+          "code": "dom-6",
+          "path": "ValueSet.text",
+          "message": "A resource should have narrative for robust management",
+          "ruleId": "dom-6",
+          "validationMethod": "structural-validation"
+        },
+        {
+          "severity": "info",
+          "code": "missing-meta",
+          "path": "meta",
+          "message": "Resource should have a meta field",
+          "ruleId": null,
+          "validationMethod": "metadata-field-validation"
+        }
+      ]
+    }
+  ]
+}

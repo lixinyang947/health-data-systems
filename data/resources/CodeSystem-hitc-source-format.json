@@ -1,0 +1,34 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "draft",
+  "content": "complete",
+  "name": "HITCSourceFormatCS",
+  "id": "hitc-source-format",
+  "title": "HITC Source Format Codes",
+  "description": "Input formats supported by the mapping methodology.",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-source-format",
+  "concept": [
+    {
+      "code": "fhir-r4",
+      "display": "FHIR R4",
+      "definition": "FHIR Release 4 resource or Bundle."
+    },
+    {
+      "code": "hl7-v2",
+      "display": "HL7 v2",
+      "definition": "HL7 version 2.x message."
+    },
+    {
+      "code": "c-cda-r2.1",
+      "display": "C-CDA R2.1",
+      "definition": "Consolidated CDA Release 2.1 document."
+    },
+    {
+      "code": "custom",
+      "display": "Custom export",
+      "definition": "Institution-specific structured export."
+    }
+  ],
+  "caseSensitive": true,
+  "count": 4
+}

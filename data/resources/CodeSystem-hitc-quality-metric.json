@@ -1,0 +1,44 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "draft",
+  "content": "complete",
+  "name": "HITCQualityMetricCS",
+  "id": "hitc-quality-metric",
+  "title": "HITC Data Quality Metric Codes",
+  "description": "Codes for inline data-quality metrics emitted as FHIR Observation resources.",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-quality-metric",
+  "concept": [
+    {
+      "code": "ffr",
+      "display": "FFR",
+      "definition": "Field fill rate: proportion of required or expected fields populated."
+    },
+    {
+      "code": "csc",
+      "display": "CSC",
+      "definition": "Code system conformance: proportion of coded elements using approved code systems."
+    },
+    {
+      "code": "rir",
+      "display": "RIR",
+      "definition": "Reference integrity rate: proportion of references that resolve successfully."
+    },
+    {
+      "code": "tc",
+      "display": "TC",
+      "definition": "Temporal consistency: proportion of temporal relationships passing consistency rules."
+    },
+    {
+      "code": "msr",
+      "display": "MSR",
+      "definition": "Mapping success rate: proportion of source elements successfully mapped."
+    },
+    {
+      "code": "tcr",
+      "display": "TCR",
+      "definition": "Terminology coverage rate: proportion of coded concepts resolved by the terminology bridge."
+    }
+  ],
+  "caseSensitive": true,
+  "count": 6
+}

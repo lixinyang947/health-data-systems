@@ -1,0 +1,19 @@
+map "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/ccda-problem-to-condition" = "CCDAProblemToCondition"
+
+uses "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCCCDAEntry" alias CCDAEntry as source
+uses "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-condition" alias Condition as target
+
+group CCDAProblemToCondition(source src : HITCCCDAEntry, target tgt : Condition) {
+  src.entryId as v -> tgt.identifier.value = copy(v) "identifier";
+  src.entryId as v -> tgt.identifier.system = evaluate('https://example.org/fhir/sid/ccda-entry') "identifierSystem";
+  src.code as v -> tgt.code.coding = copy(v) "problemCode";
+  src.entryId as v -> tgt.clinicalStatus.coding.system = evaluate('http://terminology.hl7.org/CodeSystem/condition-clinical') "clinicalStatusSystem";
+  src.entryId as v -> tgt.clinicalStatus.coding.code = evaluate('active') "clinicalStatus";
+  src.entryId as v -> tgt.verificationStatus.coding.system = evaluate('http://terminology.hl7.org/CodeSystem/condition-ver-status') "verificationSystem";
+  src.entryId as v -> tgt.verificationStatus.coding.code = evaluate('confirmed') "verificationStatus";
+  src.effectiveTime as v -> tgt.onsetDateTime = copy(v) "onset";
+  src.effectiveTime as v -> tgt.recordedDate = copy(v) "recordedDate";
+  src.subjectIdentifier as v -> tgt.subject.identifier.value = copy(v) "patientIdentifier";
+}
+
+// Draft and experimental. Reference resolution, source-system extension population, semantic reconciliation, UCUM normalization, temporal normalization, and validation are orchestrated outside this Phase 1 map unless explicitly shown.

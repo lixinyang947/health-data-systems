@@ -1,0 +1,15 @@
+map "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-pid-to-patient" = "V2PIDToPatient"
+
+uses "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2PID" alias V2PID as source
+uses "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-patient" alias Patient as target
+
+group V2PIDToPatient(source src : HITCV2PID, target tgt : Patient) {
+  src.patientIdentifier as v -> tgt.identifier.value = copy(v) "identifierValue";
+  src.patientIdentifier as v -> tgt.identifier.system = evaluate('https://example.org/fhir/sid/source-patient-id') "identifierSystem";
+  src.familyName as v -> tgt.name.family = copy(v) "familyName";
+  src.givenName as v -> tgt.name.given = copy(v) "givenName";
+  src.birthDate as v -> tgt.birthDate = copy(v) "birthDate";
+  src.administrativeSex as v -> tgt.gender = translate(v, 'https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-administrative-gender-to-fhir', 'code') "administrativeGender";
+}
+
+// Draft and experimental. Reference resolution, source-system extension population, semantic reconciliation, UCUM normalization, temporal normalization, and validation are orchestrated outside this Phase 1 map unless explicitly shown.

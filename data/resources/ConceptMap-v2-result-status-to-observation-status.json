@@ -1,0 +1,82 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "v2-result-status-to-observation-status",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-result-status-to-observation-status",
+  "version": "0.1.0",
+  "name": "V2ResultStatusToObservationStatus",
+  "title": "HL7 v2 Result Status to FHIR Observation Status",
+  "status": "draft",
+  "experimental": true,
+  "date": "2026-07-21",
+  "publisher": "Xinyang Li",
+  "description": "Representative OBX-11 status normalization.",
+  "copyright": "© 2026 Xinyang Li. Draft technical specification.",
+  "purpose": "Supports declarative status translation for ORU observations.",
+  "sourceUri": "http://terminology.hl7.org/CodeSystem/v2-0085",
+  "targetUri": "http://hl7.org/fhir/observation-status",
+  "group": [
+    {
+      "source": "http://terminology.hl7.org/CodeSystem/v2-0085",
+      "target": "http://hl7.org/fhir/observation-status",
+      "element": [
+        {
+          "code": "F",
+          "display": "Final results",
+          "target": [
+            {
+              "equivalence": "equivalent",
+              "code": "final",
+              "display": "Final"
+            }
+          ]
+        },
+        {
+          "code": "C",
+          "display": "Record coming over is a correction",
+          "target": [
+            {
+              "equivalence": "equivalent",
+              "code": "corrected",
+              "display": "Corrected"
+            }
+          ]
+        },
+        {
+          "code": "P",
+          "display": "Preliminary results",
+          "target": [
+            {
+              "equivalence": "equivalent",
+              "code": "preliminary",
+              "display": "Preliminary"
+            }
+          ]
+        },
+        {
+          "code": "R",
+          "display": "Results entered -- not verified",
+          "target": [
+            {
+              "equivalence": "inexact",
+              "code": "registered",
+              "display": "Registered",
+              "comment": "The FHIR registered state is used pending verification."
+            }
+          ]
+        },
+        {
+          "code": "X",
+          "display": "Results cannot be obtained",
+          "target": [
+            {
+              "equivalence": "inexact",
+              "code": "cancelled",
+              "display": "Cancelled",
+              "comment": "No-result status is represented as cancelled."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

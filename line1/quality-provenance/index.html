@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quality &amp; Provenance — HITC FHIR-Native Interoperability Framework</title>
+  <link rel="stylesheet" href="../../css/main.css" />
+  <style>
+    /* Quality & Provenance page-specific styles */
+    .quality-metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .quality-card {
+      background-color: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      padding: 1.25rem;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .quality-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    .quality-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+
+    .quality-card-header h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0;
+      flex: 1;
+    }
+
+    .quality-card-body {
+      flex: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    .quality-card-body p {
+      font-size: 0.875rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    .quality-card-footer {
+      margin-top: auto;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--gray-100);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .quality-card-footer .btn {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.7rem;
+    }
+
+    .metric-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+      margin-left: 0.5rem;
+    }
+
+    .metric-badge.ffr {
+      background-color: rgba(59,130,246,0.12);
+      color: #2563eb;
+      border: 1px solid rgba(59,130,246,0.25);
+    }
+
+    .metric-badge.csc {
+      background-color: rgba(20,184,166,0.12);
+      color: var(--teal-dark);
+      border: 1px solid rgba(20,184,166,0.25);
+    }
+
+    .metric-badge.rir {
+      background-color: rgba(168,85,247,0.12);
+      color: #a855f7;
+      border: 1px solid rgba(168,85,247,0.25);
+    }
+
+    .metric-badge.tc {
+      background-color: rgba(245,158,11,0.12);
+      color: #d97706;
+      border: 1px solid rgba(245,158,11,0.25);
+    }
+
+    .metric-badge.msr {
+      background-color: rgba(239,68,68,0.12);
+      color: #dc2626;
+      border: 1px solid rgba(239,68,68,0.25);
+    }
+
+    .metric-badge.tcr {
+      background-color: rgba(22,163,74,0.12);
+      color: #16a34a;
+      border: 1px solid rgba(22,163,74,0.25);
+    }
+
+    /* Provenance flow diagram */
+    .provenance-flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .provenance-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .provenance-step .step-card {
+      background-color: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      padding: 1rem 1.25rem;
+      text-align: center;
+      min-width: 140px;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .provenance-step .step-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .provenance-step .step-card .step-label {
+      font-weight: 600;
+      font-size: 0.8125rem;
+      color: var(--gray-700);
+    }
+
+    .provenance-step .step-card .step-sub {
+      font-size: 0.75rem;
+      color: var(--gray-400);
+    }
+
+    .provenance-arrow {
+      font-size: 1.5rem;
+      color: var(--teal);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .step-card.source { border-left: 4px solid var(--teal); }
+    .step-card.transform { border-left: 4px solid var(--amber); }
+    .step-card.fhir { border-left: 4px solid var(--teal-dark); }
+    .step-card.prov-record { border-left: 4px solid #a855f7; }
+    .step-card.steps { border-left: 4px solid #2563eb; }
+    .step-card.merkle { border-left: 4px solid #16a34a; }
+
+    /* Extensions table */
+    .extensions-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+
+    .extensions-table th {
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.8125rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.75rem 1rem;
+      border-bottom: 2px solid var(--gray-200);
+    }
+
+    .extensions-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--gray-100);
+      vertical-align: top;
+    }
+
+    .extensions-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .extensions-table tr:hover td {
+      background-color: var(--gray-50);
+    }
+
+    .extension-id {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--gray-700);
+      font-weight: 500;
+    }
+
+    .extension-url {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--gray-500);
+      word-break: break-all;
+    }
+
+    .ext-link-group {
+      margin-top: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 768px) {
+      .main-nav a { font-size: 0.75rem; padding: 0.35rem 0.5rem; }
+      .quality-metric-grid { grid-template-columns: 1fr; }
+      .provenance-flow { flex-direction: column; }
+      .provenance-arrow { transform: rotate(90deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================
+       STICKY HEADER
+       ========================================================== -->
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-logo">
+        <span class="logo-badge">XYL</span>
+        Xinyang Li
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="main-nav">
+        <a href="/">Home</a>
+
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle">Research</button>
+          <div class="dropdown-menu">
+            <a href="/line1/">
+              <span class="line-badge" style="background:rgba(20,184,166,0.12);color:var(--teal-dark);">L1</span>
+              FHIR-Native Clinical Data Interoperability
+              <span class="dropdown-desc">Executable FHIR R4 profiles, mappings, quality metrics, provenance &amp; validation</span>
+            </a>
+            <a href="/line2/">
+              <span class="line-badge" style="background:rgba(245,158,11,0.12);color:var(--amber-dark);">L2</span>
+              Explainable RPM &amp; Clinical Decision Support
+              <span class="dropdown-desc">RPM data normalization, SHAP explainability, risk stratification framework</span>
+            </a>
+            <a href="/line3/">
+              <span class="line-badge" style="background:rgba(168,85,247,0.12);color:#7c3aed;">L3</span>
+              Secure Health Information Exchange Governance
+              <span class="dropdown-desc">HIE security architecture, consent management, audit &amp; provenance governance</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="/publications/">Publications</a>
+        <a href="/technical/">Technical Resources</a>
+        <a href="/about/">About</a>
+
+        <span class="badge badge-amber" style="margin-left:0.5rem;">v0.1.0</span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==========================================================
+       MAIN CONTENT
+       ========================================================== -->
+  <main class="main-content">
+
+    <!-- ==========================================================
+         PAGE HEADER
+         ========================================================== -->
+    <section style="background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); padding: 3rem 0 2.5rem; border-bottom: 1px solid var(--navy-border);">
+      <div class="container">
+        <h1 style="color: var(--white); font-size: 2.25rem; line-height: 1.2; margin-bottom: 0.75rem;">
+          Quality &amp; Provenance
+        </h1>
+        <p style="color: var(--gray-400); font-size: 1.05rem; max-width: 800px; margin-bottom: 0; line-height: 1.7;">
+          Six computable quality metrics with FHIR Observations and provenance-anchored transformation lineage.
+        </p>
+        <div class="flex flex-wrap gap-2" style="margin-top: 1.25rem;">
+          <span class="badge badge-teal">6 Quality Metrics</span>
+          <span class="badge" style="color:#a855f7;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);">Provenance Chain</span>
+          <span class="badge" style="color:#2563eb;background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.25);">11 Extensions</span>
+          <span class="badge badge-amber">DRAFT</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         QUALITY METRICS SECTION
+         ========================================================== -->
+    <section class="section" style="padding: 2.5rem 0;">
+      <div class="container">
+        <h2 class="section-title">Quality Metrics</h2>
+        <p style="color: var(--gray-500); font-size: 0.9375rem; margin-bottom: 1.5rem; line-height: 1.7;">
+          Each metric is represented as a FHIR R4 <strong>Observation</strong> resource using the 
+          <code>hitc-quality-metric</code> CodeSystem. Metrics are computed against target FHIR resources 
+          after transformation and measure different dimensions of data quality.
+        </p>
+
+        <div class="quality-metric-grid">
+
+          <!-- FFR: Field Fill Rate -->
+          <div class="quality-card">
+            <div class="quality-card-header">
+              <h3>Field Fill Rate</h3>
+              <span class="metric-badge ffr">FFR</span>
+            </div>
+            <div class="quality-card-body">
+              <p>Proportion of required and expected fields populated in the target FHIR resource.</p>
+            </div>
+            <div class="quality-card-footer">
+              <a href="../../data/resources/Observation-ExampleQualityFFR.json" class="btn btn-secondary btn-sm">Download Example Observation</a>
+              <a href="../../data/resources/CodeSystem-hitc-quality-metric.json" class="btn btn-ghost btn-sm">View in CodeSystem</a>
+            </div>
+          </div>
+
+          <!-- CSC: Code System Conformance -->
+          <div class="quality-card">
+            <div class="quality-card-header">
+              <h3>Code System Conformance</h3>
+              <span class="metric-badge csc">CSC</span>
+            </div>
+            <div class="quality-card-body">
+              <p>Proportion of coded elements using required code systems.</p>
+            </div>
+            <div class="quality-card-footer">
+              <a href="../../data/resources/Observation-ExampleQualityCSC.json" class="btn btn-secondary btn-sm">Download Example Observation</a>
+              <a href="../../data/resources/CodeSystem-hitc-quality-metric.json" class="btn btn-ghost btn-sm">View in CodeSystem</a>
+            </div>
+          </div>
+
+          <!-- RIR: Reference Integrity Rate -->
+          <div class="quality-card">
+            <div class="quality-card-header">
+              <h3>Reference Integrity Rate</h3>
+              <span class="metric-badge rir">RIR</span>
+            </div>
+            <div class="quality-card-body">
+              <p>Proportion of internal and external FHIR references that resolve.</p>
+            </div>
+            <div class="quality-card-footer">
+              <a href="../../data/resources/Observation-ExampleQualityRIR.json" class="btn btn-secondary btn-sm">Download Example Observation</a>
+              <a href="../../data/resources/CodeSystem-hitc-quality-metric.json" class="btn btn-ghost btn-sm">View in CodeSystem</a>
+            </div>
+          </div>
+
+          <!-- TC: Temporal Consistency -->
+          <div class="quality-card">
+            <div class="quality-card-header">
+              <h3>Temporal Consistency</h3>
+              <span class="metric-badge tc">TC</span>
+            </div>
+            <div class="quality-card-body">
+              <p>Temporal logic checks across dates, periods, and effective times.</p>
+            </div>
+            <div class="quality-card-footer">
+              <a href="../../data/resources/Observation-ExampleQualityTC.json" class="btn btn-secondary btn-sm">Download Example Observation</a>
+              <a href="../../data/resources/CodeSystem-hitc-quality-metric.json" class="btn btn-ghost btn-sm">View in CodeSystem</a>
+            </div>
+          </div>
+
+          <!-- MSR: Mapping Success Rate -->
+          <div class="quality-card">
+            <div class="quality-card-header">
+              <h3>Mapping Success Rate</h3>
+              <span class="metric-badge msr">MSR</span>
+            </div>
+            <div class="quality-card-body">
+              <p>Proportion of source fields successfully mapped to target FHIR elements.</p>
+            </div>
+            <div class="quality-card-footer">
+              <a href="../../data/resources/Observation-ExampleQualityMSR.json" class="btn btn-secondary btn-sm">Download Example Observation</a>
+              <a href="../../data/resources/CodeSystem-hitc-quality-metric.json" class="btn btn-ghost btn-sm">View in CodeSystem</a>
+            </div>
+          </div>
+
+          <!-- TCR: Terminology Coverage Rate -->
+          <div class="quality-card">
+            <div class="quality-card-header">
+              <h3>Terminology Coverage Rate</h3>
+              <span class="metric-badge tcr">TCR</span>
+            </div>
+            <div class="quality-card-body">
+              <p>Proportion of source terminology values successfully standardized.</p>
+            </div>
+            <div class="quality-card-footer">
+              <a href="../../data/resources/Observation-ExampleQualityTCR.json" class="btn btn-secondary btn-sm">Download Example Observation</a>
+              <a href="../../data/resources/CodeSystem-hitc-quality-metric.json" class="btn btn-ghost btn-sm">View in CodeSystem</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         PROVENANCE SECTION
+         ========================================================== -->
+    <section style="background-color:var(--gray-100);padding:2.5rem 0;border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200);">
+      <div class="container">
+        <h2 class="section-title">Provenance Chain</h2>
+        <p style="color: var(--gray-500); font-size: 0.9375rem; margin-bottom: 1.5rem; line-height: 1.7;">
+          Every transformed FHIR resource is linked to its source through a verifiable provenance chain. 
+          Each step is recorded as a <strong>Provenance</strong> resource that captures the transformation 
+          activity, agent, and a cryptographic digest rooted in a Merkle tree for tamper-evident lineage.
+        </p>
+
+        <div class="provenance-flow">
+
+          <!-- Step 1: Source Document -->
+          <div class="provenance-step">
+            <div class="step-card source">
+              <div class="step-label">Source Document</div>
+              <div class="step-sub">HL7 v2 / C-CDA / FHIR</div>
+            </div>
+          </div>
+
+          <div class="provenance-arrow">→</div>
+
+          <!-- Step 2: Transformation Activity -->
+          <div class="provenance-step">
+            <div class="step-card transform">
+              <div class="step-label">Transformation Activity</div>
+              <div class="step-sub">StructureMap execution</div>
+            </div>
+          </div>
+
+          <div class="provenance-arrow">→</div>
+
+          <!-- Step 3: Generated FHIR Resource -->
+          <div class="provenance-step">
+            <div class="step-card fhir">
+              <div class="step-label">Generated FHIR Resource</div>
+              <div class="step-sub">Profiled output</div>
+            </div>
+          </div>
+
+          <div class="provenance-arrow">→</div>
+
+          <!-- Step 4: Provenance Record -->
+          <div class="provenance-step">
+            <div class="step-card prov-record">
+              <div class="step-label">Provenance Record</div>
+              <div class="step-sub">Provenance resource</div>
+            </div>
+          </div>
+
+          <div class="provenance-arrow">→</div>
+
+          <!-- Step 5: Transformation Steps -->
+          <div class="provenance-step">
+            <div class="step-card steps">
+              <div class="step-label">Transformation Steps</div>
+              <div class="step-sub">Step-by-step log</div>
+            </div>
+          </div>
+
+          <div class="provenance-arrow">→</div>
+
+          <!-- Step 6: Merkle Root -->
+          <div class="provenance-step">
+            <div class="step-card merkle">
+              <div class="step-label">Merkle Root</div>
+              <div class="step-sub">Cryptographic digest</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="ext-link-group">
+          <a href="../../data/resources/StructureDefinition-hitc-canonical-provenance.json" class="btn btn-primary">View Provenance Profile</a>
+          <a href="../../data/resources/Provenance-ExampleMappingProvenance.json" class="btn btn-secondary">View Example Provenance</a>
+          <a href="../../data/resources/StructureDefinition-hitc-merkle-root.json" class="btn btn-ghost">View Merkle Root Extension</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         EXTENSIONS LIST SECTION
+         ========================================================== -->
+    <section class="section" style="padding: 2.5rem 0;">
+      <div class="container">
+        <h2 class="section-title">Extensions</h2>
+        <p style="color: var(--gray-500); font-size: 0.9375rem; margin-bottom: 1.5rem; line-height: 1.7;">
+          The framework defines <strong>11 extensions</strong> that extend base FHIR resources with 
+          quality measurement, provenance tracking, and transformation metadata. These extensions are 
+          defined as <code>StructureDefinition</code> resources with the <code>extension</code> kind.
+        </p>
+
+        <div class="table-wrapper">
+          <table class="extensions-table">
+            <thead>
+              <tr>
+                <th style="width:22%;">ID</th>
+                <th style="width:38%;">URL</th>
+                <th style="width:28%;">Description</th>
+                <th style="width:12%;">View</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code class="extension-id">hitc-mapping-confidence</code></td>
+                <td><code class="extension-url">https://hitc.nousresearch.com/fhir/StructureDefinition/hitc-mapping-confidence</code></td>
+                <td>Confidence score (0–1) assigned to a mapping result based on source data completeness and mapping rule certainty.</td>
+                <td><a href="../../data/resources/StructureDefinition-hitc-mapping-confidence.json" class="btn btn-ghost btn-sm">View JSON</a></td>
+              </tr>
+              <tr>
+                <td><code class="extension-id">hitc-mapping-reviewer</code></td>
+                <td><code class="extension-url">https://hitc.nousresearch.com/fhir/StructureDefinition/hitc-mapping-reviewer</code></td>
+                <td>Reference to the Practitioner or device that reviewed and approved a mapping transformation.</td>
+                <td><a href="../../data/resources/StructureDefinition-hitc-mapping-reviewer.json" class="btn btn-ghost btn-sm">View JSON</a></td>
+              </tr>
+              <tr>
+                <td><code class="extension-id">hitc-mapping-strategy</code></td>
+                <td><code class="extension-url">https://hitc.nousresearch.com/fhir/StructureDefinition/hitc-mapping-strategy</code></td>
+                <td>Coded value indicating the mapping strategy used (e.g., direct, rule-based, ML-assisted).</td>
+                <td><a href="../../data/resources/StructureDefinition-hitc-mapping-strategy.json" class="btn btn-ghost btn-sm">View JSON</a></td>
+              </tr>
+              <tr>
+                <td><code class="extension-id">hitc-merkle-root</code></td>
+                <td><code class="extension-url">https://hitc.nousresearch.com/fhir/StructureDefinition/hitc-merkle-root</code></td>
+                <td>Merkle tree root hash that cryptographically anchors the transformation lineage for tamper-evident provenance.</td>
+                <td><a href="../../data/resources/StructureDefinition-hitc-merkle-root.json" class="btn btn-ghost btn-sm">View JSON</a></td>
+              </tr>
+              <tr>
+                <td><code class="extension-id">hitc-original-code</code></td>
+                <td><code class="extension-url">https://hitc.nousresearch.com/fhir/StructureDefinition/hitc-original-code</code></td>
+                <td>Preserves the original source code value before terminology standardization or code system mapping.</td>
+                <td><a href="../../data/resources/StructureDefinition-hitc-original-code.json" class="btn btn-ghost btn-sm">View JSON</a></td>
+              </tr>
+              <tr>
+                <td><code class="extension-id">hitc-quality-denominator</code></td>
+                <td><code class="extension-url">https://hitc.nousresearch.com/fhir/StructureDefinition/hitc-quality-denominator</code></td>
+                <td>Denominator count for a quality metric observation, representing the total number of elements evaluated.</td>
+                <td><a href="../../data/resources/StructureDefinition-hitc-quality-denominator.json" class="btn btn-ghost btn-sm">View JSON</a></td>
+              </tr>
+              <tr>
+                <td><code class="extension-id">hitc-quality-numerator</code></td>
+                <td><code class="extension-url">https://hitc.nousresearch.com/fhir/StructureDefinition/hitc-quality-numerator</code></td>
+                <td>Numerator count for a quality metric observation, representing the number of elements that passed the check.</td>
+                <td><a href="../../data/resources/StructureDefinition-hitc-quality-numerator.json" class="btn btn-ghost btn-sm">View JSON</a></td>
+              </tr>
+              <tr>
+                <td><code class="extension-id">hitc-source-format</code></td>
+                <td><code class="extension-url">https://hitc.nousresearch.com/fhir/StructureDefinition/hitc-source-format</code></td>
+                <td>Identifies the original source format of the data (e.g., HL7 v2, C-CDA, FHIR) before transformation.</td>
+                <td><a href="../../data/resources/StructureDefinition-hitc-source-format.json" class="btn btn-ghost btn-sm">View JSON</a></td>
+              </tr>
+              <tr>
+                <td><code class="extension-id">hitc-source-system</code></td>
+                <td><code class="extension-url">https://hitc.nousresearch.com/fhir/StructureDefinition/hitc-source-system</code></td>
+                <td>Identifies the source system or application that originated the data before transformation.</td>
+                <td><a href="../../data/resources/StructureDefinition-hitc-source-system.json" class="btn btn-ghost btn-sm">View JSON</a></td>
+              </tr>
+              <tr>
+                <td><code class="extension-id">hitc-transformation-step</code></td>
+                <td><code class="extension-url">https://hitc.nousresearch.com/fhir/StructureDefinition/hitc-transformation-step</code></td>
+                <td>Records an individual step within a multi-step transformation pipeline, including inputs, outputs, and parameters.</td>
+                <td><a href="../../data/resources/StructureDefinition-hitc-transformation-step.json" class="btn btn-ghost btn-sm">View JSON</a></td>
+              </tr>
+              <tr>
+                <td><code class="extension-id">hitc-validation-stage</code></td>
+                <td><code class="extension-url">https://hitc.nousresearch.com/fhir/StructureDefinition/hitc-validation-stage</code></td>
+                <td>Indicates the validation stage at which a quality check or mapping assessment was performed (e.g., pre-transform, post-transform).</td>
+                <td><a href="../../data/resources/StructureDefinition-hitc-validation-stage.json" class="btn btn-ghost btn-sm">View JSON</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================
+       FOOTER
+       ========================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <p class="mb-1">&copy; 2025 Li Xinyang FHIR-Native Interoperability Framework</p>
+        <p class="mb-0 text-xs">Licensed under the Apache License, Version 2.0</p>
+      </div>
+      <div>
+        <span class="badge" style="color:#a855f7;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);">DRAFT &amp; EXPERIMENTAL — NOT FOR PRODUCTION USE</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================
+       JAVASCRIPT
+       ========================================================== -->
+  <script src="../../js/main.js"></script>
+</body>
+</html>

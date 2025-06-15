@@ -1,0 +1,21 @@
+map "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/ccda-allergy-to-allergyintolerance" = "CCDAAllergyToAllergyIntolerance"
+
+uses "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCCCDAEntry" alias CCDAEntry as source
+uses "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-allergy-intolerance" alias AllergyIntolerance as target
+
+group CCDAAllergyToAllergyIntolerance(source src : HITCCCDAEntry, target tgt : AllergyIntolerance) {
+  src.entryId as v -> tgt.identifier.value = copy(v) "identifier";
+  src.entryId as v -> tgt.identifier.system = evaluate('https://example.org/fhir/sid/ccda-entry') "identifierSystem";
+  src.code as v -> tgt.code.coding = copy(v) "allergyCode";
+  src.entryId as v -> tgt.clinicalStatus.coding.system = evaluate('http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical') "clinicalStatusSystem";
+  src.entryId as v -> tgt.clinicalStatus.coding.code = evaluate('active') "clinicalStatus";
+  src.entryId as v -> tgt.verificationStatus.coding.system = evaluate('http://terminology.hl7.org/CodeSystem/allergyintolerance-verification') "verificationSystem";
+  src.entryId as v -> tgt.verificationStatus.coding.code = evaluate('confirmed') "verificationStatus";
+  src.entryId as v -> tgt.type = evaluate('allergy') "allergyType";
+  src.entryId as v -> tgt.criticality = evaluate('unable-to-assess') "criticality";
+  src.effectiveTime as v -> tgt.onsetDateTime = copy(v) "onset";
+  src.effectiveTime as v -> tgt.recordedDate = copy(v) "recordedDate";
+  src.subjectIdentifier as v -> tgt.patient.identifier.value = copy(v) "patientIdentifier";
+}
+
+// Draft and experimental. Reference resolution, source-system extension population, semantic reconciliation, UCUM normalization, temporal normalization, and validation are orchestrated outside this Phase 1 map unless explicitly shown.

@@ -1,0 +1,93 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "v2-administrative-gender-to-fhir",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-administrative-gender-to-fhir",
+  "version": "0.1.0",
+  "name": "V2AdministrativeGenderToFHIR",
+  "title": "HL7 v2 Administrative Sex to FHIR Administrative Gender",
+  "status": "draft",
+  "experimental": true,
+  "date": "2026-07-21",
+  "publisher": "Xinyang Li",
+  "description": "Representative exact and governed inexact mappings for PID-8 normalization.",
+  "copyright": "© 2026 Xinyang Li. Draft technical specification.",
+  "purpose": "Supports the semantic phase of PID-to-Patient mapping while preserving auditable equivalence semantics.",
+  "sourceUri": "http://terminology.hl7.org/CodeSystem/v2-0001",
+  "targetUri": "http://hl7.org/fhir/administrative-gender",
+  "group": [
+    {
+      "source": "http://terminology.hl7.org/CodeSystem/v2-0001",
+      "target": "http://hl7.org/fhir/administrative-gender",
+      "element": [
+        {
+          "code": "F",
+          "display": "Female",
+          "target": [
+            {
+              "equivalence": "equivalent",
+              "code": "female",
+              "display": "Female"
+            }
+          ]
+        },
+        {
+          "code": "M",
+          "display": "Male",
+          "target": [
+            {
+              "equivalence": "equivalent",
+              "code": "male",
+              "display": "Male"
+            }
+          ]
+        },
+        {
+          "code": "O",
+          "display": "Other",
+          "target": [
+            {
+              "equivalence": "equivalent",
+              "code": "other",
+              "display": "Other"
+            }
+          ]
+        },
+        {
+          "code": "U",
+          "display": "Unknown",
+          "target": [
+            {
+              "equivalence": "equivalent",
+              "code": "unknown",
+              "display": "Unknown"
+            }
+          ]
+        },
+        {
+          "code": "A",
+          "display": "Ambiguous",
+          "target": [
+            {
+              "equivalence": "wider",
+              "code": "other",
+              "display": "Other",
+              "comment": "FHIR R4 administrative-gender does not carry a distinct ambiguous code."
+            }
+          ]
+        },
+        {
+          "code": "N",
+          "display": "Not applicable",
+          "target": [
+            {
+              "equivalence": "inexact",
+              "code": "unknown",
+              "display": "Unknown",
+              "comment": "No exact FHIR R4 administrative-gender equivalent; downstream review may be required."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

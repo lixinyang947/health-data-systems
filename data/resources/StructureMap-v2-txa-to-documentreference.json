@@ -1,0 +1,191 @@
+{
+  "resourceType": "StructureMap",
+  "id": "v2-txa-to-documentreference",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-txa-to-documentreference",
+  "version": "0.1.0",
+  "name": "V2TXAToDocumentReference",
+  "title": "HL7 v2 TXA to HITC Canonical DocumentReference",
+  "status": "draft",
+  "experimental": true,
+  "date": "2026-07-21",
+  "publisher": "Xinyang Li",
+  "description": "Declarative MDM/TXA structural mapping to DocumentReference.",
+  "copyright": "© 2026 Xinyang Li. Draft technical specification.",
+  "purpose": "Preserves document identity and payload location while deferring content-specific parsing to downstream processors.",
+  "structure": [
+    {
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2TXA",
+      "mode": "source",
+      "alias": "V2TXA",
+      "documentation": "Normalized logical input model for the source segment or C-CDA entry."
+    },
+    {
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-document-reference",
+      "mode": "target",
+      "alias": "DocumentReference",
+      "documentation": "Strict-at-core canonical FHIR R4 target profile."
+    }
+  ],
+  "group": [
+    {
+      "name": "V2TXAToDocumentReference",
+      "typeMode": "types",
+      "documentation": "Phase 1 structural mapping. Terminology translation, UCUM normalization, ISO 8601 normalization, and value-set validation occur in Phase 2 unless explicitly invoked by a translate rule.",
+      "input": [
+        {
+          "name": "src",
+          "type": "HITCV2TXA",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "DocumentReference",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "documentIdentifier",
+          "source": [
+            {
+              "context": "src",
+              "element": "uniqueDocumentNumber",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "identifier.value",
+              "transform": "copy"
+            }
+          ]
+        },
+        {
+          "name": "identifierSystem",
+          "source": [
+            {
+              "context": "src",
+              "element": "uniqueDocumentNumber",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "identifier.system",
+              "transform": "evaluate",
+              "parameter": [
+                {
+                  "valueString": "'https://example.org/fhir/sid/document'"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "currentStatus",
+          "source": [
+            {
+              "context": "src",
+              "element": "uniqueDocumentNumber",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "status",
+              "transform": "evaluate",
+              "parameter": [
+                {
+                  "valueString": "'current'"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "documentType",
+          "source": [
+            {
+              "context": "src",
+              "element": "documentType",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "type.coding",
+              "transform": "copy"
+            }
+          ]
+        },
+        {
+          "name": "documentDate",
+          "source": [
+            {
+              "context": "src",
+              "element": "activityDateTime",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "date",
+              "transform": "copy"
+            }
+          ]
+        },
+        {
+          "name": "documentUrl",
+          "source": [
+            {
+              "context": "src",
+              "element": "sourceUri",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "content.attachment.url",
+              "transform": "copy"
+            }
+          ]
+        },
+        {
+          "name": "contentType",
+          "source": [
+            {
+              "context": "src",
+              "element": "sourceUri",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "content.attachment.contentType",
+              "transform": "evaluate",
+              "parameter": [
+                {
+                  "valueString": "'application/octet-stream'"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "local-lab-to-loinc-template",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/local-lab-to-loinc-template",
+  "version": "0.1.0",
+  "name": "LocalLabToLOINCTemplate",
+  "title": "Local Laboratory Code to LOINC Template",
+  "status": "draft",
+  "experimental": true,
+  "date": "2026-07-21",
+  "publisher": "Xinyang Li",
+  "description": "Template shell for institution-specific laboratory-code mapping to LOINC.",
+  "copyright": "© 2026 Xinyang Li. Draft technical specification.",
+  "purpose": "Defines the machine-readable container and governance boundary without fabricating or redistributing licensed crosswalk content.",
+  "sourceUri": "https://example.org/fhir/li-xinyang-interop-r4/ValueSet/local-lab-source",
+  "targetUri": "http://loinc.org/vs"
+}

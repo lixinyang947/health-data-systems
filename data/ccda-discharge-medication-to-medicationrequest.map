@@ -1,0 +1,17 @@
+map "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/ccda-discharge-medication-to-medicationrequest" = "CCDADischargeMedicationToMedicationRequest"
+
+uses "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCCCDAEntry" alias CCDAEntry as source
+uses "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-medication-request" alias MedicationRequest as target
+
+group CCDADischargeMedicationToMedicationRequest(source src : HITCCCDAEntry, target tgt : MedicationRequest) {
+  src.entryId as v -> tgt.identifier.value = copy(v) "identifier";
+  src.entryId as v -> tgt.identifier.system = evaluate('https://example.org/fhir/sid/ccda-entry') "identifierSystem";
+  src.entryId as v -> tgt.status = evaluate('active') "activeStatus";
+  src.entryId as v -> tgt.intent = evaluate('order') "orderIntent";
+  src.code as v -> tgt.medicationCodeableConcept.coding = copy(v) "medicationCode";
+  src.effectiveTime as v -> tgt.authoredOn = copy(v) "authoredOn";
+  src.subjectIdentifier as v -> tgt.subject.identifier.value = copy(v) "patientIdentifier";
+  src.authorIdentifier as v -> tgt.requester.identifier.value = copy(v) "requesterIdentifier";
+}
+
+// Draft and experimental. Reference resolution, source-system extension population, semantic reconciliation, UCUM normalization, temporal normalization, and validation are orchestrated outside this Phase 1 map unless explicitly shown.

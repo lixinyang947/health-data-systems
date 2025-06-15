@@ -1,0 +1,15 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "HITCSourceFormatVS",
+  "id": "hitc-source-format",
+  "title": "HITC Source Format Value Set",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/ValueSet/hitc-source-format",
+  "compose": {
+    "include": [
+      {
+        "system": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-source-format"
+      }
+    ]
+  }
+}

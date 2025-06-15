@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Xinyang Li Research Platform</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <style>
+    .about-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #0f1d36 50%, #0a1628 100%);
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid var(--navy-border);
+    }
+    .about-hero h1 { color: var(--white); font-size: 2.25rem; line-height: 1.2; margin-bottom: 0.75rem; }
+    .about-hero .subtitle { color: var(--gray-400); font-size: 1.05rem; max-width: 700px; line-height: 1.7; margin-bottom: 0; }
+    .section { padding: 2.5rem 0; }
+    .section-title { font-size: 1.35rem; font-weight: 600; color: var(--gray-900); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--gray-200); }
+    .about-text { color: var(--gray-700); line-height: 1.8; font-size: 0.95rem; max-width: 800px; }
+    .about-text p { margin-bottom: 1rem; }
+    .research-area { padding: 1.25rem; margin-bottom: 1rem; border-left: 3px solid; }
+    .research-area.ra1 { border-color: var(--teal); }
+    .research-area.ra2 { border-color: #f59e0b; }
+    .research-area.ra3 { border-color: #a855f7; }
+    .research-area h3 { font-size: 1rem; font-weight: 600; margin: 0 0 0.5rem 0; color: var(--gray-800); }
+    .research-area p { font-size: 0.85rem; color: var(--gray-600); margin: 0; line-height: 1.7; }
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before { content: ''; position: absolute; left: 0.5rem; top: 0; bottom: 0; width: 2px; background: var(--gray-200); }
+    .timeline-item { position: relative; padding: 0 0 1.5rem 1.5rem; }
+    .timeline-item::before { content: ''; position: absolute; left: -1.75rem; top: 0.4rem; width: 0.75rem; height: 0.75rem; border-radius: 50%; background: var(--teal); border: 2px solid var(--white); box-shadow: 0 0 0 2px var(--teal); }
+    .timeline-item .tl-period { font-size: 0.75rem; font-weight: 700; color: var(--teal-dark); text-transform: uppercase; letter-spacing: 0.05em; }
+    .timeline-item .tl-desc { font-size: 0.85rem; color: var(--gray-600); margin-top: 0.15rem; line-height: 1.6; }
+    .interests { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .interests span { font-size: 0.75rem; padding: 0.25rem 0.7rem; border-radius: 999px; background: var(--gray-100); color: var(--gray-600); border: 1px solid var(--gray-200); transition: all 0.2s; cursor: default; }
+    .interests span:hover { background: var(--teal); color: var(--white); border-color: var(--teal); }
+    .contact-placeholder { padding: 1rem; background: var(--gray-50); border: 1px dashed var(--gray-300); border-radius: var(--radius-md); text-align: center; font-size: 0.85rem; color: var(--gray-400); }
+    @media (max-width: 768px) { .about-hero h1 { font-size: 1.5rem; } }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-logo"><span class="logo-badge">XYL</span>Xinyang Li</a>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav class="main-nav">
+        <a href="/">Home</a>
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle">Research</button>
+          <div class="dropdown-menu">
+            <a href="/line1/"><span class="line-badge" style="background:rgba(20,184,166,0.12);color:var(--teal-dark);">L1</span>FHIR-Native Clinical Data Interoperability<span class="dropdown-desc">Executable FHIR R4 profiles, mappings, quality metrics, provenance &amp; validation</span></a>
+            <a href="/line2/"><span class="line-badge" style="background:rgba(245,158,11,0.12);color:var(--amber-dark);">L2</span>Explainable RPM &amp; Clinical Decision Support<span class="dropdown-desc">RPM data normalization, SHAP explainability, risk stratification framework</span></a>
+            <a href="/line3/"><span class="line-badge" style="background:rgba(168,85,247,0.12);color:#7c3aed;">L3</span>Secure Health Information Exchange Governance<span class="dropdown-desc">HIE security architecture, consent management, audit &amp; provenance governance</span></a>
+          </div>
+        </div>
+        <a href="/publications/">Publications</a>
+        <a href="/technical/">Technical Resources</a>
+        <a href="/about/" class="active">About</a>
+        <span class="badge badge-amber" style="margin-left:0.5rem;">v0.1.0</span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="about-hero">
+    <div class="container">
+      <h1>About Xinyang Li Research Platform</h1>
+      <p class="subtitle">Health-data systems methodology research — healthcare interoperability, clinical intelligence, and secure health information exchange.</p>
+    </div>
+  </section>
+
+  <!-- BIO -->
+  <section class="section">
+    <div class="container">
+      <div class="about-text">
+        <p>Xinyang Li is a health-data systems methodology researcher specializing in healthcare interoperability, clinical intelligence, and secure health information exchange.</p>
+        <p>His research focuses on developing standards-based approaches for transforming heterogeneous healthcare data into interoperable, explainable, and governance-aware digital health systems.</p>
+        <p>His work includes three interconnected research areas:</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH AREAS -->
+  <section class="section" style="background:var(--gray-50);border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200);">
+    <div class="container">
+      <h2 class="section-title">Research Areas</h2>
+
+      <div class="research-area ra1">
+        <h3>Healthcare Interoperability</h3>
+        <p>Development of FHIR R4-based interoperability frameworks, including canonical data modeling, terminology reconciliation, structural transformation, and data-quality governance.</p>
+      </div>
+
+      <div class="research-area ra2">
+        <h3>Clinical Intelligence</h3>
+        <p>Development of explainable clinical decision-support methodologies integrating remote patient monitoring, machine learning, and interoperable clinical artifacts.</p>
+      </div>
+
+      <div class="research-area ra3">
+        <h3>Secure Health Data Governance</h3>
+        <p>Development of security-aware healthcare data exchange frameworks incorporating identity governance, consent management, auditability, and privacy-preserving data access.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH TIMELINE -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Research Timeline</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="tl-period">2024–2025</div>
+          <div class="tl-desc">Independent research and methodology development in health data systems.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-period">2025–2026</div>
+          <div class="tl-desc">Formalization of interoperability, clinical intelligence, and security governance frameworks.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-period">2026–</div>
+          <div class="tl-desc">Public technical documentation, artifact development, and future validation planning.</div>
+        </div>
+      </div>
+      <p style="font-size:0.8rem;color:var(--gray-400);margin-top:0.5rem;">Timeline reflects the progression of research activities and is not an exhaustive record of all professional engagements.</p>
+    </div>
+  </section>
+
+  <!-- RESEARCH INTERESTS -->
+  <section class="section" style="background:var(--gray-50);border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200);">
+    <div class="container">
+      <h2 class="section-title">Research Interests</h2>
+      <div class="interests">
+        <span>FHIR R4</span><span>HL7 v2</span><span>C-CDA</span><span>Clinical Interoperability</span>
+        <span>Remote Patient Monitoring</span><span>SHAP</span><span>Risk Stratification</span>
+        <span>HIE Security</span><span>Consent Management</span><span>Health Data Quality</span>
+        <span>Explainable AI (XAI)</span><span>XGBoost</span><span>Zero Trust Architecture</span>
+        <span>ABAC</span><span>Differential Privacy</span><span>Clinical Decision Support</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-placeholder">
+        Contact information available upon request.
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div><p class="mb-1">&copy; 2025–2026 Xinyang Li. Integrated Methods for Digital Health Data Systems.</p><p class="mb-0 text-xs">Licensed under Apache License, Version 2.0. Draft &amp; experimental — not for production use.</p></div>
+      <div><span class="badge" style="color:#a855f7;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);">DRAFT &amp; EXPERIMENTAL</span></div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

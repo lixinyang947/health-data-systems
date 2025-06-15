@@ -1,0 +1,179 @@
+{
+  "resourceType": "StructureMap",
+  "id": "v2-orc-to-servicerequest",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureMap/v2-orc-to-servicerequest",
+  "version": "0.1.0",
+  "name": "V2ORCToServiceRequest",
+  "title": "HL7 v2 ORC to HITC Canonical ServiceRequest",
+  "status": "draft",
+  "experimental": true,
+  "date": "2026-07-21",
+  "publisher": "Xinyang Li",
+  "description": "Declarative structural mapping from ORC to ServiceRequest.",
+  "copyright": "© 2026 Xinyang Li. Draft technical specification.",
+  "purpose": "Supports ORM order extraction before semantic code reconciliation.",
+  "structure": [
+    {
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2ORC",
+      "mode": "source",
+      "alias": "V2ORC",
+      "documentation": "Normalized logical input model for the source segment or C-CDA entry."
+    },
+    {
+      "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-service-request",
+      "mode": "target",
+      "alias": "ServiceRequest",
+      "documentation": "Strict-at-core canonical FHIR R4 target profile."
+    }
+  ],
+  "group": [
+    {
+      "name": "V2ORCToServiceRequest",
+      "typeMode": "types",
+      "documentation": "Phase 1 structural mapping. Terminology translation, UCUM normalization, ISO 8601 normalization, and value-set validation occur in Phase 2 unless explicitly invoked by a translate rule.",
+      "input": [
+        {
+          "name": "src",
+          "type": "HITCV2ORC",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "ServiceRequest",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "orderIdentifier",
+          "source": [
+            {
+              "context": "src",
+              "element": "placerOrderNumber",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "identifier.value",
+              "transform": "copy"
+            }
+          ]
+        },
+        {
+          "name": "identifierSystem",
+          "source": [
+            {
+              "context": "src",
+              "element": "placerOrderNumber",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "identifier.system",
+              "transform": "evaluate",
+              "parameter": [
+                {
+                  "valueString": "'https://example.org/fhir/sid/order'"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "requestStatus",
+          "source": [
+            {
+              "context": "src",
+              "element": "orderControl",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "status",
+              "transform": "translate",
+              "parameter": [
+                {
+                  "valueId": "v"
+                },
+                {
+                  "valueString": "https://example.org/fhir/li-xinyang-interop-r4/ConceptMap/v2-order-control-to-request-status"
+                },
+                {
+                  "valueString": "code"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "requestIntent",
+          "source": [
+            {
+              "context": "src",
+              "element": "orderControl",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "intent",
+              "transform": "evaluate",
+              "parameter": [
+                {
+                  "valueString": "'order'"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "authoredOn",
+          "source": [
+            {
+              "context": "src",
+              "element": "transactionDateTime",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "authoredOn",
+              "transform": "copy"
+            }
+          ]
+        },
+        {
+          "name": "requesterDisplay",
+          "source": [
+            {
+              "context": "src",
+              "element": "orderingProvider",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "requester.display",
+              "transform": "copy"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

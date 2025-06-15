@@ -1,0 +1,506 @@
+{
+  "resourceType": "CapabilityStatement",
+  "id": "hitc-interop-server",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/CapabilityStatement/hitc-interop-server",
+  "version": "0.1.0",
+  "name": "HITCInteropServerRequirements",
+  "title": "HITC Interoperability Server Requirements",
+  "status": "draft",
+  "experimental": true,
+  "date": "2026-07-21",
+  "publisher": "Xinyang Li",
+  "description": "Requirements-level capability statement for a server implementing the draft interoperability framework.",
+  "copyright": "© 2026 Xinyang Li. Draft technical specification.",
+  "purpose": "Packages profile, search, operation, security, and interaction expectations into a computable conformance artifact.",
+  "kind": "requirements",
+  "fhirVersion": "4.0.1",
+  "format": [
+    "json",
+    "xml"
+  ],
+  "implementationGuide": [
+    "https://example.org/fhir/li-xinyang-interop-r4/ImplementationGuide/li-xinyang-interop-r4"
+  ],
+  "rest": [
+    {
+      "mode": "server",
+      "documentation": "Draft requirements for canonical storage, validation, provenance search, and federated access.",
+      "security": {
+        "cors": true,
+        "service": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/restful-security-service",
+                "code": "SMART-on-FHIR",
+                "display": "SMART-on-FHIR"
+              }
+            ]
+          }
+        ],
+        "description": "Use SMART-on-FHIR authorization, rate limiting, and audit logging at the access gateway."
+      },
+      "resource": [
+        {
+          "type": "Patient",
+          "profile": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-patient",
+          "interaction": [
+            {
+              "code": "read"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "create"
+            },
+            {
+              "code": "update"
+            }
+          ],
+          "versioning": "versioned-update",
+          "readHistory": true,
+          "updateCreate": true,
+          "conditionalCreate": true,
+          "conditionalUpdate": true,
+          "referencePolicy": [
+            "literal",
+            "local"
+          ]
+        },
+        {
+          "type": "Encounter",
+          "profile": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-encounter",
+          "interaction": [
+            {
+              "code": "read"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "create"
+            },
+            {
+              "code": "update"
+            }
+          ],
+          "versioning": "versioned-update",
+          "readHistory": true,
+          "updateCreate": true,
+          "conditionalCreate": true,
+          "conditionalUpdate": true,
+          "referencePolicy": [
+            "literal",
+            "local"
+          ]
+        },
+        {
+          "type": "Observation",
+          "profile": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-observation",
+          "interaction": [
+            {
+              "code": "read"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "create"
+            },
+            {
+              "code": "update"
+            }
+          ],
+          "versioning": "versioned-update",
+          "readHistory": true,
+          "updateCreate": true,
+          "conditionalCreate": true,
+          "conditionalUpdate": true,
+          "referencePolicy": [
+            "literal",
+            "local"
+          ],
+          "searchParam": [
+            {
+              "name": "validation-stage",
+              "definition": "https://example.org/fhir/li-xinyang-interop-r4/SearchParameter/observation-validation-stage",
+              "type": "token"
+            }
+          ]
+        },
+        {
+          "type": "Condition",
+          "profile": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-condition",
+          "interaction": [
+            {
+              "code": "read"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "create"
+            },
+            {
+              "code": "update"
+            }
+          ],
+          "versioning": "versioned-update",
+          "readHistory": true,
+          "updateCreate": true,
+          "conditionalCreate": true,
+          "conditionalUpdate": true,
+          "referencePolicy": [
+            "literal",
+            "local"
+          ]
+        },
+        {
+          "type": "MedicationRequest",
+          "profile": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-medication-request",
+          "interaction": [
+            {
+              "code": "read"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "create"
+            },
+            {
+              "code": "update"
+            }
+          ],
+          "versioning": "versioned-update",
+          "readHistory": true,
+          "updateCreate": true,
+          "conditionalCreate": true,
+          "conditionalUpdate": true,
+          "referencePolicy": [
+            "literal",
+            "local"
+          ]
+        },
+        {
+          "type": "MedicationStatement",
+          "profile": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-medication-statement",
+          "interaction": [
+            {
+              "code": "read"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "create"
+            },
+            {
+              "code": "update"
+            }
+          ],
+          "versioning": "versioned-update",
+          "readHistory": true,
+          "updateCreate": true,
+          "conditionalCreate": true,
+          "conditionalUpdate": true,
+          "referencePolicy": [
+            "literal",
+            "local"
+          ]
+        },
+        {
+          "type": "DiagnosticReport",
+          "profile": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-diagnostic-report",
+          "interaction": [
+            {
+              "code": "read"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "create"
+            },
+            {
+              "code": "update"
+            }
+          ],
+          "versioning": "versioned-update",
+          "readHistory": true,
+          "updateCreate": true,
+          "conditionalCreate": true,
+          "conditionalUpdate": true,
+          "referencePolicy": [
+            "literal",
+            "local"
+          ]
+        },
+        {
+          "type": "Procedure",
+          "profile": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-procedure",
+          "interaction": [
+            {
+              "code": "read"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "create"
+            },
+            {
+              "code": "update"
+            }
+          ],
+          "versioning": "versioned-update",
+          "readHistory": true,
+          "updateCreate": true,
+          "conditionalCreate": true,
+          "conditionalUpdate": true,
+          "referencePolicy": [
+            "literal",
+            "local"
+          ]
+        },
+        {
+          "type": "Immunization",
+          "profile": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-immunization",
+          "interaction": [
+            {
+              "code": "read"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "create"
+            },
+            {
+              "code": "update"
+            }
+          ],
+          "versioning": "versioned-update",
+          "readHistory": true,
+          "updateCreate": true,
+          "conditionalCreate": true,
+          "conditionalUpdate": true,
+          "referencePolicy": [
+            "literal",
+            "local"
+          ]
+        },
+        {
+          "type": "AllergyIntolerance",
+          "profile": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-allergy-intolerance",
+          "interaction": [
+            {
+              "code": "read"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "create"
+            },
+            {
+              "code": "update"
+            }
+          ],
+          "versioning": "versioned-update",
+          "readHistory": true,
+          "updateCreate": true,
+          "conditionalCreate": true,
+          "conditionalUpdate": true,
+          "referencePolicy": [
+            "literal",
+            "local"
+          ]
+        },
+        {
+          "type": "DocumentReference",
+          "profile": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-document-reference",
+          "interaction": [
+            {
+              "code": "read"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "create"
+            },
+            {
+              "code": "update"
+            }
+          ],
+          "versioning": "versioned-update",
+          "readHistory": true,
+          "updateCreate": true,
+          "conditionalCreate": true,
+          "conditionalUpdate": true,
+          "referencePolicy": [
+            "literal",
+            "local"
+          ]
+        },
+        {
+          "type": "Consent",
+          "profile": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-consent",
+          "interaction": [
+            {
+              "code": "read"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "create"
+            },
+            {
+              "code": "update"
+            }
+          ],
+          "versioning": "versioned-update",
+          "readHistory": true,
+          "updateCreate": true,
+          "conditionalCreate": true,
+          "conditionalUpdate": true,
+          "referencePolicy": [
+            "literal",
+            "local"
+          ]
+        },
+        {
+          "type": "Provenance",
+          "profile": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-canonical-provenance",
+          "interaction": [
+            {
+              "code": "read"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "create"
+            },
+            {
+              "code": "update"
+            }
+          ],
+          "versioning": "versioned-update",
+          "readHistory": true,
+          "updateCreate": true,
+          "conditionalCreate": true,
+          "conditionalUpdate": true,
+          "referencePolicy": [
+            "literal",
+            "local"
+          ],
+          "searchParam": [
+            {
+              "name": "mapping-strategy",
+              "definition": "https://example.org/fhir/li-xinyang-interop-r4/SearchParameter/provenance-mapping-strategy",
+              "type": "token"
+            }
+          ]
+        },
+        {
+          "type": "Bundle",
+          "profile": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/hitc-exchange-bundle",
+          "interaction": [
+            {
+              "code": "read"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "create"
+            },
+            {
+              "code": "update"
+            }
+          ],
+          "versioning": "versioned-update",
+          "readHistory": true,
+          "updateCreate": true,
+          "conditionalCreate": true,
+          "conditionalUpdate": true,
+          "referencePolicy": [
+            "literal",
+            "local"
+          ]
+        }
+      ],
+      "interaction": [
+        {
+          "code": "transaction"
+        },
+        {
+          "code": "batch"
+        },
+        {
+          "code": "search-system"
+        }
+      ],
+      "operation": [
+        {
+          "name": "validate-exchange",
+          "definition": "https://example.org/fhir/li-xinyang-interop-r4/OperationDefinition/validate-exchange"
+        },
+        {
+          "name": "federated-summary",
+          "definition": "https://example.org/fhir/li-xinyang-interop-r4/OperationDefinition/federated-summary"
+        },
+        {
+          "name": "validate",
+          "definition": "http://hl7.org/fhir/OperationDefinition/Resource-validate"
+        }
+      ]
+    }
+  ]
+}

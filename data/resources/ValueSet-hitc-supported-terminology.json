@@ -1,0 +1,15 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "HITCSupportedTerminologyVS",
+  "id": "hitc-supported-terminology",
+  "title": "HITC Supported Terminology Value Set",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/ValueSet/hitc-supported-terminology",
+  "compose": {
+    "include": [
+      {
+        "system": "https://example.org/fhir/li-xinyang-interop-r4/CodeSystem/hitc-supported-terminology"
+      }
+    ]
+  }
+}

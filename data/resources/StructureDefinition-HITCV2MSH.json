@@ -1,0 +1,352 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "HITCV2MSH",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2MSH",
+  "name": "HITCV2MSH",
+  "title": "HL7 v2 MSH Logical Model",
+  "status": "draft",
+  "description": "Representative message-header fields used by the canonical envelope and provenance pipeline.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2MSH",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "snapshot": {
+    "element": [
+      {
+        "id": "HITCV2MSH",
+        "path": "HITCV2MSH",
+        "short": "HL7 v2 MSH Logical Model",
+        "definition": "Representative message-header fields used by the canonical envelope and provenance pipeline.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "HITCV2MSH",
+          "min": 0,
+          "max": "*"
+        },
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ],
+        "isModifier": false,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2MSH.sendingApplication",
+        "path": "HITCV2MSH.sendingApplication",
+        "short": "MSH-3 Sending Application",
+        "definition": "MSH-3 Sending Application",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2MSH.sendingApplication",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2MSH.sendingFacility",
+        "path": "HITCV2MSH.sendingFacility",
+        "short": "MSH-4 Sending Facility",
+        "definition": "MSH-4 Sending Facility",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2MSH.sendingFacility",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2MSH.receivingApplication",
+        "path": "HITCV2MSH.receivingApplication",
+        "short": "MSH-5 Receiving Application",
+        "definition": "MSH-5 Receiving Application",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2MSH.receivingApplication",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2MSH.messageDateTime",
+        "path": "HITCV2MSH.messageDateTime",
+        "short": "MSH-7 Date/Time of Message",
+        "definition": "MSH-7 Date/Time of Message",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2MSH.messageDateTime",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2MSH.messageType",
+        "path": "HITCV2MSH.messageType",
+        "short": "MSH-9 Message Type",
+        "definition": "MSH-9 Message Type",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2MSH.messageType",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2MSH.messageControlId",
+        "path": "HITCV2MSH.messageControlId",
+        "short": "MSH-10 Message Control ID",
+        "definition": "MSH-10 Message Control ID",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2MSH.messageControlId",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2MSH.versionId",
+        "path": "HITCV2MSH.versionId",
+        "short": "MSH-12 Version ID",
+        "definition": "MSH-12 Version ID",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2MSH.versionId",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "HITCV2MSH",
+        "path": "HITCV2MSH",
+        "short": "HL7 v2 MSH Logical Model",
+        "definition": "Representative message-header fields used by the canonical envelope and provenance pipeline."
+      },
+      {
+        "id": "HITCV2MSH.sendingApplication",
+        "path": "HITCV2MSH.sendingApplication",
+        "short": "MSH-3 Sending Application",
+        "definition": "MSH-3 Sending Application",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2MSH.sendingFacility",
+        "path": "HITCV2MSH.sendingFacility",
+        "short": "MSH-4 Sending Facility",
+        "definition": "MSH-4 Sending Facility",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2MSH.receivingApplication",
+        "path": "HITCV2MSH.receivingApplication",
+        "short": "MSH-5 Receiving Application",
+        "definition": "MSH-5 Receiving Application",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2MSH.messageDateTime",
+        "path": "HITCV2MSH.messageDateTime",
+        "short": "MSH-7 Date/Time of Message",
+        "definition": "MSH-7 Date/Time of Message",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2MSH.messageType",
+        "path": "HITCV2MSH.messageType",
+        "short": "MSH-9 Message Type",
+        "definition": "MSH-9 Message Type",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2MSH.messageControlId",
+        "path": "HITCV2MSH.messageControlId",
+        "short": "MSH-10 Message Control ID",
+        "definition": "MSH-10 Message Control ID",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2MSH.versionId",
+        "path": "HITCV2MSH.versionId",
+        "short": "MSH-12 Version ID",
+        "definition": "MSH-12 Version ID",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,434 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "HITCV2SCH",
+  "url": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2SCH",
+  "name": "HITCV2SCH",
+  "title": "HL7 v2 SCH Logical Model",
+  "status": "draft",
+  "description": "Representative scheduling fields used by the SIU-to-Encounter structure map.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "https://example.org/fhir/li-xinyang-interop-r4/StructureDefinition/HITCV2SCH",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "snapshot": {
+    "element": [
+      {
+        "id": "HITCV2SCH",
+        "path": "HITCV2SCH",
+        "short": "HL7 v2 SCH Logical Model",
+        "definition": "Representative scheduling fields used by the SIU-to-Encounter structure map.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "HITCV2SCH",
+          "min": 0,
+          "max": "*"
+        },
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ],
+        "isModifier": false,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2SCH.placerAppointmentId",
+        "path": "HITCV2SCH.placerAppointmentId",
+        "short": "SCH-1 Placer Appointment ID",
+        "definition": "SCH-1 Placer Appointment ID",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2SCH.placerAppointmentId",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2SCH.fillerAppointmentId",
+        "path": "HITCV2SCH.fillerAppointmentId",
+        "short": "SCH-2 Filler Appointment ID",
+        "definition": "SCH-2 Filler Appointment ID",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2SCH.fillerAppointmentId",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2SCH.eventReason",
+        "path": "HITCV2SCH.eventReason",
+        "short": "SCH-6 Event Reason",
+        "definition": "SCH-6 Event Reason",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2SCH.eventReason",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2SCH.appointmentReason",
+        "path": "HITCV2SCH.appointmentReason",
+        "short": "SCH-7 Appointment Reason",
+        "definition": "SCH-7 Appointment Reason",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2SCH.appointmentReason",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2SCH.appointmentType",
+        "path": "HITCV2SCH.appointmentType",
+        "short": "SCH-8 Appointment Type",
+        "definition": "SCH-8 Appointment Type",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2SCH.appointmentType",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2SCH.appointmentDuration",
+        "path": "HITCV2SCH.appointmentDuration",
+        "short": "SCH-9 Appointment Duration",
+        "definition": "SCH-9 Appointment Duration",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2SCH.appointmentDuration",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "decimal"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2SCH.startDateTime",
+        "path": "HITCV2SCH.startDateTime",
+        "short": "SCH-11 Appointment Timing Quantity",
+        "definition": "SCH-11 Appointment Timing Quantity",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "HITCV2SCH.startDateTime",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2SCH.location",
+        "path": "HITCV2SCH.location",
+        "short": "SCH-16 Filler Contact Person/Location",
+        "definition": "SCH-16 Filler Contact Person/Location",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "HITCV2SCH.location",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2SCH.enteredBy",
+        "path": "HITCV2SCH.enteredBy",
+        "short": "SCH-20 Entered By Person",
+        "definition": "SCH-20 Entered By Person",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "HITCV2SCH.enteredBy",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "HITCV2SCH",
+        "path": "HITCV2SCH",
+        "short": "HL7 v2 SCH Logical Model",
+        "definition": "Representative scheduling fields used by the SIU-to-Encounter structure map."
+      },
+      {
+        "id": "HITCV2SCH.placerAppointmentId",
+        "path": "HITCV2SCH.placerAppointmentId",
+        "short": "SCH-1 Placer Appointment ID",
+        "definition": "SCH-1 Placer Appointment ID",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2SCH.fillerAppointmentId",
+        "path": "HITCV2SCH.fillerAppointmentId",
+        "short": "SCH-2 Filler Appointment ID",
+        "definition": "SCH-2 Filler Appointment ID",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2SCH.eventReason",
+        "path": "HITCV2SCH.eventReason",
+        "short": "SCH-6 Event Reason",
+        "definition": "SCH-6 Event Reason",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2SCH.appointmentReason",
+        "path": "HITCV2SCH.appointmentReason",
+        "short": "SCH-7 Appointment Reason",
+        "definition": "SCH-7 Appointment Reason",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2SCH.appointmentType",
+        "path": "HITCV2SCH.appointmentType",
+        "short": "SCH-8 Appointment Type",
+        "definition": "SCH-8 Appointment Type",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2SCH.appointmentDuration",
+        "path": "HITCV2SCH.appointmentDuration",
+        "short": "SCH-9 Appointment Duration",
+        "definition": "SCH-9 Appointment Duration",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "decimal"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2SCH.startDateTime",
+        "path": "HITCV2SCH.startDateTime",
+        "short": "SCH-11 Appointment Timing Quantity",
+        "definition": "SCH-11 Appointment Timing Quantity",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2SCH.location",
+        "path": "HITCV2SCH.location",
+        "short": "SCH-16 Filler Contact Person/Location",
+        "definition": "SCH-16 Filler Contact Person/Location",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "HITCV2SCH.enteredBy",
+        "path": "HITCV2SCH.enteredBy",
+        "short": "SCH-20 Entered By Person",
+        "definition": "SCH-20 Entered By Person",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      }
+    ]
+  }
+}
