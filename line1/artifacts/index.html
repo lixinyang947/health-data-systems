@@ -229,10 +229,7 @@
             html += '<div class="group-label">' + escapeHtml(groupDisplay) + '</div>';
           }
           html += '<div class="card-actions">';
-          html += '<a href="/line1/artifacts/detail.html?id=' + encodeURIComponent(id) + '" class="details-link">View Details</a>';
-          if (file) {
-            html += '<a href="/data/resources/' + encodeURIComponent(file) + '" class="json-link" target="_blank">View JSON</a>';
-          }
+          html += '<a href="/data/resources/' + encodeURIComponent(file) + '" class="details-link" target="_blank">View JSON</a>';
           html += '</div>';
           html += '</div>';
         });
