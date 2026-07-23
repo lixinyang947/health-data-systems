@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artifact Detail — Xinyang Li</title>
+  <link rel="stylesheet" href="../../css/main.css" />
+  <style>
+    .detail-hero { background: linear-gradient(135deg, var(--navy) 0%, #0f1d36 50%, #0a1628 100%); padding: 3rem 0 2rem; border-bottom: 1px solid var(--navy-border); }
+    .detail-hero h1 { color: var(--white); font-size: 1.75rem; line-height: 1.2; margin-bottom: 0.5rem; }
+    .detail-hero .subtitle { color: var(--gray-400); font-size: 0.95rem; }
+    .section { padding: 2rem 0; }
+    .section-title { font-size: 1.15rem; font-weight: 600; color: var(--gray-900); margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--gray-200); }
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .info-item { padding: 0.75rem; background: var(--gray-50); border-radius: var(--radius-md); }
+    .info-item .label { font-size: 0.7rem; font-weight: 600; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.04em; }
+    .info-item .value { font-size: 0.9rem; font-weight: 500; color: var(--gray-800); margin-top: 0.15rem; word-break: break-all; }
+    .code-block { background: #1e293b; color: #e2e8f0; border-radius: var(--radius-md); padding: 1rem; font-family: var(--font-mono); font-size: 0.8rem; overflow-x: auto; max-height: 500px; overflow-y: auto; line-height: 1.6; }
+    .loading { text-align: center; padding: 3rem; color: var(--gray-400); }
+    .error-state { text-align: center; padding: 3rem; color: var(--red); }
+    .error-state a { color: var(--teal); }
+    .action-bar { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-logo"><span class="logo-badge">XYL</span>Xinyang Li</a>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav class="main-nav">
+        <a href="/">Home</a>
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle">Research</button>
+          <div class="dropdown-menu">
+            <a href="/line1/"><span class="line-badge" style="background:rgba(20,184,166,0.12);color:var(--teal-dark);">L1</span>FHIR-Native Clinical Data Interoperability<span class="dropdown-desc">Executable FHIR R4 profiles, mappings, quality metrics, provenance &amp; validation</span></a>
+            <a href="/line2/"><span class="line-badge" style="background:rgba(245,158,11,0.12);color:var(--amber-dark);">L2</span>Explainable RPM &amp; Clinical Decision Support<span class="dropdown-desc">RPM data normalization, SHAP explainability, risk stratification framework</span></a>
+            <a href="/line3/"><span class="line-badge" style="background:rgba(168,85,247,0.12);color:#7c3aed;">L3</span>Secure Health Information Exchange Governance<span class="dropdown-desc">HIE security architecture, consent management, audit &amp; provenance governance</span></a>
+          </div>
+        </div>
+        <a href="/publications/">Publications</a>
+        <a href="/technical/">Technical Resources</a>
+        <a href="/about/">About</a>
+        <span class="badge badge-amber" style="margin-left:0.5rem;">v0.1.0</span>
+      </nav>
+    </div>
+  </header>
+
+  <div id="app">
+    <div class="loading">Loading artifact details…</div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div><p class="mb-1">&copy; 2025–2026 Xinyang Li. Integrated Methods for Digital Health Data Systems.</p><p class="mb-0 text-xs">Licensed under Apache License, Version 2.0. Draft &amp; experimental — not for production use.</p></div>
+      <div><span class="badge" style="color:#a855f7;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);">DRAFT &amp; EXPERIMENTAL</span></div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // Get artifact ID from URL path: /line1/artifacts/<id>/
+      var pathParts = location.pathname.replace(/\/+$/, '').split('/');
+      var artifactId = pathParts[pathParts.length - 1];
+
+      var app = document.getElementById('app');
+
+      if (!artifactId) {
+        app.innerHTML = '<div class="error-state"><h2>No artifact specified</h2><p>Please select an artifact from the <a href="/line1/artifacts/">Artifact Explorer</a>.</p></div>';
+        return;
+      }
+
+      // Type colors (matching explorer)
+      var typeColors = {
+        'StructureDefinition': { color: '#14b8a6', bg: 'rgba(20,184,166,0.12)' },
+        'StructureMap': { color: '#a855f7', bg: 'rgba(168,85,247,0.12)' },
+        'ConceptMap': { color: '#16a34a', bg: 'rgba(22,163,74,0.12)' },
+        'CodeSystem': { color: '#d97706', bg: 'rgba(245,158,11,0.12)' },
+        'ValueSet': { color: '#0d9488', bg: 'rgba(13,148,136,0.12)' },
+        'OperationDefinition': { color: '#ef4444', bg: 'rgba(239,68,68,0.12)' },
+        'CapabilityStatement': { color: '#7c3aed', bg: 'rgba(124,58,237,0.10)' },
+        'ImplementationGuide': { color: '#6366f1', bg: 'rgba(99,102,241,0.10)' },
+        'SearchParameter': { color: '#f59e0b', bg: 'rgba(245,158,11,0.10)' }
+      };
+
+      function getTypeColor(type) {
+        return typeColors[type] || { color: '#64748b', bg: 'var(--gray-100)' };
+      }
+
+      function formatGroup(group) {
+        if (!group) return '';
+        return group.replace(/-/g, ' ').replace(/\b\w/g, function(l) { return l.toUpperCase(); });
+      }
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        var div = document.createElement('div');
+        div.appendChild(document.createTextNode(str));
+        return div.innerHTML;
+      }
+
+      function getDescription(artifact) {
+        var type = artifact.resourceType || '';
+        var id = artifact.id || '';
+        var title = artifact.title || '';
+
+        if (type === 'StructureDefinition') {
+          if (id && id.indexOf('canonical') >= 0) return 'This profile defines a canonical FHIR R4 resource model for clinical data exchange. It establishes mandatory elements, required bindings, and extension constraints to ensure consistent representation across heterogeneous source systems.';
+          if (id && id.indexOf('quality') >= 0) return 'This profile defines a FHIR Observation-based representation for exchange quality metrics. It extends Observation with numerator, denominator, and metric code extensions to enable computable quality measurement within FHIR exchanges.';
+          if (id && id.indexOf('exchange-bundle') >= 0) return 'This profile constrains the FHIR Bundle resource for canonical exchange. It requires a patient, provenance, and six quality metric observations within each exchange bundle to ensure completeness and auditability.';
+          if (id && id.indexOf('HITCV2') >= 0) return 'This logical model defines the normalized structure of an HL7 v2 segment for use as a StructureMap source target. It represents the segment fields as FHIR-compatible data types for transformation processing.';
+          if (id && id.indexOf('HITCCCDA') >= 0) return 'This logical model defines the normalized structure of a C-CDA entry for use as a StructureMap source target. It represents clinical document sections as FHIR-compatible data types.';
+          if (id && id.indexOf('merkle') >= 0) return 'This extension defines a Merkle root hash value for tamper-evident integrity verification of FHIR resource bundles. It is used in conjunction with Provenance records to establish an auditable lineage chain.';
+          if (id && id.indexOf('mapping') >= 0) return 'This extension captures metadata about mapping transformations, including strategy, reviewer, and confidence level. It is used on Provenance records to document the mapping process.';
+          if (id && id.indexOf('source') >= 0) return 'This extension records the source system or original code value associated with a mapped FHIR resource element. It preserves the provenance of source data for audit and traceability.';
+          if (id && id.indexOf('validation') >= 0) return 'This extension records the validation stage at which a quality metric observation was generated, supporting staged quality assessment workflows.';
+          if (id && id.indexOf('Act') >= 0) return 'This logical model defines the normalized structure of an HL7 v2 segment for use as a StructureMap source target.';
+          return 'This StructureDefinition profile constrains a FHIR R4 resource for use within the interoperability framework. It defines mandatory elements, extensions, and value set bindings.';
+        }
+        if (type === 'StructureMap') {
+          if (id && id.indexOf('v2-') >= 0) return 'This StructureMap defines the executable transformation from a normalized HL7 v2 segment logical model to a HITC canonical FHIR R4 resource. It implements the structural mapping phase of the two-phase pipeline.';
+          if (id && id.indexOf('ccda-') >= 0) return 'This StructureMap defines the executable transformation from a normalized C-CDA entry logical model to a HITC canonical FHIR R4 resource. It implements the structural mapping phase of the two-phase pipeline.';
+          return 'This StructureMap defines an executable transformation between source and target data models using FHIR Mapping Language.';
+        }
+        if (type === 'ConceptMap') {
+          if (id && id.indexOf('v2-') >= 0) return 'This ConceptMap defines the semantic mapping between HL7 v2 terminology codes and FHIR R4 standard value sets. It implements the semantic reconciliation phase of the two-phase pipeline.';
+          if (id && (id.indexOf('template') >= 0 || id.indexOf('local-') >= 0)) return 'This ConceptMap is a governance template for terminology crosswalks. It defines the mapping structure without populating licensed or institution-specific content, serving as a placeholder for site-specific deployment.';
+          return 'This ConceptMap defines terminology relationships between source and target code systems for semantic reconciliation.';
+        }
+        if (type === 'CodeSystem') return 'This CodeSystem defines a custom code system for the interoperability framework, providing standardized codes for framework-specific concepts such as quality metrics, mapping strategies, and validation stages.';
+        if (type === 'ValueSet') return 'This ValueSet defines the set of allowable codes from a framework-specific code system for use in FHIR resource bindings.';
+        if (type === 'OperationDefinition') return 'This OperationDefinition defines a custom FHIR operation for the interoperability framework, specifying input parameters, output structure, and invocation semantics.';
+        if (type === 'CapabilityStatement') return 'This CapabilityStatement defines the server requirements for a HITC interoperability framework endpoint, including supported resources, interactions, and operations.';
+        if (type === 'Provenance') return 'This Provenance resource documents the transformation history of a FHIR resource, including source document, mapping activity, reviewer, and integrity digests.';
+        if (type === 'Observation') {
+          if (id && id.indexOf('Quality') >= 0) return 'This synthetic Observation example demonstrates a quality metric measurement using the HITC Quality Metric Observation profile. It illustrates the structure, extensions, and coding pattern for computable quality assessment.';
+          if (id && id.indexOf('HbA1c') >= 0) return 'This synthetic example demonstrates a clinical Observation resource conforming to the HITC Canonical Observation profile, including lab result coding and interpretation.';
+          return 'This synthetic Observation example demonstrates the use of the canonical observation profile for clinical data exchange.';
+        }
+        if (type === 'Patient') return 'This synthetic Patient example demonstrates the HITC Canonical Patient profile constraints, including mandatory identifiers, name components, and managing organization references.';
+        if (type === 'Bundle') return 'This synthetic Bundle example demonstrates the HITC Canonical Exchange Bundle format, containing a Patient, Provenance, and all six quality metric Observations.';
+        if (type === 'Encounter') return 'This synthetic Encounter example demonstrates the HITC Canonical Encounter profile constraints for clinical encounter data exchange.';
+        if (type === 'Condition') return 'This synthetic Condition example demonstrates the canonical condition representation for problem list exchange.';
+        if (type === 'Device') return 'This synthetic Device example represents a source EHR system as a FHIR Device resource for provenance tracking.';
+        if (type === 'DocumentReference') return 'This synthetic DocumentReference example represents a source clinical document reference for provenance and exchange purposes.';
+        if (type === 'SearchParameter') return 'This SearchParameter defines a custom search capability for framework-specific extensions, enabling filtered queries on quality metrics and provenance records.';
+        if (type === 'Organization') return 'This synthetic Organization example represents a healthcare organization for use in exchange scenarios.';
+        if (type === 'Practitioner') return 'This synthetic Practitioner example represents a reviewer or clinician for provenance documentation.';
+        if (type === 'Specimen') return 'This synthetic Specimen example demonstrates canonical specimen representation for laboratory data exchange.';
+        if (type === 'Location') return 'This synthetic Location example represents a clinical location for use in exchange scenarios.';
+        if (type === 'ImplementationGuide') return 'This ImplementationGuide resource defines the FHIR IG package structure, including dependencies, resource indexing, and publication metadata.';
+        return 'This ' + type + ' artifact is part of the HITC FHIR-Native Interoperability Framework.';
+      }
+
+      // Load artifact inventory
+      fetch('../data/artifacts.json')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          var artifact = null;
+          (data.artifacts || []).forEach(function(a) {
+            if (a.id === artifactId) artifact = a;
+          });
+
+          if (!artifact) {
+            app.innerHTML = '<div class="error-state"><h2>Artifact not found</h2><p>Could not find artifact &quot;' + escapeHtml(artifactId) + '&quot;. <a href="/line1/artifacts/">Browse all artifacts</a>.</p></div>';
+            return;
+          }
+
+          renderArtifact(artifact);
+        })
+        .catch(function(err) {
+          app.innerHTML = '<div class="error-state"><h2>Error loading data</h2><p>' + escapeHtml(err.message) + '</p></div>';
+        });
+
+      function renderArtifact(artifact) {
+        var title = artifact.title || artifact.id || 'Untitled';
+        var type = artifact.resourceType || 'Unknown';
+        var status = artifact.status || 'unknown';
+        var version = artifact.version || '';
+        var group = artifact.group || '';
+        var file = artifact.file || '';
+        var ref = artifact.reference || '';
+
+        var tc = getTypeColor(type);
+        var groupLabel = formatGroup(group);
+
+        var html = '';
+
+        // Hero
+        html += '<section class="detail-hero"><div class="container">';
+        html += '<a href="/line1/artifacts/" style="color:var(--gray-400);font-size:0.8rem;text-decoration:none;display:inline-block;margin-bottom:0.75rem;">&larr; Back to Artifact Explorer</a>';
+        html += '<div class="flex flex-wrap gap-2" style="margin-bottom:0.5rem;">';
+        html += '<span class="badge" style="color:' + tc.color + ';background:' + tc.bg + ';border:1px solid ' + tc.color + '22;">' + type + '</span>';
+        if (groupLabel) html += '<span class="badge" style="color:var(--gray-400);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);">' + groupLabel + '</span>';
+        html += '<span class="badge badge-amber">' + escapeHtml(status) + '</span>';
+        if (version) html += '<span class="badge" style="color:var(--teal);background:rgba(20,184,166,0.1);border:1px solid rgba(20,184,166,0.2);">v' + escapeHtml(version) + '</span>';
+        html += '</div>';
+        html += '<h1>' + escapeHtml(title) + '</h1>';
+        html += '<p class="subtitle">ID: ' + escapeHtml(artifactId) + '</p>';
+        html += '</div></section>';
+
+        // Info section
+        html += '<section class="section"><div class="container">';
+        html += '<h2 class="section-title">Details</h2>';
+        html += '<div class="info-grid">';
+        html += '<div class="info-item"><div class="label">Resource Type</div><div class="value">' + type + '</div></div>';
+        html += '<div class="info-item"><div class="label">ID</div><div class="value">' + escapeHtml(artifactId) + '</div></div>';
+        html += '<div class="info-item"><div class="label">Status</div><div class="value">' + escapeHtml(status) + '</div></div>';
+        html += '<div class="info-item"><div class="label">Version</div><div class="value">' + (version || '&mdash;') + '</div></div>';
+        html += '<div class="info-item"><div class="label">FHIR Version</div><div class="value">R4 (4.0.1)</div></div>';
+        html += '<div class="info-item"><div class="label">Group</div><div class="value">' + groupLabel + '</div></div>';
+        if (ref) html += '<div class="info-item" style="grid-column:1/-1;"><div class="label">Reference</div><div class="value">' + escapeHtml(ref) + '</div></div>';
+        html += '</div>';
+        html += '</div></section>';
+
+        // Description
+        html += '<section class="section" style="background:var(--gray-50);border-top:1px solid var(--gray-200);"><div class="container">';
+        html += '<h2 class="section-title">Description</h2>';
+        html += '<p style="color:var(--gray-600);line-height:1.8;">' + getDescription(artifact) + '</p>';
+        html += '</div></section>';
+
+        // Actions
+        html += '<section class="section"><div class="container">';
+        html += '<h2 class="section-title">Actions</h2>';
+        html += '<div class="action-bar">';
+        if (file) html += '<a href="/data/resources/' + encodeURIComponent(file) + '" class="btn btn-primary btn-sm" download>Download JSON</a>';
+        if (file) html += '<a href="/data/resources/' + encodeURIComponent(file) + '" class="btn btn-secondary btn-sm" target="_blank">View Raw JSON</a>';
+        html += '<a href="/line1/artifacts/" class="btn btn-ghost btn-sm">Browse All Artifacts</a>';
+        html += '</div>';
+        html += '</div></section>';
+
+        // JSON viewer
+        html += '<section id="json-viewer" class="section" style="background:var(--gray-50);border-top:1px solid var(--gray-200);"><div class="container">';
+        html += '<h2 class="section-title">JSON Content</h2>';
+        html += '<div id="json-content" class="code-block">Loading JSON…</div>';
+        html += '</div></section>';
+
+        app.innerHTML = html;
+
+        // Load JSON content
+        if (file) {
+          fetch('/data/resources/' + encodeURIComponent(file))
+            .then(function(r) { return r.text(); })
+            .then(function(text) {
+              try {
+                var parsed = JSON.parse(text);
+                document.getElementById('json-content').textContent = JSON.stringify(parsed, null, 2);
+              } catch(e) {
+                document.getElementById('json-content').textContent = text;
+              }
+            })
+            .catch(function() {
+              document.getElementById('json-content').textContent = 'Failed to load JSON.';
+            });
+        } else {
+          document.getElementById('json-content').textContent = 'No JSON file available for this artifact.';
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
